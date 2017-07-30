@@ -63,3 +63,5 @@ scholar:
 
   query: "@*"
 
+
+theme: jekyll-theme-leap-day
