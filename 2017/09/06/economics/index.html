@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '7FNHDJGFEK',
+      apiKey: '61aacc4c43e18db473c4acf39153ea57',
+      indexName: 'dev_hexo',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+<meta name="description" content="cfa l1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Basic economics">
+<meta property="og:url" content="http://yoursite.com/2017/09/06/economics/index.html">
+<meta property="og:site_name" content="Wesley&#39;s blog">
+<meta property="og:description" content="cfa l1">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-09-28T08:48:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Basic economics">
+<meta name="twitter:description" content="cfa l1">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/06/economics/"/>
+
+
+  <title>Basic economics | Wesley's blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wesley's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Kategorien</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Suche</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/06/economics/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wesley Shi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wesley's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Basic economics</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-06T00:00:00+08:00">2017-09-06</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/cfa/" itemprop="url" rel="index"><span itemprop="name">cfa</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+              <div class="post-description">cfa l1</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Microeconomics"><a href="#Microeconomics" class="headerlink" title="Microeconomics"></a>Microeconomics</h1><h3 id="basic-concept-of-demand"><a href="#basic-concept-of-demand" class="headerlink" title="basic concept of demand"></a>basic concept of demand</h3><p><strong>市场的分类</strong></p>
+<ol>
+<li>good markets</li>
+<li>intermediate goods and service</li>
+<li>factor markets, eg labor, land…</li>
+<li>capital markets</li>
+</ol>
+<p><strong>demand</strong>: <em>willingness and ability</em> of consumers to purchase goods.</p>
+<p><strong>law of demand</strong>: 价格下降，需求增加…</p>
+<p><strong>demand fuction</strong>: 价格、收入、互补品价格等的函数</p>
+<p><strong>demand curve</strong>: demand function的反函数</p>
+<p><strong>需求线的移动</strong></p>
+<ol>
+<li>shifts in demand curve 整个需求线的移动<ul>
+<li>increase in income</li>
+<li>price of related goods: substitutes and complements</li>
+<li>tastes</li>
+<li>expectation, 未来收入的预期</li>
+<li>number of buyers, 更多的消费者会广而告之，增加demand</li>
+</ul>
+</li>
+<li>movements along demand curve 需求线上的移动</li>
+</ol>
+<p><strong>aggregate demand curves</strong>: 直接相加，保持P相同</p>
+<h3 id="basic-concepts-of-supply"><a href="#basic-concepts-of-supply" class="headerlink" title="basic concepts of supply"></a>basic concepts of supply</h3><p><strong>supply</strong>: <em>willingness and ability</em> of sellers to purchase goods.</p>
+<p><strong>law of supply</strong></p>
+<p><strong>supply function</strong>: 受到价格、劳动力工资等影响</p>
+<p><strong>supply curve</strong> …</p>
+<p><strong>供应曲线的移动</strong> …</p>
+<ol>
+<li>input prices 原材料价格</li>
+<li>technology</li>
+<li>expectations</li>
+<li>number of sellers, 越多供应就越多</li>
+</ol>
+<p><strong>aggregate supply curves</strong> …</p>
+<h3 id="market-equilibrium"><a href="#market-equilibrium" class="headerlink" title="market equilibrium"></a>market equilibrium</h3><p>市场均衡，某一个价格下供给和需求相同</p>
+<ol>
+<li>partial equilibrium 局部均衡，只分析价格对供应和需求的影响</li>
+<li>general equilibrium 一般均衡    ，将所有因素都考虑在内</li>
+</ol>
+<p><strong>稳态</strong></p>
+<ol>
+<li>stable equilibrium 价格高于均衡价，市场出现供过于求，低于时供不应求，则是stable</li>
+<li>unstable equilibrium 高于时供不应求，低于时供过于求</li>
+</ol>
+<h3 id="auction"><a href="#auction" class="headerlink" title="auction"></a>auction</h3><p><strong>拍卖分类</strong></p>
+<p>拍卖物品：</p>
+<ol>
+<li>common value auction 共有价值拍卖，winner’s curse赢家诅咒，报价超过实际价值</li>
+<li>private value auction 对不同竞拍者来说，价值不一样</li>
+</ol>
+<p>拍卖过程：</p>
+<ol>
+<li>first price sealed bid auction 首价密封拍卖，相互不知道报价，最高报价者胜。最优报价低于每个人的保留价</li>
+<li>second price sealed bid auction 次价密封拍卖(vickrey auction 维克瑞拍卖)。报价最高者胜，以第二高的价格购买。最优报价等于保留价</li>
+<li>ascending price auction 出价逐升 英式拍卖</li>
+<li>descending price auction 出价逐降 荷式拍卖<ul>
+<li>传统荷式拍卖，每个人以自己接受的价格购买</li>
+<li>修正荷式拍卖，单价拍卖，最终所有人付的是相同的，取最低价<ul>
+<li>美国国债拍卖</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="demand-elasticity"><a href="#demand-elasticity" class="headerlink" title="demand elasticity"></a>demand elasticity</h3><p><strong>price elasticity of demand</strong> 价格弹性，价格发生1%变化时，需求发生多少百分比的变化。不同点的弹性不一样，相同的区间不同的方向也不一样。</p>
+<p><strong>arc method</strong> 弧弹性，计算平均价格的百分比</p>
+<p>在需求线上，弹性越来越小</p>
+<p><strong>unit elastic demand</strong> 单元弹性，弹性=1</p>
+<p><strong>elastic demand</strong> 弹性&gt;1</p>
+<p><strong>inelastic demand</strong> 弹性&lt;1</p>
+<p><strong>完全弹性</strong> 水平线</p>
+<p><strong>完全不弹性</strong> 竖直线</p>
+<p><strong>factor of elasticity</strong></p>
+<ol>
+<li>portion of income spent on good, 比重越大，弹性越大</li>
+<li>availability and closeness of substitutes, 有替代品，弹性变大</li>
+<li>time since the price change</li>
+</ol>
+<p><strong>elasticity vs total revenue</strong>: 收入的百分比变化约等于价格的百分比变化+需求的百分比变化，转化为弹性可知：</p>
+<ol>
+<li>当elastic时，降价提升总收入</li>
+<li>当inelastic时，降价降低总收入</li>
+</ol>
+<p><strong>income elasticity of demand</strong> 收入弹性，当收入发生1%的变化时，需求的变化百分比</p>
+<ol>
+<li>normal good 正相关，例如苹果手机</li>
+<li>inferior good 低档商品，反相关，例如方便面</li>
+</ol>
+<p><strong>cross-price elasticity of demand</strong> y商品的价格变化对x的demand的影响</p>
+<ol>
+<li>substitute，替代品，正相关，例如高铁与飞机</li>
+<li>complements，互补品，反相关，例如汽油与汽车</li>
+</ol>
+<h3 id="consumer-and-producer-surplus"><a href="#consumer-and-producer-surplus" class="headerlink" title="consumer and producer surplus"></a>consumer and producer surplus</h3><p><strong>消费者剩余</strong>: 实际付的价格和愿意付的最高价的差距，最高价即需求线上对应的点</p>
+<p><strong>生产者剩余</strong>: 实际价格-愿意接受的最低价，由供应商品的边际成本决定</p>
+<p><strong>总剩余</strong>: 消费者剩余+生产者剩余 = total value - total variable cost</p>
+<p><strong>supply curve</strong> == marginal cost<br><strong>demand curve</strong> == marginal benefit</p>
+<p><em>在均衡时的价格处，剩余取到最大化</em></p>
+<p><em>面积的计算</em></p>
+<h3 id="market-inference"><a href="#market-inference" class="headerlink" title="market inference"></a>market inference</h3><p>市场预测</p>
+<p>####deadweight loss(DWL) </p>
+<p>无谓损失，没有实现剩余最大化的损失</p>
+<p><strong>价格管制</strong></p>
+<ol>
+<li>price floor 价格下限，高于均衡价<ul>
+<li>eg 最低工资</li>
+<li>impact<ol>
+<li>消费者寻找substitution</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>price ceiling 设置价格上限，低于市场均衡价<ul>
+<li>要能找到图中的面积</li>
+<li>impact<ol>
+<li>long waiting period to purchase</li>
+<li>sellers discriminate 生产商歧视消费者</li>
+<li>sellers take bribes 生产商收贿</li>
+<li>sellers lower quality 由于价格低，质量下降</li>
+<li>black market</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>tax</strong></p>
+<p>unit tax 单位税</p>
+<ul>
+<li>on buyers, 消费税，使得需求线向左/下移动，总剩余(c+e)损失</li>
+<li>on sellers, 使得供给线向右/上移动，总剩余(c+e)损失</li>
+<li>effect<ol>
+<li>statutory incidence 法定归宿</li>
+<li>actual incidence 实际归宿，双方一起承担</li>
+</ol>
+</li>
+<li>elasticity 弹性，影响生产者和消费者承担税收的大小。弹性大，承担的税小，反之…<ol>
+<li>需求线越平，弹性越大</li>
+<li>供给线越平，弹性越大</li>
+</ol>
+</li>
+</ul>
+<h3 id="utility-theory-and-indifference-curve"><a href="#utility-theory-and-indifference-curve" class="headerlink" title="utility theory and indifference curve"></a>utility theory and indifference curve</h3><p><strong>consumer choice theory</strong>: 消费者选择理论</p>
+<ol>
+<li>complete preferences，消费者可以明确判断商品组合的优先度</li>
+<li>transitive preferences，传递偏好，不等号的传递性</li>
+<li>non-satiation 无饱食假设</li>
+</ol>
+<p><strong>utility theory</strong> 效用理论，效用函数</p>
+<p><strong>indifference curve</strong>: 效用无差异曲线，线上任意一点的效用相同</p>
+<ol>
+<li>曲线离原点越远，越高越好</li>
+<li>对于同一个消费者，无差异曲线不相交</li>
+<li>向下倾斜</li>
+<li>convex，凸的，diminishing marginal utility（递减的边际替代率），<em>因为随着一个商品越来越多，边际效用越来越小</em></li>
+</ol>
+<p><strong>marginal rate of substitution (MRS) 边际替代率</strong> 无差异曲线上，两个商品数量变化的比例</p>
+<p><em>不同人的无差异曲线可能相交</em>，因为不同消费者偏好不同。 </p>
+<h3 id="budget-constraint-and-consumer-equilibrium"><a href="#budget-constraint-and-consumer-equilibrium" class="headerlink" title="budget constraint and consumer equilibrium"></a>budget constraint and consumer equilibrium</h3><p><strong>budget constraint</strong> 预算限制线，取决于收入和价格的变化</p>
+<p><strong>consumer equilibrium</strong> 消费者均衡，与预算限制线相切的效用无差异曲线</p>
+<p>当收入变化时</p>
+<ol>
+<li>normal good 随着收入增加，商品购买数量增加</li>
+<li>inferior good 随着收入增加，购买数量减少</li>
+</ol>
+<p>当价格变化时，商品弹性越大，数量变化越大，反之…</p>
+<h3 id="income-and-subsitution-effect"><a href="#income-and-subsitution-effect" class="headerlink" title="income and subsitution effect"></a>income and subsitution effect</h3><p><strong>substitution effect</strong> 替代效应，A价格降低，相对替代品B的价格降低，A的需求增加</p>
+<p><strong>income effect</strong> 收入效应</p>
+<p>for <em>normal</em> good，when price decreases</p>
+<ol>
+<li>substitution effect，+</li>
+<li>income effect，+</li>
+<li>total effect，+</li>
+</ol>
+<p>for <em>inferior</em> good，when price decreases</p>
+<ol>
+<li>substitution effect，+</li>
+<li>income effect，- </li>
+<li>total effect，+</li>
+</ol>
+<p>for <em>Giffen</em>(吉芬) good，when price decreases</p>
+<ol>
+<li>substitution effect，+</li>
+<li>income effect，- </li>
+<li>total effect，+</li>
+</ol>
+<p><em>Giffen good</em>是一种inferior商品。</p>
+<p>对立的，<em>Veblen goods</em>(韦伯伦商品)，价格越高，需求越高，例如。</p>
+<h3 id="economic-profit-and-economic-rent"><a href="#economic-profit-and-economic-rent" class="headerlink" title="economic profit and economic rent"></a>economic profit and economic rent</h3><h4 id="cost"><a href="#cost" class="headerlink" title="cost"></a>cost</h4><p><strong>opportunity cost</strong> 机会成本</p>
+<p><strong>explicit costs</strong> 显性成本</p>
+<p><strong>implicit costs</strong> 隐形成本</p>
+<p><strong>total economic costs</strong> = explicit costs + implicit costs</p>
+<h4 id="profit"><a href="#profit" class="headerlink" title="profit"></a>profit</h4><p><strong>accounting profit (AP)</strong> = total revenue - accounting costs</p>
+<p><strong>economic profit (EP)</strong> = total revenue - total economic costs = accounting profit - implicit costs</p>
+<p><strong>normal profit (NP)</strong> 当经济盈利=0时的会计盈利，即等于隐性成本。</p>
+<h4 id="rent"><a href="#rent" class="headerlink" title="rent"></a>rent</h4><p><strong>economic rent</strong> 经济租金，供应的成本高于机会成本的部分。</p>
+<p><strong>rent seeking</strong> 寻租，一些公司通过游说政府使用行政力量使供应商获得一定的垄断或限制市场供应，增加需求</p>
+<h3 id="revenue-cost-and-product"><a href="#revenue-cost-and-product" class="headerlink" title="revenue, cost and product"></a>revenue, cost and product</h3><p><strong>perfect competition</strong> 完全竞争市场。每个生产商对市场的价格没有影响，供应的商品相同，需求曲线水平。</p>
+<p><strong>imperfect competition</strong> 不完全竞争市场。生产商可以成为price maker，产品差异化，需求现向下倾斜。</p>
+<h4 id="revenue"><a href="#revenue" class="headerlink" title="revenue"></a>revenue</h4><p><strong>total revenue (TR)</strong> 总收入</p>
+<p><strong>average revenue (AR)</strong> 单位商品的收入</p>
+<p><strong>marginal revenue (MR)</strong> 边际收入</p>
+<p><em>完全竞争市场的</em> $Price = AR = MR$</p>
+<h4 id="cost-1"><a href="#cost-1" class="headerlink" title="cost"></a>cost</h4><p><strong>total fixed cost (TFC)</strong> 固定成本，只是短期现象</p>
+<p><strong>total variable cost (TVC)</strong></p>
+<p><strong>total cost (TC)</strong> TFC + TVC</p>
+<p><strong>average…</strong></p>
+<p><strong>marginal cost (MC)</strong> 边际成本，改变单位商品的成本</p>
+<h4 id="product-产量"><a href="#product-产量" class="headerlink" title="product 产量"></a>product 产量</h4><p><strong>total product (TP)</strong> 总产量</p>
+<p><strong>average product (AP)</strong> 单位要素的产量</p>
+<p><strong>marginal product (MP)</strong> 边际产量，要素变化一个单位的产量变化量。 <em>diminishing marignal return</em> –递减边际回报</p>
+<p><strong>production function</strong> 生产函数</p>
+<h3 id="cost-analysis"><a href="#cost-analysis" class="headerlink" title="cost analysis"></a>cost analysis</h3><h4 id="in-short-run"><a href="#in-short-run" class="headerlink" title="in short run"></a>in short run</h4><p>在短期内，固定成本(TFC)不变</p>
+<p>劳动力的<em>边际产量</em>先递增，再递减。</p>
+<p><em>边际产量</em>递减时，<em>边际成本</em>递增，反之…</p>
+<p><em>平均总成本</em>和<em>平均变化成本</em>先递减，在递增 </p>
+<p>边际成本曲线和平均变化成本、平均总成本曲线相较于两个各自的最低点</p>
+<h4 id="in-long-run"><a href="#in-long-run" class="headerlink" title="in long run"></a>in long run</h4><p><strong>SRATC</strong> short run average total cost</p>
+<p>在长期生产中，固定成本会不断变化</p>
+<p><strong>economices of scale</strong> 规模经济，产能增加时单位成本减小</p>
+<ol>
+<li>division of labor</li>
+<li>more expensive but more efficient equipment</li>
+<li>discounted price on resources</li>
+</ol>
+<p><strong>diseconomices of scale</strong> 规模不经济，产能增加时单位成本增加</p>
+<ol>
+<li>management inefficiency</li>
+<li>overlap and duplication of business functions</li>
+<li>higher resource prices due to suplly constraints，对于一些稀缺资源，买得越多议价能力越差</li>
+</ol>
+<p><strong>minimum efficient scale</strong> 成本最低有效规模，  MES 在最低平均成本下的产量 </p>
+<h3 id="profit-maximization"><a href="#profit-maximization" class="headerlink" title="profit maximization"></a>profit maximization</h3><p>研究完全竞争者的盈利最大化</p>
+<p><strong>盈利最大化点</strong>: <em>Profit = TR - TC 取最大</em> or <em>MR = MC</em></p>
+<p><strong>shutdown and breakeven point</strong>: 停业和盈亏平衡点</p>
+<p>对于完全竞争市场，平均收入AR = MR = price</p>
+<ol>
+<li>AR（average revenue） &gt;= ATC 继续生产</li>
+<li>ATC &gt; AR &gt;= AVC 短期生产，长期退出市场。虽然生产商品能够赚钱，但是不能cover了AFC</li>
+<li>AR &lt; AVC 短期不生产，长期退出市场</li>
+</ol>
+<p><strong>short-run shutdown point</strong> 平均收入小于平均变化成本</p>
+<p><strong>long-run shutdown point</strong> 平均收入小于平均总成本，大于平均变化成本</p>
+<p><strong>breakdown point</strong> 盈亏平衡点，平均收入等于平均总成本</p>
+<p><strong>long-run equilibrium</strong> 长期平衡点。在完全竞争市场，当价格小于…的交点时，价格会上涨，反之…因此价格会等于最低点，此时企业zero economic profits</p>
+<h3 id="long-run-supply-and-utilization-of-resource"><a href="#long-run-supply-and-utilization-of-resource" class="headerlink" title="long run supply and utilization of resource"></a>long run supply and utilization of resource</h3><p>when industry output is increased in the long run</p>
+<ol>
+<li>increasing-cost industry 需求增加量超过供应增加量，成本(price)递增</li>
+<li>decreasing-cost industry 供应量增加量超过需求增加量，成本下降</li>
+<li>constant-cost industry 两者相等时成本不变</li>
+</ol>
+<p><strong>cost minimization</strong> 所有要素的(边际产量/价格)比例相等时。</p>
+<p><strong>marginal revenue product (MRP)</strong> 边际产量收入，一个要素多增加一个，能够产生的额外总收入。 $MRP = MP \times price (MR)$</p>
+<p><em>要实现盈利最大化，每个要素的MRP应该与单位要素的价格相等。</em>原理与<em>MC = MR</em>相同。</p>
+<h3 id="perfect-competition"><a href="#perfect-competition" class="headerlink" title="perfect competition"></a>perfect competition</h3><p>完全竞争市场</p>
+<ol>
+<li>大量购买者和销售者</li>
+<li>商品几乎相同</li>
+<li>几乎没有门槛</li>
+<li>sellers are price-takers</li>
+<li>没有价格以外的竞争，只要接受市场价，都能卖出去，不需要例如广告这类竞争</li>
+</ol>
+<p>盈利最大化: $MC = MR$</p>
+<p>长期情况下，no firms earns economic profits</p>
+<p>短期内，公司的边际成本线高于AVC交点的部分也是公司的供应线。</p>
+<p>只有完全竞争市场能够找到一条明确的供应线。</p>
+<h3 id="monopolistic-competition"><a href="#monopolistic-competition" class="headerlink" title="monopolistic competition"></a>monopolistic competition</h3><p>垄断式竞争，与完全竞争市场的区别在于，商品差异化，有一定的定价权。 </p>
+<p>只有<em>完全竞争市场</em>需求线和边际收入线是重叠的，其他市场的需求线和边际收入线都不同。</p>
+<p>由于进出门槛低，盈利不可持续。    </p>
+<p>完全竞争市场社会福利最大化，垄断竞争市场不能实现，供给量比最大化点小。</p>
+<p>福利是消费者可以选择各种不同的商品。</p>
+<h3 id="monopoly"><a href="#monopoly" class="headerlink" title="monopoly"></a>monopoly</h3><p>垄断市场，只有一个生产商，没有好的替代品，进入壁垒高，例如资源控制、政府控制、专利、自然垄断（大规模生产具备的成本优势）、巨大的固定资本投资</p>
+<p>经济盈利为正，由于高的进入壁垒，盈利可持续</p>
+<p>社会福利未达到最大化，under production</p>
+<p>政府通过定价管制干预垄断</p>
+<ol>
+<li>平均成本定价 P=ATC，无谓损失减小</li>
+<li>边际成本定价 P=MC，价格过低，企业亏损，政府需要补贴</li>
+</ol>
+<h3 id="price-discrimination"><a href="#price-discrimination" class="headerlink" title="price discrimination"></a>price discrimination</h3><p>价格歧视，不同消费者的价格不同。</p>
+<ol>
+<li>需求弹性不同</li>
+<li>商品不能转手，二次交易</li>
+</ol>
+<p>种类</p>
+<ol>
+<li>first degree price discrimination 一级价格歧视，每个消费者能够接受的最大价格，消费者剩余为0，社会总剩余最大化，增加了产量</li>
+<li>second 二级价格歧视，价格取决于购买量，消费者剩余比没有价格歧视低</li>
+<li>third 三级价格歧视，价格取决于消费者的身份</li>
+</ol>
+<h3 id="oligopoly"><a href="#oligopoly" class="headerlink" title="oligopoly"></a>oligopoly</h3><p>寡头市场，生产商很少，商品可以类似或差异化，进入门槛高，对自己商品的定价权高，存在价格以外的竞争</p>
+<p><strong>kinked demand curve model</strong> 拐折需求线模型</p>
+<p>需求线存在两段，弹性小的和弹性大的，对应的边际收入线也是两段，中间存在一个gap，这导致企业可以在价格不变的情况下容忍边际成本的增加。</p>
+<p><strong>纳什均衡模型</strong></p>
+<p><em>collusion</em> 串谋</p>
+<ol>
+<li>商品差异小</li>
+<li>生产商数量较小</li>
+<li>成本结构相似</li>
+<li>订单大小和频率</li>
+<li>背叛成本高</li>
+<li>外部竞争高</li>
+</ol>
+<p><strong>dominat firm模型</strong> (DF, 主导企业) 价格制定者，其他生产商是价格接受者</p>
+<h4 id="市场集中度的度量"><a href="#市场集中度的度量" class="headerlink" title="市场集中度的度量"></a>市场集中度的度量</h4><p><strong>N firms concentration ratio</strong> (N个公司集中值) 市场中最大的N个公司的市场份额</p>
+<p>缺点：</p>
+<ol>
+<li>不能展示进入难度</li>
+<li>对并购不敏感</li>
+<li>没有考虑需求弹性</li>
+</ol>
+<p><strong>HHI指数</strong> (Herfindahl-Hirschman Index, 赫芬达尔-赫希曼指数) 公司壁纸的的平放和</p>
+<h1 id="Macroeconomics"><a href="#Macroeconomics" class="headerlink" title="Macroeconomics"></a>Macroeconomics</h1><h3 id="Gross-Domestic-Product"><a href="#Gross-Domestic-Product" class="headerlink" title="Gross Domestic Product"></a>Gross Domestic Product</h3><p>GDP 国内生产总值</p>
+<p>Key points</p>
+<ol>
+<li>given period of time</li>
+<li>newly goods and services produced</li>
+<li>market value</li>
+<li>exceptions: rent of own house 购房看成每年交租金加入到每年的gdp中, government service 政府支付给公务员的工资算在gdp中</li>
+<li>final goods and services, 半成品、零部件不算</li>
+</ol>
+<h4 id="Measure-of-GDP"><a href="#Measure-of-GDP" class="headerlink" title="Measure of GDP"></a>Measure of GDP</h4><ol>
+<li>Aggregate output (总产量)</li>
+<li>Aggregate income (总收入)</li>
+<li>Aggregate Expenditure (总开支)<ul>
+<li>$ GDP = C + I + G + (X-M) $</li>
+<li>C: 消费者开支</li>
+<li>I: 投资，企业实物投资，不包括金融投资</li>
+<li>G: 政府开支，例如购车、提供服务</li>
+<li>X-M: 出口-进口</li>
+</ul>
+</li>
+</ol>
+<p><strong>value of FInal output</strong> 终值法，考虑商品最终的价值</p>
+<p><strong>sum of value added</strong> 增值叠加法，考虑商品生产的每个阶段增加的价值</p>
+<p><strong>nominal gdp</strong> 名义gdp 用商品的current price算</p>
+<p><strong>real gdp</strong> 实际gdp 用商品在基准年的constant price算</p>
+<p><strong>gdp deflator</strong> gdp平减指数，可以衡量国家的物价水平</p>
+<p><strong>National income</strong><br>= 劳动力工资和福利  </p>
+<ul>
+<li>企业税前盈利   </li>
+<li>投资利息收入  </li>
+<li>非公司商业组织（例如个体户）  </li>
+<li>租金  </li>
+<li>间接税  </li>
+</ul>
+<ul>
+<li>补贴  </li>
+</ul>
+<p><strong>personal income</strong> 个人收入需要在国家收入减去 间接税、公司收入、企业的留存盈利，加上转移支付（例如福利）</p>
+<p><strong>personal dispensable income</strong>个人可支配收入在个人收入上减去 税</p>
+<h3 id="Aggregate-Demand"><a href="#Aggregate-Demand" class="headerlink" title="Aggregate Demand"></a>Aggregate Demand</h3><p>Measure GDP – <strong>income approach</strong><br>$$GDP = C+S+T$$</p>
+<ol>
+<li>S: 家庭和公司储蓄</li>
+<li>T: taxes</li>
+</ol>
+<p>根据GDP守恒得到<br>$$S-I = (G-T) + (X-M)$$</p>
+<ol>
+<li>$S-I$</li>
+<li>$G-T$ 政府收支</li>
+<li>$X-M$ 进出口盈余</li>
+</ol>
+<p><strong>IS Curve</strong> 忽略政府收支和进出口两项，$I(r) = S(Y)$。利率r提高，投资I增加，相应的储蓄S增加，GDP Y也增加，反之…</p>
+<p><strong>marginal propensity to consume</strong> MPC 边际消费倾向，每增加1元收入，多少用来消费</p>
+<p><strong>marginal propensity to save</strong></p>
+<p>$$MPC + MPS = 1$$</p>
+<p><strong>quantity theory of money</strong> 货币数量理论，货币总供给=货币总需求</p>
+<p>$$MV = PY$$</p>
+<ol>
+<li>M 货币供应</li>
+<li>V 货币流动速率</li>
+<li>P 物价水平</li>
+<li>Y 商品数量</li>
+</ol>
+<p>国家生产的商品数量不取决于货币供应量，货币供应增加直接影响物价水平</p>
+<p><strong>Keynes’s demand for money theory</strong></p>
+<p>$$\frac{Ms}{P} = Md(r, Y)$$</p>
+<p>Ms 货币供应量；Md 货币需求，利率和GDP</p>
+<ol>
+<li>交易性货币需求 gdp越高，需求越高</li>
+<li>预防性货币需求 gdp越高，需求越高</li>
+<li>投机性货币需求 利率增加，持有货币的机会成本变高，更希望投资出去，货币需求降低</li>
+</ol>
+<p><strong>LM curve</strong> 假设: $Md = Ms$，利率r增加，Md会减小，要想Md保持不变，Y要增加抵消r的影响。因此r和Y正相关</p>
+<p><strong>IS-LM Curve</strong> 保证总收入=总开支和货币总供应=总需求两个均衡。 </p>
+<p>物价下降，实际货币供应增加，lm线上利率减小(lm线向右移动)，刺激消费投资，最终导致实际gdp增加。</p>
+<h3 id="Aggregate-supply"><a href="#Aggregate-supply" class="headerlink" title="Aggregate supply"></a>Aggregate supply</h3><p>总供应</p>
+<ol>
+<li>very short run 超短期，商品的供应数量和价格不会改变物价水平，供应线为水平线 elastic</li>
+<li>long run 物价不能决定商品的产量，供应线为垂直线 inelastic<ul>
+<li>potential GDP = full employment GDP <strong>潜在/充分就业GDP</strong>，劳动力充分使用的，也可能有失业 对应 <strong>自然失业率</strong></li>
+</ul>
+</li>
+<li>short run 部分要素价格水平变化</li>
+</ol>
+<p><strong>总需求的变化因素</strong></p>
+<ol>
+<li>fiscal policy</li>
+<li>monetary policy</li>
+<li>家庭财富</li>
+<li>预期</li>
+<li>产能利用率</li>
+<li>汇率 exchange rate</li>
+<li>经济增长</li>
+</ol>
+<p><strong>短期总供应的变化因素</strong></p>
+<ol>
+<li>名义工资</li>
+<li>原料价格</li>
+<li>未来商品的价格预期</li>
+<li>税和补贴</li>
+<li>汇率</li>
+</ol>
+<p>当AD和short-run AS线相交于充分就业GDP点，称国家经济是健康的</p>
+<h3 id="recessionary-Gap"><a href="#recessionary-Gap" class="headerlink" title="recessionary Gap"></a>recessionary Gap</h3><p>衰退差</p>
+<p>$$Actual GDP &lt; Potential GDP$$<br>$$unemployment rate &gt; natural rate$$</p>
+<p><strong>policy choice</strong></p>
+<ol>
+<li>do nothing，经济会自己调整，周期较长</li>
+<li>主动的财政和货币政策，使总需求线往右移动，例如增加政府开支、降税</li>
+</ol>
+<h3 id="inflation-gap"><a href="#inflation-gap" class="headerlink" title="inflation gap"></a>inflation gap</h3><p>通胀差</p>
+<p>$$Actual GDP &gt; Potential GDP$$<br>$$unemployment rate &lt; natural rate$$</p>
+<p>导致物价太高</p>
+<ol>
+<li>do nothing</li>
+<li>主动的财政和货币政策，使总需求左移</li>
+</ol>
+<h3 id="stagflation"><a href="#stagflation" class="headerlink" title="stagflation"></a>stagflation</h3><p>滞涨，high inflation and high unemployment rate</p>
+<p>某些生产要素价格上涨，导致商品价格上涨，总供给线左移，gdp下降，价格上升。若优先解决失业，政府降低利率或增加开支，增加就业率，AD线向右移，回归均衡点，但是价格水平高了，更通胀 。反之。。 </p>
+<h3 id="economic-growth"><a href="#economic-growth" class="headerlink" title="economic growth"></a>economic growth</h3><p><strong>Sources</strong></p>
+<ol>
+<li>劳动力 labor</li>
+<li>劳动力素质 human capital</li>
+<li>实物资本 physical capital 不可持续，递减的</li>
+<li>technology</li>
+<li>natural resource 不可持续</li>
+</ol>
+<p><strong>production function</strong>: $Y = A \times f(L,K)$</p>
+<ol>
+<li>Y 实际gdp</li>
+<li>A 全要素生产率 total factor productivity or technology 短期不变</li>
+<li>L 劳动力</li>
+<li>K 资本</li>
+</ol>
+<p>国家的实际gdp取决于技术、资本和劳动力</p>
+<p><strong>output per worker</strong>: $\frac{Y}{L} = A \times f(\frac{k}{L})$</p>
+<p>人均gdp取决于技术和人均可支配资本</p>
+<p><strong>劳动力生产率</strong>：工人单位时间生产的商品总量</p>
+<p>$laborProductivity = \frac{realGDP}{AggregateHoursWork}$</p>
+<h3 id="business-cycle"><a href="#business-cycle" class="headerlink" title="business cycle"></a>business cycle</h3><p><strong>four phases</strong>: trough, expansion, peak, contraction</p>
+<ol>
+<li>early expansion</li>
+<li>late expansion</li>
+<li>peak </li>
+<li>contraction  </li>
+</ol>
+<p><strong>main theories</strong></p>
+<ol>
+<li>neoclassical 新古典主义<ul>
+<li>原因: 技术</li>
+<li>recommended policy: 政府不做任何事情</li>
+</ul>
+</li>
+<li>keynesian 凯恩斯主义 – 主流<ul>
+<li>原因：企业预期，downward sticky wages（工资下降是很困难的，影响了经济的自我修复）</li>
+<li>policy：政府财政和税收政策</li>
+</ul>
+</li>
+<li>new keynesian<ul>
+<li>原因：与凯恩斯相同，但是认为所有生产要素都很难下降</li>
+</ul>
+</li>
+<li>Monetarist 货币主义<ul>
+<li>原因：不合适的货币供应</li>
+<li>policy：稳健的货币供应</li>
+</ul>
+</li>
+<li>Austrian 奥地利学派<ul>
+<li>原因： 政府干预</li>
+<li>policy：政府不要人为设定低利率</li>
+</ul>
+</li>
+<li>new classical 第二代新古典主义<ul>
+<li>原因：技术和外部波动</li>
+<li>policy：政府不应该采取逆周期的政策</li>
+</ul>
+</li>
+</ol>
+<h3 id="unemployment"><a href="#unemployment" class="headerlink" title="unemployment"></a>unemployment</h3><p><strong>underemployed</strong> 未充分就业</p>
+<p><strong>unemployed</strong> 主动找工作但目前没有的，故意失业不算入内</p>
+<p><strong>discouraged worker</strong> 停止找工作的人，不在劳动力和失业人群中</p>
+<p><strong>voluntarily unemployed</strong> 自愿失业</p>
+<p>$$unemploymentRate = \frac{unemployed}{totalLabor}$$</p>
+<p><strong>失业率</strong>是一个滞后指标：在经济复苏时灰心的劳动力会加入就业市场，短期内失业率反而会升高，此时企业也会谨慎的招聘新的职工；经济衰退时企业也不会轻易的裁员</p>
+<p>$$participationRatio(activityRatio) = \frac{laborForce}{workingAgePorpulation}$$</p>
+<p>失业的类型</p>
+<ol>
+<li>摩擦性失业，双选需要时间</li>
+<li>结构性，经济结构调整</li>
+<li>周期性，经济周期</li>
+</ol>
+<p><strong>full employment</strong>: 国家没有周期性失业，但是摩擦和结构性总会存在</p>
+<h3 id="inflation"><a href="#inflation" class="headerlink" title="inflation"></a>inflation</h3><p><strong>disinflation</strong>: 通货膨胀，当比率在降低</p>
+<p><strong>indices to measure inflation</strong></p>
+<ol>
+<li>laspeyres index 拉斯拜尔指数，固定篮子的商品的价格，商品需求使用基年的。存在<strong>替代、质量和新产品</strong>的偏差</li>
+<li>Passche index 派许指数，使用当前年份的商品需求</li>
+<li>fisher index 费雪指数，几何平均值</li>
+</ol>
+<p><strong>Comsumer price index</strong> CPI 使用拉斯贝尔指数</p>
+<p><strong>producer price index</strong> PPI</p>
+<p><strong>headline inflation</strong> 所有商品和服务的价格</p>
+<p><strong>core inflation</strong> 不包括食品和能源，一般政府用来做参考</p>
+<p>原因：</p>
+<ol>
+<li>cost-push inflation 成本推动</li>
+<li>demand-pull inflation 需求推动</li>
+</ol>
+<p><strong>leading indicators</strong> 领先指标 </p>
+<p><strong>coincident indicator</strong> 同步指标</p>
+<p><strong>lagged indicators</strong> 滞后指标</p>
+<h3 id="Monetary-policy"><a href="#Monetary-policy" class="headerlink" title="Monetary policy"></a>Monetary policy</h3><p>通过改变利率和货币量</p>
+<p><strong>狭义货币</strong> M1 流动性最强的几种</p>
+<p><strong>广义货币</strong> M2 包括一些定期存款等等流动性弱的</p>
+<p><strong>货币creation的过程</strong></p>
+<p><strong>reserve requirement</strong> 商业银行要保留一定存款作为准备金</p>
+<p><strong>money multiplier</strong> 1除以准备金比率</p>
+<p>$$产生的货币 = newDeposit \times moneyMultiplier$$</p>
+<p><strong>fisher effect</strong>  费雪效应，名义利率是实际利率和预期通胀的和</p>
+<p>央行的角色，总的目标是价格稳定</p>
+<ol>
+<li>货币法定供应者</li>
+<li>商业银行的银行</li>
+<li>最后一个贷款人</li>
+<li>监管者</li>
+<li>货币政策的执行者</li>
+</ol>
+<p>央行的有效性</p>
+<ol>
+<li>独立性，操作(设置利率)、目标(通货膨胀率)独立</li>
+<li>可信度</li>
+<li>透明度</li>
+</ol>
+<p>央行的目标</p>
+<ol>
+<li>利率水平，利率高了就增加货币供应</li>
+<li>通货膨胀</li>
+<li>汇率，对于货币盯住美元时</li>
+</ol>
+<p><strong>预期通胀的成本</strong>：菜单成本，鞋底成本 可以忽略…</p>
+<p><strong>未预期的通胀成本</strong>：财富在借钱双方中转移，增加借钱成本，减少市场信息</p>
+<p><strong>货币政策的3大工具</strong></p>
+<ol>
+<li>open market operations，买卖国债等<ul>
+<li>回购协议，商业银行卖给央行并承诺一段时间后以高价买回</li>
+</ul>
+</li>
+<li>基准利率</li>
+<li>准备金要求</li>
+</ol>
+<p><strong>货币政策的影响</strong></p>
+<ol>
+<li>宽松的货币政策增加GDP、价格水平、降低利率和现金价值</li>
+<li>紧缩的货币政策相反…</li>
+</ol>
+<p><strong>determine the direction of policy</strong>: <strong>neutral interest rate</strong> 中性利率，实际经济增长+通胀</p>
+<p><strong>limitation</strong>: 央行不能准确的控制</p>
+<ol>
+<li>债市义勇军，紧缩的货币政策反而导致债券（风险较小）价格升高</li>
+<li>流动性陷阱</li>
+<li>量化宽松</li>
+</ol>
+<h3 id="fiscal-policy"><a href="#fiscal-policy" class="headerlink" title="fiscal policy"></a>fiscal policy</h3><p><strong>角色和目标</strong></p>
+<ol>
+<li>相机财政政策，基于政府对经济的判断采取相应的</li>
+<li>自动稳定器，不采取主动的财政政策，凭借自有的福利制度</li>
+</ol>
+<p><strong>政府开支</strong></p>
+<ol>
+<li>转移支付，给穷人等等的</li>
+<li>维护政府运作的开支</li>
+<li>资本开支，基础建设等等，生效时间很长</li>
+</ol>
+<p><strong>政府收入</strong></p>
+<ol>
+<li>直接税，更难改变、受到社会更大的反弹</li>
+<li>间接税，影响很快</li>
+</ol>
+<p><strong>arguments</strong></p>
+<p>type one：</p>
+<ol>
+<li>国家负债过高，政府会增加税收，降低GDP</li>
+<li>市场对政府失去信心，政府发行国债的成本提高</li>
+<li>利率增加，个人和公司融资成本升高</li>
+</ol>
+<p>type two：</p>
+<ol>
+<li>国债只是借给本国人的</li>
+<li>政府借钱投资于基础设施，对GDP有正面影响</li>
+<li>改变税率可以减少赤字</li>
+<li>Ricardian equivalence 李嘉图均衡，公众预期税收增加，会增加储蓄</li>
+<li>改善失业率</li>
+</ol>
+<p><strong>limitation–滞后性</strong></p>
+<ol>
+<li>识别滞后，政府确认经济形势需要时间</li>
+<li>行动滞后，采取政策需要时间</li>
+<li>影响滞后</li>
+</ol>
+<p><strong>困难</strong></p>
+<ol>
+<li>失业率和通胀不可兼得</li>
+<li>高负债降低市场对政府的信心</li>
+<li>gdp水平难估计</li>
+<li>容易错误判断导致经济衰退的原因</li>
+<li>排挤效应 </li>
+</ol>
+<p><strong>determine direction</strong>: <strong>structural budget deficit</strong> 结构预算赤字</p>
+<p>财政与货币政策的结合…</p>
+<h1 id="Economics-in-a-Global-Context"><a href="#Economics-in-a-Global-Context" class="headerlink" title="Economics in a Global Context"></a>Economics in a Global Context</h1><h3 id="international-trade"><a href="#international-trade" class="headerlink" title="international trade"></a>international trade</h3><p><strong>terms of trade</strong>: $\frac{P<em>{export}}{P</em>{import}}$</p>
+<p><strong>GNP</strong> 相比GDP，排除了外企的，包括了本国在境外的</p>
+<blockquote>
+<p><strong>绝对优势</strong>  生产成本低<br><strong>比较优势</strong>  生产的机会成本低</p>
+</blockquote>
+<p><strong>Ricardian modal</strong> 只有存在比较优势，一个国家才能在交易中获利。劳动力是唯一的生产要素</p>
+<p><strong>Heckscher-Ohlin Modal</strong> 赫克歇尔-俄林模型，生产要素包括劳动力和资本</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/03/basic-probability/" rel="next" title="Basic probability">
+                <i class="fa fa-chevron-left"></i> Basic probability
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/07/audio-classification/" rel="prev" title="Audio classification">
+                Audio classification <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Wesley Shi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">Artikel</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">Kategorien</span>
+                  </a>
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ShiAgou" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:shiwenlei2012@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Microeconomics"><span class="nav-number">1.</span> <span class="nav-text">Microeconomics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#basic-concept-of-demand"><span class="nav-number">1.0.1.</span> <span class="nav-text">basic concept of demand</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#basic-concepts-of-supply"><span class="nav-number">1.0.2.</span> <span class="nav-text">basic concepts of supply</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#market-equilibrium"><span class="nav-number">1.0.3.</span> <span class="nav-text">market equilibrium</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#auction"><span class="nav-number">1.0.4.</span> <span class="nav-text">auction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#demand-elasticity"><span class="nav-number">1.0.5.</span> <span class="nav-text">demand elasticity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#consumer-and-producer-surplus"><span class="nav-number">1.0.6.</span> <span class="nav-text">consumer and producer surplus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#market-inference"><span class="nav-number">1.0.7.</span> <span class="nav-text">market inference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#utility-theory-and-indifference-curve"><span class="nav-number">1.0.8.</span> <span class="nav-text">utility theory and indifference curve</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#budget-constraint-and-consumer-equilibrium"><span class="nav-number">1.0.9.</span> <span class="nav-text">budget constraint and consumer equilibrium</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#income-and-subsitution-effect"><span class="nav-number">1.0.10.</span> <span class="nav-text">income and subsitution effect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#economic-profit-and-economic-rent"><span class="nav-number">1.0.11.</span> <span class="nav-text">economic profit and economic rent</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cost"><span class="nav-number">1.0.11.1.</span> <span class="nav-text">cost</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#profit"><span class="nav-number">1.0.11.2.</span> <span class="nav-text">profit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rent"><span class="nav-number">1.0.11.3.</span> <span class="nav-text">rent</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#revenue-cost-and-product"><span class="nav-number">1.0.12.</span> <span class="nav-text">revenue, cost and product</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#revenue"><span class="nav-number">1.0.12.1.</span> <span class="nav-text">revenue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cost-1"><span class="nav-number">1.0.12.2.</span> <span class="nav-text">cost</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#product-产量"><span class="nav-number">1.0.12.3.</span> <span class="nav-text">product 产量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cost-analysis"><span class="nav-number">1.0.13.</span> <span class="nav-text">cost analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#in-short-run"><span class="nav-number">1.0.13.1.</span> <span class="nav-text">in short run</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#in-long-run"><span class="nav-number">1.0.13.2.</span> <span class="nav-text">in long run</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#profit-maximization"><span class="nav-number">1.0.14.</span> <span class="nav-text">profit maximization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#long-run-supply-and-utilization-of-resource"><span class="nav-number">1.0.15.</span> <span class="nav-text">long run supply and utilization of resource</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#perfect-competition"><span class="nav-number">1.0.16.</span> <span class="nav-text">perfect competition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#monopolistic-competition"><span class="nav-number">1.0.17.</span> <span class="nav-text">monopolistic competition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#monopoly"><span class="nav-number">1.0.18.</span> <span class="nav-text">monopoly</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#price-discrimination"><span class="nav-number">1.0.19.</span> <span class="nav-text">price discrimination</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#oligopoly"><span class="nav-number">1.0.20.</span> <span class="nav-text">oligopoly</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#市场集中度的度量"><span class="nav-number">1.0.20.1.</span> <span class="nav-text">市场集中度的度量</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Macroeconomics"><span class="nav-number">2.</span> <span class="nav-text">Macroeconomics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gross-Domestic-Product"><span class="nav-number">2.0.1.</span> <span class="nav-text">Gross Domestic Product</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Measure-of-GDP"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">Measure of GDP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Aggregate-Demand"><span class="nav-number">2.0.2.</span> <span class="nav-text">Aggregate Demand</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Aggregate-supply"><span class="nav-number">2.0.3.</span> <span class="nav-text">Aggregate supply</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#recessionary-Gap"><span class="nav-number">2.0.4.</span> <span class="nav-text">recessionary Gap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inflation-gap"><span class="nav-number">2.0.5.</span> <span class="nav-text">inflation gap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stagflation"><span class="nav-number">2.0.6.</span> <span class="nav-text">stagflation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#economic-growth"><span class="nav-number">2.0.7.</span> <span class="nav-text">economic growth</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#business-cycle"><span class="nav-number">2.0.8.</span> <span class="nav-text">business cycle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unemployment"><span class="nav-number">2.0.9.</span> <span class="nav-text">unemployment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inflation"><span class="nav-number">2.0.10.</span> <span class="nav-text">inflation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Monetary-policy"><span class="nav-number">2.0.11.</span> <span class="nav-text">Monetary policy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fiscal-policy"><span class="nav-number">2.0.12.</span> <span class="nav-text">fiscal policy</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Economics-in-a-Global-Context"><span class="nav-number">3.</span> <span class="nav-text">Economics in a Global Context</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#international-trade"><span class="nav-number">3.0.1.</span> <span class="nav-text">international trade</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wesley Shi</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.0.2</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.2"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.0.2"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
