@@ -65,17 +65,17 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[123. Best Time to Buy and Sell Stock 3]]></title>
-    <url>%2F2017%2F12%2F26%2Fleetcode123-Best-Time-to-Buy-and-Sell-Stock-3%2F</url>
-    <content type="text"><![CDATA[题目 给你一个数列，每个数字代表一个时刻的股票价格，求最多两次交易的情况下，能获得的最大收益。 题解 由于最多两次交易，定义4个状态： 只买入一次 买入一次，卖出一次 买入两次，卖出一次 买入两次，卖出两次 子问题结构是，我们已知前$i$个时刻 1~4 个状态下的最大收益，更新前$i+1$时刻的最大收益。例如： 前$i+1$个时刻只买入一次的最大收益为前$i$时刻只买一次的最大收益和只买$i+1$时刻的收益的最大值。 前$i+1$个时刻买入一次，卖出一次的最大收益为前$i$时刻只买入一次并在$i+1$时刻卖出的收益和*前$i$时刻买入一次，卖出一次的最大收益($i+1$时刻啥都不做)*的最大值。 code 。。。]]></content>
+    <title><![CDATA[472&139 about word concatenation matching]]></title>
+    <url>%2F2017%2F12%2F26%2Fleetcode-472-139-word-concatenation%2F</url>
+    <content type="text"><![CDATA[题目 139. Give you a string and a string array: s = 'leetcode' array = ['leet', 'code'] Now, tell me weather string $s$ can be concatenated by words in $array$? 472. Give you a string array: array = [&quot;cat&quot;, &quot;cats&quot;, &quot;catsdogcats&quot;, &quot;dog&quot;, &quot;dogcatsdog&quot;, &quot;hippopotamuses&quot;, &quot;rat&quot;, &quot;ratcatsdogcat&quot;] Now, tell me which word can be concatenated by other words except itself. Note: the same words can be used multiple times. 分析 These two question is similar. There are mainly two kind of solutions for both. 1. DP solution Define a bool array s[...] to be whether the prefix of a word can be concatenated. For example, for word w, if s[k] is true, it means that w[1...k] can be concatenated by words in the $array$. We split w[1...k] in any positions to find whether there exists one position t, where w[t...k] is in the $array$ and s[t] is true. So the complexity for this function is $O(n^2)$, ignoring the time of map search. 2. Trie First, construct the Trie tree using all the words in the array. Then, DFS the target word. When it come to a leaf node and the target word still has chars, researching the remaining chars from the root. ....]]></content>
       <categories>
         <category>algorithm</category>
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[472&139 about word concatenation matching]]></title>
-    <url>%2F2017%2F12%2F26%2Fleetcode-472-139-word-concatenation%2F</url>
-    <content type="text"><![CDATA[题目 139. Give you a string and a string array: s = 'leetcode' array = ['leet', 'code'] Now, tell me weather string $s$ can be concatenated by words in $array$? 472. Give you a string array: array = [&quot;cat&quot;, &quot;cats&quot;, &quot;catsdogcats&quot;, &quot;dog&quot;, &quot;dogcatsdog&quot;, &quot;hippopotamuses&quot;, &quot;rat&quot;, &quot;ratcatsdogcat&quot;] Now, tell me which word can be concatenated by other words except itself. Note: the same words can be used multiple times. 分析 These two question is similar. There are mainly two kind of solutions for both. 1. DP solution Define a bool array s[...] to be whether the prefix of a word can be concatenated. For example, for word w, if s[k] is true, it means that w[1...k] can be concatenated by words in the $array$. We split w[1...k] in any positions to find whether there exists one position t, where w[t...k] is in the $array$ and s[t] is true. So the complexity for this function is $O(n^2)$, ignoring the time of map search. 2. Trie First, construct the Trie tree using all the words in the array. Then, DFS the target word. When it come to a leaf node and the target word still has chars, researching the remaining chars from the root. ....]]></content>
+    <title><![CDATA[123. Best Time to Buy and Sell Stock 3]]></title>
+    <url>%2F2017%2F12%2F26%2Fleetcode123-Best-Time-to-Buy-and-Sell-Stock-3%2F</url>
+    <content type="text"><![CDATA[题目 给你一个数列，每个数字代表一个时刻的股票价格，求最多两次交易的情况下，能获得的最大收益。 题解 由于最多两次交易，定义4个状态： 只买入一次 买入一次，卖出一次 买入两次，卖出一次 买入两次，卖出两次 子问题结构是，我们已知前$i$个时刻 1~4 个状态下的最大收益，更新前$i+1$时刻的最大收益。例如： 前$i+1$个时刻只买入一次的最大收益为前$i$时刻只买一次的最大收益和只买$i+1$时刻的收益的最大值。 前$i+1$个时刻买入一次，卖出一次的最大收益为前$i$时刻只买入一次并在$i+1$时刻卖出的收益和*前$i$时刻买入一次，卖出一次的最大收益($i+1$时刻啥都不做)*的最大值。 code 。。。]]></content>
       <categories>
         <category>algorithm</category>
       </categories>
