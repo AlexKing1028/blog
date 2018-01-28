@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[最近接到的关于动漫图像识别的任务调研]]></title>
-    <url>%2F2018%2F01%2F27%2Fcomics-project-research%2F</url>
-    <content type="text"><![CDATA[classification tensorflow官方提供了在imagenet上表现比较好的一些框架，例如inception、resnet...并且也给出了pre train的权重。 tensorflow也有工具从keras迁移model过来。keras上除了提供了常见的模型之外，最近的densenet、mobilenet都有了。 object detection faster rcnn deformable convolutional network msra cver mxnet apache mxnet demo mxnet keypoint cmu openpose c++,caffe ai challenger#5 pytorch stuff(background) detection semantic segmentation instance segmentation mask rcnn matterpot's implementation]]></content>
+    <title><![CDATA[tensorflow备忘录]]></title>
+    <url>%2F2018%2F01%2F27%2Ftensorflow-memorandum%2F</url>
+    <content type="text"><![CDATA[Estimators Tensors]]></content>
       <categories>
         <category>machine learning</category>
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[tensorflow备忘录]]></title>
-    <url>%2F2018%2F01%2F27%2Ftensorflow-memorandum%2F</url>
-    <content type="text"><![CDATA[Estimators Tensors]]></content>
+    <title><![CDATA[最近接到的关于动漫图像识别的任务调研]]></title>
+    <url>%2F2018%2F01%2F27%2Fcomics-project-research%2F</url>
+    <content type="text"><![CDATA[classification tensorflow官方提供了在imagenet上表现比较好的一些框架，例如inception、resnet...并且也给出了pre train的权重。 tensorflow也有工具从keras迁移model过来。keras上除了提供了常见的模型之外，最近的densenet、mobilenet都有了。 object detection faster rcnn deformable convolutional network msra cver mxnet apache mxnet demo mxnet keypoint cmu openpose c++,caffe ai challenger#5 pytorch stuff(background) detection semantic segmentation instance segmentation mask rcnn matterpot's implementation]]></content>
       <categories>
         <category>machine learning</category>
       </categories>
@@ -169,14 +169,6 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[Derivatives]]></title>
-    <url>%2F2017%2F08%2F22%2Fderivatives%2F</url>
-    <content type="text"><![CDATA[根据标的分类 金融衍生产品，标的产品：股票、证券、外汇 商品衍生产品 具体类型 forward(远期合约) 场外交易（无固定场所）的合约 buyer和seller约定在未来一个时间以固定的价格买卖 有违约风险 交割 在结束日期交割：现金、实物交割 提前交割：签反向合约 找原签署方签（低风险） 新找一个签署方 future（期货） 无违约风险 cleaning house：清算所，多空共同交易的对手方，保证交易双方能够履行合约，通过settlement（每日结算）+margin/performence bond（保证金）+涨跌停版制度实现 本质上也是forward，但是由于场内交易，有监管、流动性好，没有default risk 场内与场外衍生品 over-the-counter(OTC) trade: 直接交易，无固定场所，e.g. forward, swap exchanged trade: 通过cleaning house进行交易，固定场所，e.g. future 期货与现货 交易程序，期货既能做多又能做空，现货只能做多 保证金 initial margin maintainance margin(最低保证金) margin call(追加保证金)，补足到initial margin variation margin(变动保证金) 每日结算，marking to market(盯市)，场外是没有的 hedge(套期保值) swap 本质上是多个时间点的forward(远期合约)的集合。 属于场外交易，有default risk 常考3类 interest rate swap(必考) 最简单的：浮动和固定利率的互换 币种必须相同 不交换本金 结算方式：netting，差额结算 没有固定换固定、浮动换浮动 currency swap，不同币种之间的 可以固定换固定... 需要交换本金 equity swap commodity swap option 本质就是buyer花钱买权利，有权选择履行和放弃合约，但是seller只有履行的义务 strike/exercise price(执行价格): underlying的标价 premium: 期权的价格 按交割日分类： 美式期权：可以在交割日前任意时间执行 欧式期权：只能在交割日执行（考试默认） 百慕大期权：可以在特定时间段执行 按权利划分 call option, 看涨期权 --&gt; callable bond, 发行人有权强制购回债券 put option, 看跌期权 --&gt; putable bond --&gt; putable bond, 债券持有人有权卖给发行人 其他 ... 特点 高杠杆 零和博弈，买卖双方收益和为0 复杂性 期货 互换 期权 复杂模型 越简单的产品流动性越好 作用 规避风险，套期保值 杠杆投资 绕过政府的监管，e.g. swap产品，互换不同国家的股票，绕过政府，投资其他国家的市场 本质： contract 多头：buyer 空头：seller recommended book: 期权、期货及其他衍生产品]]></content>
-      <categories>
-        <category>cfa</category>
-      </categories>
-  </entry>
-  <entry>
     <title><![CDATA[Portfolio Management and Fix income]]></title>
     <url>%2F2017%2F08%2F22%2Fportfolio-management-and-fix-income%2F</url>
     <content type="text"><![CDATA[asset allocation balance of risk and return. security selection capital asset pricing model(CAPM) systematic risk(系统性风险): 利率、通胀、经济萧条... unsystematic risk 与预期收益比较，判断证券是否被低估 fixed income 债券 收益固定，有限期 股票收益是股息和红利，不能退还，只能转让 五要素: issuers: government, corporate sector par 其他投资: 银行存款，理财，债券基金 主要购买者：商业银行，寿险公司，养老金，基金会 recommended book--《固定收益证券》 按票面利率分类 固定利率 浮动利率: FRN, coupon = LIBOR return(浮动) + spread source of return 利息和本金 再投资收入：使用利息 capital in/loss，债券买卖 credit risk credit rating: e.g. Moody, s&amp;p... 4C法则: capacity, covenants(条款), collateral, character(人品...) credit enhancement: external: 保险公司，银行 internal: 过度抵押 bond pricing PMT = coupon YTM yield to maturity 到期收益率 YTM与bond price为反比关系，凸性 coupon rate &gt; YTM: 债券价格较高 coupon rate = YTM... coupon rate &lt; YTM: 价格较低 短期债券主要受market price risk(债券价格)影响 长期债券主要受coupon reinvestment risk影响 interest rate risk YTM变化对债券价格的影响 零息债券 复息债权 平均到期时间(duration) Macaulay duration: 以折现现金流为权重的现金流回流的平均时间 平均时间越大，利率风险越高 债券市场 债券发行方式: 公开发行、私募 MBS and subprime crisis MBS: mortgage-backed securities, 将住房抵押贷款包装卖给SPV，SPV打包为MBS卖给投资人。以买房人的月供作为资金来源的证券 securitization: 资产证券化，以特定资产组合或特定现金流为支持，发行可交易证券的一种融资形式 国内债券市场 流通市场 场内市场（辅）：证券交易所 企业债券（未上市） 公司债券（上市） 国债等等... 场外市场（主）： 柜台交易 储蓄国债 记账式 银行间债券市场（主要），类型： 债券买卖 债券回购：质押式回购，买断式回购 债券远期交易 大额存单：面值大，个人30w企业1000w左右，收益高]]></content>
@@ -185,9 +177,9 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[cfa l1 经济学基础知识补缺]]></title>
-    <url>%2F2017%2F08%2F21%2Fbasics-gleaning%2F</url>
-    <content type="text"><![CDATA[失业类型 frictional unemployment(摩擦性失业): 在双选期间的失业状态 structural unemployment(结构性失业): 经济结构调整的结果 cyclical unemployment(周期性失业): 经济衰退引发的失业 贸易区类别 free trade areas(自由贸易区): 自由交易，东南亚 customs union(关税同盟): 相同的关税政策 common market(共同市场): 要素自由流动，南美 economic union(经济联盟): 相同的经济政策 monetary union(货币联盟): 相同的货币政策 证券 固定收益证券 Repurchase Agreements(RPs, 回购协议): 卖出自己的债权，并承诺一段时间后以更高的价格购回 权益证券 Preffered Stock(优先股): 可以定期分红，没有表决权，没有期限 Warrant(认股权证): 可以在一段时间之后以之前约定的价格购买股票 集合投资工具 Mutual Fund(共同基金，互惠基金): 股票基金：投资标的，筹得的基金去投资股票 债权基金 货币市场基金 Exchange-Traded Fund(ETF, 交易所交易基金): 基金份额可以公开交易，比Mutual Fund流动性更好，相比股票税率更低 衍生产品 合约： Forward Contract(远期合约): 有信用风险，到期强制购买 Futures Contract(期货合约): 交易所担保的，到期强制购买 Options Contract(期权合约): 到期可以选择不购买]]></content>
+    <title><![CDATA[Derivatives]]></title>
+    <url>%2F2017%2F08%2F22%2Fderivatives%2F</url>
+    <content type="text"><![CDATA[根据标的分类 金融衍生产品，标的产品：股票、证券、外汇 商品衍生产品 具体类型 forward(远期合约) 场外交易（无固定场所）的合约 buyer和seller约定在未来一个时间以固定的价格买卖 有违约风险 交割 在结束日期交割：现金、实物交割 提前交割：签反向合约 找原签署方签（低风险） 新找一个签署方 future（期货） 无违约风险 cleaning house：清算所，多空共同交易的对手方，保证交易双方能够履行合约，通过settlement（每日结算）+margin/performence bond（保证金）+涨跌停版制度实现 本质上也是forward，但是由于场内交易，有监管、流动性好，没有default risk 场内与场外衍生品 over-the-counter(OTC) trade: 直接交易，无固定场所，e.g. forward, swap exchanged trade: 通过cleaning house进行交易，固定场所，e.g. future 期货与现货 交易程序，期货既能做多又能做空，现货只能做多 保证金 initial margin maintainance margin(最低保证金) margin call(追加保证金)，补足到initial margin variation margin(变动保证金) 每日结算，marking to market(盯市)，场外是没有的 hedge(套期保值) swap 本质上是多个时间点的forward(远期合约)的集合。 属于场外交易，有default risk 常考3类 interest rate swap(必考) 最简单的：浮动和固定利率的互换 币种必须相同 不交换本金 结算方式：netting，差额结算 没有固定换固定、浮动换浮动 currency swap，不同币种之间的 可以固定换固定... 需要交换本金 equity swap commodity swap option 本质就是buyer花钱买权利，有权选择履行和放弃合约，但是seller只有履行的义务 strike/exercise price(执行价格): underlying的标价 premium: 期权的价格 按交割日分类： 美式期权：可以在交割日前任意时间执行 欧式期权：只能在交割日执行（考试默认） 百慕大期权：可以在特定时间段执行 按权利划分 call option, 看涨期权 --&gt; callable bond, 发行人有权强制购回债券 put option, 看跌期权 --&gt; putable bond --&gt; putable bond, 债券持有人有权卖给发行人 其他 ... 特点 高杠杆 零和博弈，买卖双方收益和为0 复杂性 期货 互换 期权 复杂模型 越简单的产品流动性越好 作用 规避风险，套期保值 杠杆投资 绕过政府的监管，e.g. swap产品，互换不同国家的股票，绕过政府，投资其他国家的市场 本质： contract 多头：buyer 空头：seller recommended book: 期权、期货及其他衍生产品]]></content>
       <categories>
         <category>cfa</category>
       </categories>
@@ -196,6 +188,14 @@
     <title><![CDATA[行业分析、股票估值]]></title>
     <url>%2F2017%2F08%2F21%2Findustrial-analysis%2F</url>
     <content type="text"><![CDATA[internal competitive forces number of competitiors: + products differences: - exit barrier: +, e.g. 生产设备的投资很高 demand for product: + product shelf life: the shorter, the greater the price competition new entrant threats economies of scale: difficult to enter ... supplier bargaining forces(来自供应商的压力) customer bargaining forces(来自消费者) macroeconomic influences GDP, Interest rates, Inflation... technological influences social influences e.g. spend more money in travelling... demographic influences age distribution, population size equity valuation model discounted cash flow model multiplier models(价格乘数模型): P/E 市盈率 P/B 市净率 ... law of one price: 设置一个benchmark，和上述比率相比]]></content>
+      <categories>
+        <category>cfa</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[cfa l1 经济学基础知识补缺]]></title>
+    <url>%2F2017%2F08%2F21%2Fbasics-gleaning%2F</url>
+    <content type="text"><![CDATA[失业类型 frictional unemployment(摩擦性失业): 在双选期间的失业状态 structural unemployment(结构性失业): 经济结构调整的结果 cyclical unemployment(周期性失业): 经济衰退引发的失业 贸易区类别 free trade areas(自由贸易区): 自由交易，东南亚 customs union(关税同盟): 相同的关税政策 common market(共同市场): 要素自由流动，南美 economic union(经济联盟): 相同的经济政策 monetary union(货币联盟): 相同的货币政策 证券 固定收益证券 Repurchase Agreements(RPs, 回购协议): 卖出自己的债权，并承诺一段时间后以更高的价格购回 权益证券 Preffered Stock(优先股): 可以定期分红，没有表决权，没有期限 Warrant(认股权证): 可以在一段时间之后以之前约定的价格购买股票 集合投资工具 Mutual Fund(共同基金，互惠基金): 股票基金：投资标的，筹得的基金去投资股票 债权基金 货币市场基金 Exchange-Traded Fund(ETF, 交易所交易基金): 基金份额可以公开交易，比Mutual Fund流动性更好，相比股票税率更低 衍生产品 合约： Forward Contract(远期合约): 有信用风险，到期强制购买 Futures Contract(期货合约): 交易所担保的，到期强制购买 Options Contract(期权合约): 到期可以选择不购买]]></content>
       <categories>
         <category>cfa</category>
       </categories>
