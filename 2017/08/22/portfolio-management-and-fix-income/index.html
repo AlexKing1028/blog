@@ -114,12 +114,12 @@
 <meta property="og:site_name" content="Wesley&#39;s blog">
 <meta property="og:description" content="cfa l1">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://chart.googleapis.com/chart?cht=tx&chl=%5Csum_%7Bt%3D1%7D%5EN%20%7B%5Cfrac%7BPMT_t%7D%7B(1%2BYTM">
+<meta property="og:image" content="http://chart.googleapis.com/chart?cht=tx&chl=%5Csum_%7Bt%3D1%7D%5EN%20%7B%5Cfrac%7BPMT_t%7D%7B(1%2BYTM)%5Et%7D%7D%20%2B%20%5Cfrac%7BF%7D%7B(1%2BYTM)%5Et%7D">
 <meta property="og:updated_time" content="2017-08-22T07:02:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Portfolio Management and Fix income">
 <meta name="twitter:description" content="cfa l1">
-<meta name="twitter:image" content="http://chart.googleapis.com/chart?cht=tx&chl=%5Csum_%7Bt%3D1%7D%5EN%20%7B%5Cfrac%7BPMT_t%7D%7B(1%2BYTM">
+<meta name="twitter:image" content="http://chart.googleapis.com/chart?cht=tx&chl=%5Csum_%7Bt%3D1%7D%5EN%20%7B%5Cfrac%7BPMT_t%7D%7B(1%2BYTM)%5Et%7D%7D%20%2B%20%5Cfrac%7BF%7D%7B(1%2BYTM)%5Et%7D">
 
 
 
@@ -235,6 +235,12 @@
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
         </li>
       
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-about"></i> <br />Über</a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -251,26 +257,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -316,7 +318,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wesley Shi">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -402,23 +404,27 @@
       
 
       
-        <h2 id="asset-allocation"><a href="#asset-allocation" class="headerlink" title="asset allocation"></a>asset allocation</h2><p>balance of risk and return.  </p>
-<h2 id="security-selection"><a href="#security-selection" class="headerlink" title="security selection"></a>security selection</h2><p>capital asset pricing model(CAPM)</p>
+        <h2>asset allocation</h2>
+<p>balance of risk and return.</p>
+<h2>security selection</h2>
+<p>capital asset pricing model(CAPM)</p>
 <ol>
-<li>systematic risk(系统性风险): 利率、通胀、经济萧条…  </li>
+<li>systematic risk(系统性风险): 利率、通胀、经济萧条...</li>
 <li>unsystematic risk</li>
 </ol>
 <p>与预期收益比较，判断证券是否被低估</p>
-<h2 id="fixed-income"><a href="#fixed-income" class="headerlink" title="fixed income"></a>fixed income</h2><h3 id="债券"><a href="#债券" class="headerlink" title="债券"></a>债券</h3><p>收益固定，有限期</p>
+<h2>fixed income</h2>
+<h3>债券</h3>
+<p>收益固定，有限期</p>
 <p>股票收益是股息和红利，不能退还，只能转让</p>
-<p>五要素: </p>
+<p>五要素:</p>
 <ol>
-<li>issuers: government, corporate sector  </li>
-<li>par </li>
+<li>issuers: government, corporate sector</li>
+<li>par</li>
 </ol>
-<p><strong>其他投资</strong>: 银行存款，理财，债券基金      </p>
+<p><strong>其他投资</strong>: 银行存款，理财，债券基金</p>
 <p>主要购买者：商业银行，寿险公司，养老金，基金会</p>
-<p>recommended book–《固定收益证券》</p>
+<p>recommended book--《固定收益证券》</p>
 <p><strong>按票面利率分类</strong></p>
 <ol>
 <li>固定利率</li>
@@ -432,21 +438,27 @@
 </ol>
 <p><strong>credit risk</strong></p>
 <ol>
-<li>credit rating: e.g. Moody, s&amp;p…</li>
-<li>4C法则: capacity, covenants(条款), collateral, character(人品…)</li>
-<li>credit enhancement: <ol>
+<li>credit rating: e.g. Moody, s&amp;p...</li>
+<li>4C法则: capacity, covenants(条款), collateral, character(人品...)</li>
+<li>credit enhancement:
+<ol>
 <li>external: 保险公司，银行</li>
 <li>internal: 过度抵押</li>
 </ol>
 </li>
 </ol>
 <p><strong>bond pricing</strong></p>
-<p><img src="http://chart.googleapis.com/chart?cht=tx&amp;chl=%5Csum_%7Bt%3D1%7D%5EN%20%7B%5Cfrac%7BPMT_t%7D%7B(1%2BYTM" alt="">%5Et%7D%7D%20%2B%20%5Cfrac%7BF%7D%7B(1%2BYTM)%5Et%7D)</p>
-<p>PMT = coupon<br>YTM yield to maturity 到期收益率<br>YTM与bond price为反比关系，凸性</p>
+<p><img src="http://chart.googleapis.com/chart?cht=tx&amp;chl=%5Csum_%7Bt%3D1%7D%5EN%20%7B%5Cfrac%7BPMT_t%7D%7B(1%2BYTM)%5Et%7D%7D%20%2B%20%5Cfrac%7BF%7D%7B(1%2BYTM)%5Et%7D" alt=""></p>
+<p>PMT = coupon<br>
+YTM yield to maturity 到期收益率<br>
+YTM与bond price为反比关系，凸性</p>
 <blockquote>
-<p>coupon rate &gt; YTM: 债券价格较高<br>coupon rate = YTM…<br>coupon rate &lt; YTM: 价格较低</p>
+<p>coupon rate &gt; YTM: 债券价格较高<br>
+coupon rate = YTM...<br>
+coupon rate &lt; YTM: 价格较低</p>
 </blockquote>
-<p>短期债券主要受market price risk(债券价格)影响<br>长期债券主要受coupon reinvestment risk影响</p>
+<p>短期债券主要受market price risk(债券价格)影响<br>
+长期债券主要受coupon reinvestment risk影响</p>
 <p><strong>interest rate risk</strong></p>
 <p>YTM变化对债券价格的影响</p>
 <ol>
@@ -458,23 +470,29 @@
 <p>平均时间越大，<em>利率风险</em>越高</p>
 <p><strong>债券市场</strong></p>
 <p><strong><em>债券发行方式</em></strong>: 公开发行、私募</p>
-<h3 id="MBS-and-subprime-crisis"><a href="#MBS-and-subprime-crisis" class="headerlink" title="MBS and subprime crisis"></a>MBS and subprime crisis</h3><p><strong>MBS</strong>: mortgage-backed securities, 将住房抵押贷款包装卖给SPV，SPV打包为MBS卖给投资人。以买房人的月供作为资金来源的证券</p>
+<h3>MBS and subprime crisis</h3>
+<p><strong>MBS</strong>: mortgage-backed securities, 将住房抵押贷款包装卖给SPV，SPV打包为MBS卖给投资人。以买房人的月供作为资金来源的证券</p>
 <p><strong>securitization</strong>: 资产证券化，以特定资产组合或特定现金流为支持，发行可交易证券的一种融资形式</p>
-<h3 id="国内债券市场"><a href="#国内债券市场" class="headerlink" title="国内债券市场"></a>国内债券市场</h3><p><strong>流通市场</strong></p>
+<h3>国内债券市场</h3>
+<p><strong>流通市场</strong></p>
 <ol>
-<li>场内市场（辅）：证券交易所<ol>
+<li>场内市场（辅）：证券交易所
+<ol start="2">
 <li>企业债券（未上市）</li>
 <li>公司债券（上市）</li>
-<li>国债等等…</li>
+<li>国债等等...</li>
 </ol>
 </li>
-<li>场外市场（主）：<ol>
-<li>柜台交易<ol>
+<li>场外市场（主）：
+<ol>
+<li>柜台交易
+<ol>
 <li>储蓄国债</li>
-<li>记账式 </li>
+<li>记账式</li>
 </ol>
 </li>
-<li>银行间债券市场（主要），类型：<ol>
+<li>银行间债券市场（主要），类型：
+<ol start="3">
 <li>债券买卖</li>
 <li>债券回购：质押式回购，买断式回购</li>
 <li>债券远期交易</li>
@@ -495,6 +513,20 @@
 
     
 
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>Wesley Shi</li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://yoursite.com/2017/08/22/portfolio-management-and-fix-income/" title="Portfolio Management and Fix income">http://yoursite.com/2017/08/22/portfolio-management-and-fix-income/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>All articles in this blog are licensed under CC BY 4.0 unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -547,6 +579,11 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="your uid"></div>
+    </div>
+
+  
 
 
 
@@ -582,6 +619,10 @@
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg"
+                alt="Wesley Shi" />
             
               <p class="site-author-name" itemprop="name">Wesley Shi</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -649,6 +690,12 @@
 
           
           
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
 
           
           
@@ -671,7 +718,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#asset-allocation"><span class="nav-number">1.</span> <span class="nav-text">asset allocation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#security-selection"><span class="nav-number">2.</span> <span class="nav-text">security selection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fixed-income"><span class="nav-number">3.</span> <span class="nav-text">fixed income</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#债券"><span class="nav-number">3.1.</span> <span class="nav-text">债券</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MBS-and-subprime-crisis"><span class="nav-number">3.2.</span> <span class="nav-text">MBS and subprime crisis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#国内债券市场"><span class="nav-number">3.3.</span> <span class="nav-text">国内债券市场</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">asset allocation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">security selection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">fixed income</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">债券</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">MBS and subprime crisis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.</span> <span class="nav-text">国内债券市场</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -691,7 +738,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -851,6 +898,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
@@ -1185,19 +1243,6 @@
   </script>
 
 
-
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=6.0.2"></script>
 
 
 

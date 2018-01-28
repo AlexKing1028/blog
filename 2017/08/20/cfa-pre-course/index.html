@@ -233,6 +233,12 @@
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
         </li>
       
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-about"></i> <br />Über</a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -249,26 +255,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -314,7 +316,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wesley Shi">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -401,22 +403,31 @@
 
       
         <p>该文为cfa前导课程的学习笔记</p>
-<h2 id="NPV-net-present-value-与IRR-internal-rate-of-return"><a href="#NPV-net-present-value-与IRR-internal-rate-of-return" class="headerlink" title="NPV(net present value)与IRR(internal rate of return)"></a>NPV(net present value)与IRR(internal rate of return)</h2><h4 id="NPV"><a href="#NPV" class="headerlink" title="NPV"></a>NPV</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pv(compound inflow) - pv(compound outflow)</span><br></pre></td></tr></table></figure>
-<h4 id="IRR"><a href="#IRR" class="headerlink" title="IRR"></a>IRR</h4><p>使得NPV等于0是的discount rate，门槛收益率，与资金成本比较。资金成本比IRR小则盈利。</p>
+<h2>NPV(net present value)与IRR(internal rate of return)</h2>
+<h4>NPV</h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pv(compound inflow) - pv(compound outflow)</span><br></pre></td></tr></table></figure></p>
+<h4>IRR</h4>
+<p>使得NPV等于0是的discount rate，门槛收益率，与资金成本比较。资金成本比IRR小则盈利。</p>
 <p>NPV法则优先于IRR法则</p>
-<h2 id="收益率计算"><a href="#收益率计算" class="headerlink" title="收益率计算"></a>收益率计算</h2><h4 id="HPR-holding-period-return-持有期收益率"><a href="#HPR-holding-period-return-持有期收益率" class="headerlink" title="HPR(holding period return)持有期收益率"></a>HPR(holding period return)持有期收益率</h4><p>例如，股票<strong>持有</strong>期间的收益，包括股票的增值和分红</p>
-<h4 id="TWR-time-weighted-return-时间加权收益率"><a href="#TWR-time-weighted-return-时间加权收益率" class="headerlink" title="TWR(time weighted return)时间加权收益率"></a>TWR(time weighted return)时间加权收益率</h4><p>不同period的收益（期末-期初）的比率的几何平均值</p>
-<h4 id="MWR-money-weighted-return-货币加权收益率"><a href="#MWR-money-weighted-return-货币加权收益率" class="headerlink" title="MWR(money weighted return)货币加权收益率"></a>MWR(money weighted return)货币加权收益率</h4><p>和IRR相同，要求NPV为0的收益率</p>
+<h2>收益率计算</h2>
+<h4>HPR(holding period return)持有期收益率</h4>
+<p>例如，股票<strong>持有</strong>期间的收益，包括股票的增值和分红</p>
+<h4>TWR(time weighted return)时间加权收益率</h4>
+<p>不同period的收益（期末-期初）的比率的几何平均值</p>
+<h4>MWR(money weighted return)货币加权收益率</h4>
+<p>和IRR相同，要求NPV为0的收益率</p>
 <ol>
 <li>在HPR下行时增加投资，MWR降低；反之……</li>
 <li>MWR比TWR对以上变动更敏感</li>
 </ol>
-<h4 id="MWR和TWR对比"><a href="#MWR和TWR对比" class="headerlink" title="MWR和TWR对比"></a>MWR和TWR对比</h4><ol>
+<h4>MWR和TWR对比</h4>
+<ol>
 <li>TWR只考虑期初收益与期末收益的对比，期间的交易没有影响</li>
 <li>MWR考虑期间的进出</li>
 <li>公募基金经理无法完全知道期间现金流的进出，因此只能计算TWR；私募可以完全知道现金的进出，因此可以使用MWR</li>
 </ol>
-<h2 id="短期货币市场的收益率"><a href="#短期货币市场的收益率" class="headerlink" title="短期货币市场的收益率"></a>短期货币市场的收益率</h2><p>一年以内的，例如国债</p>
+<h2>短期货币市场的收益率</h2>
+<p>一年以内的，例如国债</p>
 <ol>
 <li>HPV, Holding period yield: holding period return，在1年以内</li>
 <li>BPY, Bank period yield: 针对纯贴现工具，取决于银行出的价格，单利的形式</li>
@@ -435,6 +446,20 @@
 
     
 
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>Wesley Shi</li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://yoursite.com/2017/08/20/cfa-pre-course/" title="cfa l1 前导知识点--利率计算">http://yoursite.com/2017/08/20/cfa-pre-course/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>All articles in this blog are licensed under CC BY 4.0 unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -487,6 +512,11 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="your uid"></div>
+    </div>
+
+  
 
 
 
@@ -522,6 +552,10 @@
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg"
+                alt="Wesley Shi" />
             
               <p class="site-author-name" itemprop="name">Wesley Shi</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -589,6 +623,12 @@
 
           
           
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
 
           
           
@@ -611,7 +651,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NPV-net-present-value-与IRR-internal-rate-of-return"><span class="nav-number">1.</span> <span class="nav-text">NPV(net present value)与IRR(internal rate of return)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NPV"><span class="nav-number">1.0.1.</span> <span class="nav-text">NPV</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IRR"><span class="nav-number">1.0.2.</span> <span class="nav-text">IRR</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#收益率计算"><span class="nav-number">2.</span> <span class="nav-text">收益率计算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HPR-holding-period-return-持有期收益率"><span class="nav-number">2.0.1.</span> <span class="nav-text">HPR(holding period return)持有期收益率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TWR-time-weighted-return-时间加权收益率"><span class="nav-number">2.0.2.</span> <span class="nav-text">TWR(time weighted return)时间加权收益率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MWR-money-weighted-return-货币加权收益率"><span class="nav-number">2.0.3.</span> <span class="nav-text">MWR(money weighted return)货币加权收益率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MWR和TWR对比"><span class="nav-number">2.0.4.</span> <span class="nav-text">MWR和TWR对比</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#短期货币市场的收益率"><span class="nav-number">3.</span> <span class="nav-text">短期货币市场的收益率</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">NPV(net present value)与IRR(internal rate of return)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.1.</span> <span class="nav-text">NPV</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.2.</span> <span class="nav-text">IRR</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">收益率计算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.0.1.</span> <span class="nav-text">HPR(holding period return)持有期收益率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.0.2.</span> <span class="nav-text">TWR(time weighted return)时间加权收益率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.0.3.</span> <span class="nav-text">MWR(money weighted return)货币加权收益率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.0.4.</span> <span class="nav-text">MWR和TWR对比</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">短期货币市场的收益率</span></a></li></ol></div>
             
 
           </div>
@@ -631,7 +671,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -791,6 +831,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
@@ -1125,19 +1176,6 @@
   </script>
 
 
-
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=6.0.2"></script>
 
 
 

@@ -233,6 +233,12 @@
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
         </li>
       
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-about"></i> <br />Über</a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -249,26 +255,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -314,7 +316,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wesley Shi">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -402,21 +404,27 @@
       
         <p><strong>根据标的分类</strong></p>
 <ol>
-<li>金融衍生产品，标的产品：股票、证券、外汇  </li>
-<li>商品衍生产品  </li>
+<li>金融衍生产品，标的产品：股票、证券、外汇</li>
+<li>商品衍生产品</li>
 </ol>
-<h2 id="具体类型"><a href="#具体类型" class="headerlink" title="具体类型"></a>具体类型</h2><h4 id="forward-远期合约"><a href="#forward-远期合约" class="headerlink" title="forward(远期合约)"></a>forward(远期合约)</h4><p>场外交易（无固定场所）的合约<br>buyer和seller约定在未来一个时间以固定的价格买卖<br>有违约风险  </p>
-<p><strong>交割</strong>  </p>
+<h2>具体类型</h2>
+<h4>forward(远期合约)</h4>
+<p>场外交易（无固定场所）的合约<br>
+buyer和seller约定在未来一个时间以固定的价格买卖<br>
+有违约风险</p>
+<p><strong>交割</strong></p>
 <ol>
-<li>在结束日期交割：现金、实物交割  </li>
-<li>提前交割：签反向合约  <ol>
-<li>找原签署方签（低风险）  </li>
-<li>新找一个签署方  </li>
+<li>在结束日期交割：现金、实物交割</li>
+<li>提前交割：签反向合约
+<ol start="3">
+<li>找原签署方签（低风险）</li>
+<li>新找一个签署方</li>
 </ol>
 </li>
 </ol>
-<h4 id="future（期货）"><a href="#future（期货）" class="headerlink" title="future（期货）"></a>future（期货）</h4><p>无违约风险  </p>
-<p><strong>cleaning house</strong>：清算所，多空共同交易的对手方，保证交易双方能够履行合约，通过settlement（每日结算）+margin/performence bond（保证金）+涨跌停版制度实现  </p>
+<h4>future（期货）</h4>
+<p>无违约风险</p>
+<p><strong>cleaning house</strong>：清算所，多空共同交易的对手方，保证交易双方能够履行合约，通过settlement（每日结算）+margin/performence bond（保证金）+涨跌停版制度实现</p>
 <p>本质上也是<em>forward</em>，但是由于场内交易，有监管、流动性好，没有default risk</p>
 <p><strong>场内与场外衍生品</strong></p>
 <ol>
@@ -426,7 +434,8 @@
 <p><strong>期货与现货</strong></p>
 <ol>
 <li>交易程序，期货既能做多又能做空，现货只能做多</li>
-<li>保证金<ol>
+<li>保证金
+<ol start="3">
 <li>initial margin</li>
 <li>maintainance margin(最低保证金)</li>
 <li>margin call(追加保证金)，补足到initial margin</li>
@@ -436,29 +445,36 @@
 <li>每日结算，marking to market(盯市)，场外是没有的</li>
 </ol>
 <p><strong>hedge(套期保值)</strong></p>
-<h4 id="swap"><a href="#swap" class="headerlink" title="swap"></a>swap</h4><p>本质上是多个时间点的forward(远期合约)的集合。<br>属于场外交易，有default risk</p>
-<p><strong>常考3类</strong>  </p>
+<h4>swap</h4>
+<p>本质上是多个时间点的forward(远期合约)的集合。
+属于场外交易，有default risk</p>
+<p><strong>常考3类</strong></p>
 <ol>
-<li>interest rate swap(必考)  <ol>
-<li>最简单的：浮动和固定利率的互换  <ol>
-<li>币种必须相同  </li>
-<li>不交换本金  </li>
-<li>结算方式：netting，差额结算  </li>
-<li>没有固定换固定、浮动换浮动  </li>
+<li>interest rate swap(必考)
+<ol>
+<li>最简单的：浮动和固定利率的互换
+<ol start="2">
+<li>币种必须相同</li>
+<li>不交换本金</li>
+<li>结算方式：netting，差额结算</li>
+<li>没有固定换固定、浮动换浮动</li>
 </ol>
 </li>
 </ol>
 </li>
-<li>currency swap，不同币种之间的<ol>
-<li>可以固定换固定…</li>
+<li>currency swap，不同币种之间的
+<ol start="3">
+<li>可以固定换固定...</li>
 <li>需要交换本金</li>
 </ol>
 </li>
 <li>equity swap</li>
 <li>commodity swap</li>
 </ol>
-<h4 id="option"><a href="#option" class="headerlink" title="option"></a>option</h4><p>本质就是buyer花钱买权利，有权选择履行和放弃合约，但是seller只有履行的义务</p>
-<p><strong>strike/exercise price</strong>(执行价格): underlying的标价<br><strong>premium</strong>: 期权的价格</p>
+<h4>option</h4>
+<p>本质就是buyer花钱买权利，有权选择履行和放弃合约，但是seller只有履行的义务</p>
+<p><strong>strike/exercise price</strong>(执行价格): underlying的标价<br>
+<strong>premium</strong>: 期权的价格</p>
 <p><strong>按交割日分类</strong>：</p>
 <ol>
 <li>美式期权：可以在交割日前任意时间执行</li>
@@ -467,20 +483,25 @@
 </ol>
 <p><strong>按权利划分</strong></p>
 <ol>
-<li>call option, 看涨期权 <ul>
-<li>–&gt; callable bond, 发行人有权强制购回债券</li>
+<li>call option, 看涨期权
+<ul>
+<li>--&gt; callable bond, 发行人有权强制购回债券</li>
 </ul>
 </li>
-<li>put option, 看跌期权 –&gt; putable bond<ul>
-<li>–&gt; putable bond, 债券持有人有权卖给发行人</li>
+<li>put option, 看跌期权 --&gt; putable bond
+<ul>
+<li>--&gt; putable bond, 债券持有人有权卖给发行人</li>
 </ul>
 </li>
 </ol>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>…</p>
-<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ol>
+<h2>其他</h2>
+<p>...</p>
+<h2>特点</h2>
+<ol>
 <li>高杠杆</li>
 <li>零和博弈，买卖双方收益和为0</li>
-<li>复杂性<ol>
+<li>复杂性
+<ol start="4">
 <li>期货 互换</li>
 <li>期权</li>
 <li>复杂模型</li>
@@ -488,12 +509,15 @@
 </li>
 <li>越<em>简单</em>的产品<em>流动性</em>越好</li>
 </ol>
-<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><ol>
+<h2>作用</h2>
+<ol>
 <li>规避风险，套期保值</li>
 <li>杠杆投资</li>
 <li>绕过政府的监管，e.g. swap产品，互换不同国家的股票，绕过政府，投资其他国家的市场</li>
 </ol>
-<h2 id="本质：-contract"><a href="#本质：-contract" class="headerlink" title="本质： contract"></a>本质： contract</h2><p><strong>多头</strong>：buyer<br><strong>空头</strong>：seller</p>
+<h2>本质： contract</h2>
+<p><strong>多头</strong>：buyer<br>
+<strong>空头</strong>：seller</p>
 <p>recommended book: 期权、期货及其他衍生产品</p>
 
       
@@ -506,6 +530,20 @@
 
     
 
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>Wesley Shi</li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://yoursite.com/2017/08/22/derivatives/" title="Derivatives">http://yoursite.com/2017/08/22/derivatives/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>All articles in this blog are licensed under CC BY 4.0 unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -558,6 +596,11 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="your uid"></div>
+    </div>
+
+  
 
 
 
@@ -593,6 +636,10 @@
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg"
+                alt="Wesley Shi" />
             
               <p class="site-author-name" itemprop="name">Wesley Shi</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -660,6 +707,12 @@
 
           
           
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
 
           
           
@@ -682,7 +735,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#具体类型"><span class="nav-number">1.</span> <span class="nav-text">具体类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#forward-远期合约"><span class="nav-number">1.0.1.</span> <span class="nav-text">forward(远期合约)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#future（期货）"><span class="nav-number">1.0.2.</span> <span class="nav-text">future（期货）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#swap"><span class="nav-number">1.0.3.</span> <span class="nav-text">swap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#option"><span class="nav-number">1.0.4.</span> <span class="nav-text">option</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">2.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">3.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用"><span class="nav-number">4.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本质：-contract"><span class="nav-number">5.</span> <span class="nav-text">本质： contract</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">具体类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.1.</span> <span class="nav-text">forward(远期合约)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.2.</span> <span class="nav-text">future（期货）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.3.</span> <span class="nav-text">swap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.4.</span> <span class="nav-text">option</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">本质： contract</span></a></li></ol></div>
             
 
           </div>
@@ -702,7 +755,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -862,6 +915,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
@@ -1196,19 +1260,6 @@
   </script>
 
 
-
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=6.0.2"></script>
 
 
 

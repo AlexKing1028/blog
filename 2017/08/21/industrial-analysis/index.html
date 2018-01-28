@@ -233,6 +233,12 @@
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
         </li>
       
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-about"></i> <br />Über</a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -249,26 +255,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -314,7 +316,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wesley Shi">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -400,20 +402,31 @@
       
 
       
-        <h2 id="internal-competitive-forces"><a href="#internal-competitive-forces" class="headerlink" title="internal competitive forces"></a>internal competitive forces</h2><p><strong>number of competitiors</strong>: +</p>
+        <h2>internal competitive forces</h2>
+<p><strong>number of competitiors</strong>: +</p>
 <p><strong>products differences</strong>: -</p>
 <p><strong>exit barrier</strong>: +, e.g. 生产设备的投资很高</p>
 <p><strong>demand for product</strong>: +</p>
 <p><strong>product shelf life</strong>: the shorter, the greater the <em>price</em> competition</p>
-<h2 id="new-entrant-threats"><a href="#new-entrant-threats" class="headerlink" title="new entrant threats"></a>new entrant threats</h2><p><strong>economies of scale</strong>: difficult to enter</p>
-<p>…</p>
-<h2 id="supplier-bargaining-forces-来自供应商的压力"><a href="#supplier-bargaining-forces-来自供应商的压力" class="headerlink" title="supplier bargaining forces(来自供应商的压力)"></a>supplier bargaining forces(来自供应商的压力)</h2><h2 id="customer-bargaining-forces-来自消费者"><a href="#customer-bargaining-forces-来自消费者" class="headerlink" title="customer bargaining forces(来自消费者)"></a>customer bargaining forces(来自消费者)</h2><h2 id="macroeconomic-influences"><a href="#macroeconomic-influences" class="headerlink" title="macroeconomic influences"></a>macroeconomic influences</h2><p>GDP, Interest rates, Inflation…</p>
-<h2 id="technological-influences"><a href="#technological-influences" class="headerlink" title="technological influences"></a>technological influences</h2><h2 id="social-influences"><a href="#social-influences" class="headerlink" title="social influences"></a>social influences</h2><p>e.g. spend more money in travelling…</p>
-<h2 id="demographic-influences"><a href="#demographic-influences" class="headerlink" title="demographic influences"></a>demographic influences</h2><p>age distribution, population size</p>
-<h2 id="equity-valuation-model"><a href="#equity-valuation-model" class="headerlink" title="equity valuation model"></a>equity valuation model</h2><p><strong>discounted cash flow model</strong></p>
-<p><strong>multiplier models</strong>(价格乘数模型): </p>
+<h2>new entrant threats</h2>
+<p><strong>economies of scale</strong>: difficult to enter</p>
+<p>...</p>
+<h2>supplier bargaining forces(来自供应商的压力)</h2>
+<h2>customer bargaining forces(来自消费者)</h2>
+<h2>macroeconomic influences</h2>
+<p>GDP, Interest rates, Inflation...</p>
+<h2>technological influences</h2>
+<h2>social influences</h2>
+<p>e.g. spend more money in travelling...</p>
+<h2>demographic influences</h2>
+<p>age distribution, population size</p>
+<h2>equity valuation model</h2>
+<p><strong>discounted cash flow model</strong></p>
+<p><strong>multiplier models</strong>(价格乘数模型):</p>
 <blockquote>
-<p>P/E 市盈率<br>P/B 市净率<br>…</p>
+<p>P/E 市盈率<br>
+P/B 市净率<br>
+...</p>
 </blockquote>
 <p><em>law of one price</em>: 设置一个benchmark，和上述比率相比</p>
 
@@ -427,6 +440,20 @@
 
     
 
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>Wesley Shi</li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://yoursite.com/2017/08/21/industrial-analysis/" title="行业分析、股票估值">http://yoursite.com/2017/08/21/industrial-analysis/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>All articles in this blog are licensed under CC BY 4.0 unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -479,6 +506,11 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="your uid"></div>
+    </div>
+
+  
 
 
 
@@ -514,6 +546,10 @@
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg"
+                alt="Wesley Shi" />
             
               <p class="site-author-name" itemprop="name">Wesley Shi</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -581,6 +617,12 @@
 
           
           
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
 
           
           
@@ -603,7 +645,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#internal-competitive-forces"><span class="nav-number">1.</span> <span class="nav-text">internal competitive forces</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new-entrant-threats"><span class="nav-number">2.</span> <span class="nav-text">new entrant threats</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#supplier-bargaining-forces-来自供应商的压力"><span class="nav-number">3.</span> <span class="nav-text">supplier bargaining forces(来自供应商的压力)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#customer-bargaining-forces-来自消费者"><span class="nav-number">4.</span> <span class="nav-text">customer bargaining forces(来自消费者)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#macroeconomic-influences"><span class="nav-number">5.</span> <span class="nav-text">macroeconomic influences</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#technological-influences"><span class="nav-number">6.</span> <span class="nav-text">technological influences</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#social-influences"><span class="nav-number">7.</span> <span class="nav-text">social influences</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#demographic-influences"><span class="nav-number">8.</span> <span class="nav-text">demographic influences</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#equity-valuation-model"><span class="nav-number">9.</span> <span class="nav-text">equity valuation model</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">internal competitive forces</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">new entrant threats</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">supplier bargaining forces(来自供应商的压力)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">customer bargaining forces(来自消费者)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">macroeconomic influences</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">technological influences</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">social influences</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">demographic influences</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">9.</span> <span class="nav-text">equity valuation model</span></a></li></ol></div>
             
 
           </div>
@@ -623,7 +665,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -783,6 +825,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
@@ -1117,19 +1170,6 @@
   </script>
 
 
-
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=6.0.2"></script>
 
 
 

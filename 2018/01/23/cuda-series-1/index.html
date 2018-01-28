@@ -233,6 +233,12 @@
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
         </li>
       
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-about"></i> <br />Über</a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -249,26 +255,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -314,7 +316,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wesley Shi">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -400,31 +402,38 @@
       
 
       
-        <h2 id="CPU-structure"><a href="#CPU-structure" class="headerlink" title="CPU structure"></a>CPU structure</h2><p>几个常识：</p>
+        <h2>CPU structure</h2>
+<p>几个常识：</p>
 <ol>
 <li>cpu运行桌面应用，轻量级进程、少量线程，大量分支和交互，大量存储器访问，只有1%的指令在运算上</li>
 <li>cpu芯片大部分面积是<strong>三级</strong>缓存和io相关的接口，只有小部分是计算单元</li>
 <li>cpu发展遇到的‘墙’：能量（散热等），存储器（带宽跟不上）</li>
 </ol>
-<h2 id="GPU-structure"><a href="#GPU-structure" class="headerlink" title="GPU structure"></a>GPU structure</h2><ul>
-<li>shader core， ALU单元，完成指令流，一个核可以加入多个alu单元。<ol>
+<h2>GPU structure</h2>
+<ul>
+<li>shader core， ALU单元，完成指令流，一个核可以加入多个alu单元。
+<ol>
 <li>同一个核内部只有一个取址译码单元，因此只能步调一致的做工作，遇到分支不能并行。</li>
 <li>以上成为stall，通过多个任务来回切换hide stalls</li>
 </ol>
 </li>
-<li>work distributor，工作分配    </li>
+<li>work distributor，工作分配</li>
 </ul>
-<h4 id="Fermi架构"><a href="#Fermi架构" class="headerlink" title="Fermi架构"></a>Fermi架构</h4><p>一个计算单元（SM）分成两组ALU                    </p>
-<h4 id="Kepler架构"><a href="#Kepler架构" class="headerlink" title="Kepler架构"></a>Kepler架构</h4><p>一个SM中多个小组。。。</p>
+<h4>Fermi架构</h4>
+<p>一个计算单元（SM）分成两组ALU</p>
+<h4>Kepler架构</h4>
+<p>一个SM中多个小组。。。</p>
 <p>与CPU（的L3 cache）不同，GPU的存储器放在外面，</p>
 <p>依然存在访存慢的问题，因此带宽很重要</p>
-<h3 id="GPU线程组织架构"><a href="#GPU线程组织架构" class="headerlink" title="GPU线程组织架构"></a>GPU线程组织架构</h3><p>一个kernel具有大量的线程</p>
+<h3>GPU线程组织架构</h3>
+<p>一个kernel具有大量的线程</p>
 <p>线程被分成线程块block，一个block内部的线程共享 shared memory</p>
 <p>若干block组成grid，kernel启动</p>
-<h4 id="线程和硬件的对应关系"><a href="#线程和硬件的对应关系" class="headerlink" title="线程和硬件的对应关系"></a>线程和硬件的对应关系</h4><ol>
-<li>线程 – ALU单元 – 线程私有的local memory</li>
-<li>block – sm单元 – block的shared memory</li>
-<li>grid – gpu device – 设备共有的global memory</li>
+<h4>线程和硬件的对应关系</h4>
+<ol>
+<li>线程 -- ALU单元 -- 线程私有的local memory</li>
+<li>block -- sm单元 -- block的shared memory</li>
+<li>grid -- gpu device -- 设备共有的global memory</li>
 </ol>
 <p>####SIMT single instruction multiple thread</p>
 <p>GPU版本的SIMD</p>
@@ -440,6 +449,20 @@
 
     
 
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>Wesley Shi</li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://yoursite.com/2018/01/23/cuda-series-1/" title="cuda coding series 1">http://yoursite.com/2018/01/23/cuda-series-1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>All articles in this blog are licensed under CC BY 4.0 unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -492,6 +515,11 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="your uid"></div>
+    </div>
+
+  
 
 
 
@@ -527,6 +555,10 @@
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg"
+                alt="Wesley Shi" />
             
               <p class="site-author-name" itemprop="name">Wesley Shi</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -594,6 +626,12 @@
 
           
           
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
 
           
           
@@ -616,7 +654,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU-structure"><span class="nav-number">1.</span> <span class="nav-text">CPU structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GPU-structure"><span class="nav-number">2.</span> <span class="nav-text">GPU structure</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Fermi架构"><span class="nav-number">2.0.1.</span> <span class="nav-text">Fermi架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kepler架构"><span class="nav-number">2.0.2.</span> <span class="nav-text">Kepler架构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GPU线程组织架构"><span class="nav-number">2.1.</span> <span class="nav-text">GPU线程组织架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线程和硬件的对应关系"><span class="nav-number">2.1.1.</span> <span class="nav-text">线程和硬件的对应关系</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">CPU structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">GPU structure</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.0.1.</span> <span class="nav-text">Fermi架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.0.2.</span> <span class="nav-text">Kepler架构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">GPU线程组织架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.1.</span> <span class="nav-text">线程和硬件的对应关系</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -636,7 +674,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -796,6 +834,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
@@ -1130,19 +1179,6 @@
   </script>
 
 
-
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=6.0.2"></script>
 
 
 

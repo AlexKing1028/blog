@@ -233,6 +233,12 @@
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
         </li>
       
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-about"></i> <br />Über</a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -249,26 +255,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -314,7 +316,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wesley Shi">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -400,27 +402,37 @@
       
 
       
-        <h1 id="classification"><a href="#classification" class="headerlink" title="classification"></a>classification</h1><ol>
-<li><p>tensorflow官方提供了在imagenet上表现比较好的一些框架，例如inception、resnet…并且也给出了pre train的权重。</p>
+        <h1>classification</h1>
+<ol>
+<li>
+<p>tensorflow官方提供了在imagenet上表现比较好的一些框架，例如inception、resnet...并且也给出了pre train的权重。</p>
 </li>
-<li><p>tensorflow也有工具从keras迁移model过来。keras上除了提供了常见的模型之外，最近的densenet、mobilenet都有了。</p>
+<li>
+<p>tensorflow也有工具从keras迁移model过来。keras上除了提供了常见的模型之外，最近的densenet、mobilenet都有了。</p>
 </li>
 </ol>
-<h1 id="object-detection"><a href="#object-detection" class="headerlink" title="object detection"></a>object detection</h1><ol>
+<h1>object detection</h1>
+<ol>
 <li>faster rcnn</li>
-<li>deformable convolutional network<ol>
+<li>deformable convolutional network
+<ol>
 <li><a href="https://github.com/msracver/Deformable-ConvNets" target="_blank" rel="noopener">msra cver</a> mxnet</li>
 <li><a href="https://github.com/apache/incubator-mxnet/tree/master/example/rcnn" target="_blank" rel="noopener">apache mxnet demo</a> mxnet</li>
 </ol>
 </li>
 </ol>
-<h1 id="keypoint"><a href="#keypoint" class="headerlink" title="keypoint"></a>keypoint</h1><ol>
+<h1>keypoint</h1>
+<ol>
 <li><a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose" target="_blank" rel="noopener">cmu openpose</a> c++,caffe</li>
 <li><a href="https://github.com/JakeRenn/AI-Challenger-Keypoints-pytorch" target="_blank" rel="noopener">ai challenger#5</a> pytorch</li>
 </ol>
-<h1 id="stuff-background-detection"><a href="#stuff-background-detection" class="headerlink" title="stuff(background) detection"></a>stuff(background) detection</h1><h1 id="semantic-segmentation"><a href="#semantic-segmentation" class="headerlink" title="semantic segmentation"></a>semantic segmentation</h1><h1 id="instance-segmentation"><a href="#instance-segmentation" class="headerlink" title="instance segmentation"></a>instance segmentation</h1><ul>
-<li>mask rcnn<ol>
-<li><a href="https://github.com/matterport/Mask_RCNN" target="_blank" rel="noopener">matterpot’s implementation</a></li>
+<h1>stuff(background) detection</h1>
+<h1>semantic segmentation</h1>
+<h1>instance segmentation</h1>
+<ul>
+<li>mask rcnn
+<ol>
+<li><a href="https://github.com/matterport/Mask_RCNN" target="_blank" rel="noopener">matterpot's implementation</a></li>
 </ol>
 </li>
 </ul>
@@ -435,6 +447,20 @@
 
     
 
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>Wesley Shi</li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://yoursite.com/2018/01/27/comics-project-research/" title="最近接到的关于动漫图像识别的任务调研">http://yoursite.com/2018/01/27/comics-project-research/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>All articles in this blog are licensed under CC BY 4.0 unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -487,6 +513,11 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="your uid"></div>
+    </div>
+
+  
 
 
 
@@ -522,6 +553,10 @@
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg"
+                alt="Wesley Shi" />
             
               <p class="site-author-name" itemprop="name">Wesley Shi</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -589,6 +624,12 @@
 
           
           
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
 
           
           
@@ -611,7 +652,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#classification"><span class="nav-number">1.</span> <span class="nav-text">classification</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#object-detection"><span class="nav-number">2.</span> <span class="nav-text">object detection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#keypoint"><span class="nav-number">3.</span> <span class="nav-text">keypoint</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#stuff-background-detection"><span class="nav-number">4.</span> <span class="nav-text">stuff(background) detection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#semantic-segmentation"><span class="nav-number">5.</span> <span class="nav-text">semantic segmentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#instance-segmentation"><span class="nav-number">6.</span> <span class="nav-text">instance segmentation</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">classification</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">object detection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">keypoint</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">stuff(background) detection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">semantic segmentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">instance segmentation</span></a></li></ol></div>
             
 
           </div>
@@ -631,7 +672,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -791,6 +832,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
@@ -1125,19 +1177,6 @@
   </script>
 
 
-
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=6.0.2"></script>
 
 
 

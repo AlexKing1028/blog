@@ -237,6 +237,12 @@
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
         </li>
       
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-about"></i> <br />Über</a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -253,26 +259,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -318,7 +320,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wesley Shi">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -404,84 +406,103 @@
       
 
       
-        <h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ol>
-<li>empirical probability 经验概率 过去推断未来<ul>
+        <h2>分类</h2>
+<ol>
+<li>empirical probability 经验概率 过去推断未来
+<ul>
 <li>根据过去的股票涨跌，猜测未来</li>
 </ul>
 </li>
-<li>priori probability 先验概率 过去推断过去<ul>
+<li>priori probability 先验概率 过去推断过去
+<ul>
 <li>从已知个数的不同色球中取出一种颜色的概率</li>
 </ul>
 </li>
 <li>subjective probability 主观概率</li>
 </ol>
-<p><strong>odds for</strong> = 发生/不发生的概率<br><strong>odds against</strong> = 不发生/发生的概率</p>
-<p><strong>unconditional probability</strong> 非条件概率<br><strong>conditional probability</strong> 条件概率  </p>
+<p><strong>odds for</strong> = 发生/不发生的概率<br>
+<strong>odds against</strong> = 不发生/发生的概率</p>
+<p><strong>unconditional probability</strong> 非条件概率<br>
+<strong>conditional probability</strong> 条件概率</p>
 <p><strong>joint probability</strong></p>
 <p><strong>乘法法则</strong></p>
 <p><strong>时间和的概率</strong> 两个事件至少有一个发生的概率。</p>
 <p><strong>total probability rule</strong> 全概率公式，先分类再分步</p>
 <p><strong>bayes formula</strong> 贝叶斯公式</p>
-<h2 id="application"><a href="#application" class="headerlink" title="application"></a>application</h2><p><strong>expectated value</strong></p>
+<h2>application</h2>
+<p><strong>expectated value</strong></p>
 <p><strong>investment tree</strong></p>
-<h4 id="covariance"><a href="#covariance" class="headerlink" title="covariance"></a>covariance</h4><p>协方差，正的趋向于正相关，负的趋向于负相关</p>
-<h4 id="correlation"><a href="#correlation" class="headerlink" title="correlation"></a>correlation</h4><p>相关系数，[1,-1]</p>
+<h4>covariance</h4>
+<p>协方差，正的趋向于正相关，负的趋向于负相关</p>
+<h4>correlation</h4>
+<p>相关系数，[1,-1]</p>
 <ol>
-<li>1/-1 完全正/负相关–在一条直线上</li>
+<li>1/-1 完全正/负相关--在一条直线上</li>
 <li>0 完全没有线性关系</li>
 </ol>
 <p>协方差/标准差之积</p>
 <p><strong>labeling</strong> 贴标签，排列组合</p>
-<h2 id="probability-distribution"><a href="#probability-distribution" class="headerlink" title="probability distribution"></a>probability distribution</h2><ol>
-<li>离散概率分布 – probability function</li>
-<li>连续概率分布 – probability density function</li>
+<h2>probability distribution</h2>
+<ol>
+<li>离散概率分布 -- probability function</li>
+<li>连续概率分布 -- probability density function</li>
 </ol>
-<p><strong>概率为0的事件是可能发生的–连续随机变量</strong></p>
+<p><strong>概率为0的事件是可能发生的--连续随机变量</strong></p>
 <p><strong>cdf cumulative probability function</strong></p>
 <ol>
 <li>伯努利随机变量</li>
-<li>二项随机变量 – 计算方法<ul>
+<li>二项随机变量 -- 计算方法
+<ul>
 <li>股票价格的二叉树</li>
 </ul>
 </li>
 </ol>
-<p><strong>tracking error</strong> total return和benchmark return的差距。<br><strong>tracking risk</strong> tracking error的标准差，用于评估基金经理的工作。</p>
-<h3 id="continuous-probability-distribution"><a href="#continuous-probability-distribution" class="headerlink" title="continuous probability distribution"></a>continuous probability distribution</h3><ol>
+<p><strong>tracking error</strong> total return和benchmark return的差距。<br>
+<strong>tracking risk</strong> tracking error的标准差，用于评估基金经理的工作。</p>
+<h3>continuous probability distribution</h3>
+<ol>
 <li>continuous uniform distribution</li>
-<li>normal distribution<ul>
+<li>normal distribution
+<ul>
 <li>skewness = 0</li>
 <li>kurtosis = 3</li>
 <li>多个正态分布的随机变量的线性组合依然服从正态分布</li>
-<li>置信度：<ol>
-<li>68% – 1</li>
-<li>90% – 1.65</li>
-<li>95% – 1.96</li>
-<li>99% – 2.58</li>
+<li>置信度：
+<ol>
+<li>68% -- 1</li>
+<li>90% -- 1.65</li>
+<li>95% -- 1.96</li>
+<li>99% -- 2.58</li>
 </ol>
 </li>
-<li>标准正态分布（均值0，方差为1）<ol>
+<li>标准正态分布（均值0，方差为1）
+<ol>
 <li>z分布，z值</li>
 <li>用于正态分布查表，先求出z值，查表</li>
 </ol>
 </li>
 <li>资产的回报服从正态分布</li>
-<li>shortfall level: the risk that portfolio value or return will fall below the minimum. <strong>是一个概率！</strong><ul>
+<li>shortfall level: the risk that portfolio value or return will fall below the minimum. <strong>是一个概率！</strong>
+<ul>
 <li>越低越好</li>
 </ul>
 </li>
-<li>safety-first ratio 安全边际，距离mean有多少个标准差<ul>
+<li>safety-first ratio 安全边际，距离mean有多少个标准差
+<ul>
 <li>越大越好</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>lognormal distribution 对数正态分布<ul>
+<li>lognormal distribution 对数正态分布
+<ul>
 <li>x服从正态分布，则e的x次方服从对数正态分布</li>
 <li>取值大于0，positive skewed 正偏</li>
 <li>一般用于描述资产的价格</li>
 </ul>
 </li>
-<li>t分布 student’s t-distribution<ul>
+<li>t分布 student's t-distribution
+<ul>
 <li>由degree of freedom决定，n个sample对应n-1 degree</li>
 <li>对称，无偏</li>
 <li>fatter tails</li>
@@ -492,12 +513,16 @@
 </ol>
 <p><strong>置信区间</strong> **%的把握在一个区间中</p>
 <p>univariate distribution vs multivariate distribution</p>
-<p>discrete compounding vs continuous compounding </p>
-<h2 id="simulation"><a href="#simulation" class="headerlink" title="simulation"></a>simulation</h2><h4 id="Monte-Carlo-simulation"><a href="#Monte-Carlo-simulation" class="headerlink" title="Monte Carlo simulation"></a>Monte Carlo simulation</h4><p>使用随机值作为一个风险因子生成一个服从某种分布的sample</p>
+<p>discrete compounding vs continuous compounding</p>
+<h2>simulation</h2>
+<h4>Monte Carlo simulation</h4>
+<p>使用随机值作为一个风险因子生成一个服从某种分布的sample</p>
 <p>缺点：计算复杂，结果不会比风险因子的假设好</p>
-<h4 id="historical-simulation"><a href="#historical-simulation" class="headerlink" title="historical simulation"></a>historical simulation</h4><p>随机选择过去的数据</p>
+<h4>historical simulation</h4>
+<p>随机选择过去的数据</p>
 <p>缺点：没有</p>
-<h2 id="sampling"><a href="#sampling" class="headerlink" title="sampling"></a>sampling</h2><p>推断性统计 – 用于估计、判断和预测。借助抽样，得到抽样的统计分布，从而得到总体的分布的参数。</p>
+<h2>sampling</h2>
+<p>推断性统计 -- 用于估计、判断和预测。借助抽样，得到抽样的统计分布，从而得到总体的分布的参数。</p>
 <ol>
 <li>simple random sampling 简单随机抽样，等概率选中总体的任何一个个体。</li>
 <li>stratified random sampling 分层随机抽样，先分层，对每层按比例抽取。</li>
@@ -509,26 +534,32 @@
 <p><strong>sample biases</strong></p>
 <ol>
 <li>data-mining bias: 反复在相同的数据中挖掘pattern过程中的偏差。</li>
-<li>sample selection bias: 样本不能很好的体现<ul>
+<li>sample selection bias: 样本不能很好的体现
+<ul>
 <li>supervisorship bias: 只能统计到还存在的数据，例如基金数据，只能收集到幸存下来的基金，取样相对总体偏好。</li>
 </ul>
 </li>
 <li>look-ahead bias: 测试时间点的数据not available</li>
-<li>time-period bias: 在某一个期间的sample的规律不一定在其他期间。 </li>
+<li>time-period bias: 在某一个期间的sample的规律不一定在其他期间。</li>
 </ol>
-<h2 id="estimate"><a href="#estimate" class="headerlink" title="estimate"></a>estimate</h2><h3 id="point-estimate"><a href="#point-estimate" class="headerlink" title="point estimate"></a>point estimate</h3><p>用样本统计量估计总体统计量确定的值。</p>
+<h2>estimate</h2>
+<h3>point estimate</h3>
+<p>用样本统计量估计总体统计量确定的值。</p>
 <p><strong>estimator</strong></p>
 <ol>
 <li>unbias, the expected value is equal to target parameter</li>
 <li>efficiency, 最小的方差</li>
 <li>consistency, 样本越大，精度越高</li>
 </ol>
-<h3 id="confidence-interval-estimate"><a href="#confidence-interval-estimate" class="headerlink" title="confidence interval estimate"></a>confidence interval estimate</h3><p><strong>reliability factor</strong> 依赖因子</p>
+<h3>confidence interval estimate</h3>
+<p><strong>reliability factor</strong> 依赖因子</p>
 <p>查表或记忆得到依赖因子，从而得到区间估计</p>
-<h2 id="central-limit-theorem"><a href="#central-limit-theorem" class="headerlink" title="central limit theorem"></a>central limit theorem</h2><p>中心极限定理</p>
+<h2>central limit theorem</h2>
+<p>中心极限定理</p>
 <p>对于任意概率分布，样本均值的分布趋向于正态分布，其正态分布的均值趋向于总体的均值。</p>
 <p><strong>standard error</strong> 标准误，样本均值的标准差，若无总体本准差，使用样本标准差代替。</p>
-<h3 id="confidence-interval-estimate-1"><a href="#confidence-interval-estimate-1" class="headerlink" title="confidence interval estimate"></a>confidence interval estimate</h3><p>根据中心极限定理，可以得到样本均值的置信区间。</p>
+<h3>confidence interval estimate</h3>
+<p>根据中心极限定理，可以得到样本均值的置信区间。</p>
 <p><strong>choosing statistic for reliability factor</strong></p>
 <p>样本量 &gt;= 30 大样本量，服从正态分布</p>
 <ol>
@@ -537,7 +568,8 @@
 </ol>
 <p><img src="http://agriculture.oss-cn-shanghai.aliyuncs.com/Snip20170905_1.png" alt=""></p>
 <p><img src="http://agriculture.oss-cn-shanghai.aliyuncs.com/Snip20170905_2.png" alt=""></p>
-<h2 id="hypeothesis-testing"><a href="#hypeothesis-testing" class="headerlink" title="hypeothesis testing"></a>hypeothesis testing</h2><p>通过抽样，对于总体的一个判断</p>
+<h2>hypeothesis testing</h2>
+<p>通过抽样，对于总体的一个判断</p>
 <p><strong>步骤</strong></p>
 <ol>
 <li>stating the hypothesis</li>
@@ -548,7 +580,8 @@
 <li>making statistical decision</li>
 <li>making economic or investment decision</li>
 </ol>
-<p><strong>null hypothesis</strong> 原假设，被检验的，‘=’只存在与原假设，<em>只能说 reject 或者 not reject，accept是错的</em><br><strong>alternative hypothesis</strong> 备择假设，希望得到的结论</p>
+<p><strong>null hypothesis</strong> 原假设，被检验的，‘=’只存在与原假设，<em>只能说 reject 或者 not reject，accept是错的</em><br>
+<strong>alternative hypothesis</strong> 备择假设，希望得到的结论</p>
 <p>由于统计学上很难从正面证实，只能通过“不能证实方面”。</p>
 <p><strong>test statistic</strong> 检验统计量，即转化为z分布</p>
 <p><strong>critical value</strong> 关键值</p>
@@ -561,27 +594,33 @@
 <li>检验统计量跑到关键值分割的拒绝域中</li>
 <li>p值小于关键值</li>
 </ol>
-<h4 id="error"><a href="#error" class="headerlink" title="error"></a>error</h4><ol>
+<h4>error</h4>
+<ol>
 <li>type I error alpha 与显著度有关，将真的判断为假的</li>
 <li>tyep II error  beta 将假的判断为真的</li>
 <li>power of test 1-beta 势</li>
 </ol>
-<p>增加样本量可以同时降低第一、第二类错误 </p>
-<h3 id="for-single-mean"><a href="#for-single-mean" class="headerlink" title="for single mean"></a>for single mean</h3><ol>
+<p>增加样本量可以同时降低第一、第二类错误</p>
+<h3>for single mean</h3>
+<ol>
 <li>已知总体方差，使用正态分布</li>
 <li>若不知道，使用t分布</li>
 <li>若样本量大，t分布可以使用z分布代替</li>
 </ol>
 <p>求检验统计量，根据置信度找到z分布/t分布的关键值，再比较。</p>
-<h3 id="difference-of-means"><a href="#difference-of-means" class="headerlink" title="difference of means"></a>difference of means</h3><p>检测均值相减</p>
+<h3>difference of means</h3>
+<p>检测均值相减</p>
 <ol>
 <li>相互独立，同方差且未知，使用t检验</li>
-<li>相互独立，异方差且未知，使用t检验 </li>
+<li>相互独立，异方差且未知，使用t检验</li>
 </ol>
-<h3 id="mean-differences"><a href="#mean-differences" class="headerlink" title="mean differences"></a>mean differences</h3><p>成对检验，对很多对数据的均值的检验</p>
+<h3>mean differences</h3>
+<p>成对检验，对很多对数据的均值的检验</p>
 <p>对两个未知方差的<em>有依赖性</em>的总体，使用t检验</p>
-<h3 id="single-variance"><a href="#single-variance" class="headerlink" title="single variance"></a>single variance</h3><p>单个方差的检验，使用卡方检验(Chi-square)</p>
-<h3 id="equality-of-two-variances"><a href="#equality-of-two-variances" class="headerlink" title="equality of two variances"></a>equality of two variances</h3><p>检验两个方差是否相等，使用F检验</p>
+<h3>single variance</h3>
+<p>单个方差的检验，使用卡方检验(Chi-square)</p>
+<h3>equality of two variances</h3>
+<p>检验两个方差是否相等，使用F检验</p>
 <p><strong>parametric tests</strong> 参数检验，基于对总体分布和参数的假设</p>
 <p><strong>nonparametric tests</strong> 非参检验, test things other than values</p>
 <ol>
@@ -589,21 +628,26 @@
 <li>data are given in ranks</li>
 <li>假设中不存在参数，例如“检验a是否服从正态分布”</li>
 </ol>
-<h2 id="technical-analysis"><a href="#technical-analysis" class="headerlink" title="technical analysis"></a>technical analysis</h2><p>技术分析只用过去的价格和交易量，且价格完全由供需决定、市场能够反映总的状态。</p>
+<h2>technical analysis</h2>
+<p>技术分析只用过去的价格和交易量，且价格完全由供需决定、市场能够反映总的状态。</p>
 <p><img src="http://agriculture.oss-cn-shanghai.aliyuncs.com/Snip20170905_3.png" alt=""></p>
-<h4 id="chart"><a href="#chart" class="headerlink" title="chart"></a>chart</h4><ol>
-<li>trend<ul>
+<h4>chart</h4>
+<ol>
+<li>trend
+<ul>
 <li>uptrend: higher highs and higher lows</li>
 <li>downtrend: lower lows and lower highs</li>
 </ul>
 </li>
 <li>support line 支撑位: a low price range in which buying activity is sufficient to stop the decline in price</li>
 <li>resistance line 主力位 :涨到一定价格很多人卖，价格停止上涨</li>
-<li>change in polarity: 支撑位被突破变成阻力位，反之…</li>
+<li>change in polarity: 支撑位被突破变成阻力位，反之...</li>
 <li>reverse patterns</li>
 </ol>
-<h4 id="indicator"><a href="#indicator" class="headerlink" title="indicator"></a>indicator</h4><p>指标…</p>
-<h3 id="cycle-analysis"><a href="#cycle-analysis" class="headerlink" title="cycle analysis"></a>cycle analysis</h3><p>周期分析</p>
+<h4>indicator</h4>
+<p>指标...</p>
+<h3>cycle analysis</h3>
+<p>周期分析</p>
 <p><strong>Elliott wave theory</strong></p>
 
       
@@ -616,6 +660,20 @@
 
     
 
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>Wesley Shi</li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://yoursite.com/2017/09/03/basic-probability/" title="Basic probability">http://yoursite.com/2017/09/03/basic-probability/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>All articles in this blog are licensed under CC BY 4.0 unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -668,6 +726,11 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="your uid"></div>
+    </div>
+
+  
 
 
 
@@ -703,6 +766,10 @@
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg"
+                alt="Wesley Shi" />
             
               <p class="site-author-name" itemprop="name">Wesley Shi</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -770,6 +837,12 @@
 
           
           
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
 
           
           
@@ -792,7 +865,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-number">1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#application"><span class="nav-number">2.</span> <span class="nav-text">application</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#covariance"><span class="nav-number">2.0.1.</span> <span class="nav-text">covariance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#correlation"><span class="nav-number">2.0.2.</span> <span class="nav-text">correlation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#probability-distribution"><span class="nav-number">3.</span> <span class="nav-text">probability distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#continuous-probability-distribution"><span class="nav-number">3.1.</span> <span class="nav-text">continuous probability distribution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#simulation"><span class="nav-number">4.</span> <span class="nav-text">simulation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Monte-Carlo-simulation"><span class="nav-number">4.0.1.</span> <span class="nav-text">Monte Carlo simulation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#historical-simulation"><span class="nav-number">4.0.2.</span> <span class="nav-text">historical simulation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sampling"><span class="nav-number">5.</span> <span class="nav-text">sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#estimate"><span class="nav-number">6.</span> <span class="nav-text">estimate</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#point-estimate"><span class="nav-number">6.1.</span> <span class="nav-text">point estimate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#confidence-interval-estimate"><span class="nav-number">6.2.</span> <span class="nav-text">confidence interval estimate</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#central-limit-theorem"><span class="nav-number">7.</span> <span class="nav-text">central limit theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#confidence-interval-estimate-1"><span class="nav-number">7.1.</span> <span class="nav-text">confidence interval estimate</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hypeothesis-testing"><span class="nav-number">8.</span> <span class="nav-text">hypeothesis testing</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#error"><span class="nav-number">8.0.1.</span> <span class="nav-text">error</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-single-mean"><span class="nav-number">8.1.</span> <span class="nav-text">for single mean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#difference-of-means"><span class="nav-number">8.2.</span> <span class="nav-text">difference of means</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mean-differences"><span class="nav-number">8.3.</span> <span class="nav-text">mean differences</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#single-variance"><span class="nav-number">8.4.</span> <span class="nav-text">single variance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#equality-of-two-variances"><span class="nav-number">8.5.</span> <span class="nav-text">equality of two variances</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#technical-analysis"><span class="nav-number">9.</span> <span class="nav-text">technical analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#chart"><span class="nav-number">9.0.1.</span> <span class="nav-text">chart</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#indicator"><span class="nav-number">9.0.2.</span> <span class="nav-text">indicator</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cycle-analysis"><span class="nav-number">9.1.</span> <span class="nav-text">cycle analysis</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">application</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.0.1.</span> <span class="nav-text">covariance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.0.2.</span> <span class="nav-text">correlation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">probability distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">continuous probability distribution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">simulation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">4.0.1.</span> <span class="nav-text">Monte Carlo simulation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">4.0.2.</span> <span class="nav-text">historical simulation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">estimate</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">6.1.</span> <span class="nav-text">point estimate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">6.2.</span> <span class="nav-text">confidence interval estimate</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">central limit theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">7.1.</span> <span class="nav-text">confidence interval estimate</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">hypeothesis testing</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">8.0.1.</span> <span class="nav-text">error</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">8.1.</span> <span class="nav-text">for single mean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">8.2.</span> <span class="nav-text">difference of means</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">8.3.</span> <span class="nav-text">mean differences</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">8.4.</span> <span class="nav-text">single variance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">8.5.</span> <span class="nav-text">equality of two variances</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">9.</span> <span class="nav-text">technical analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">9.0.1.</span> <span class="nav-text">chart</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">9.0.2.</span> <span class="nav-text">indicator</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">9.1.</span> <span class="nav-text">cycle analysis</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -812,7 +885,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -972,6 +1045,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
@@ -1306,19 +1390,6 @@
   </script>
 
 
-
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=6.0.2"></script>
 
 
 

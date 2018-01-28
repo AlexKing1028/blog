@@ -114,12 +114,12 @@
 <meta property="og:site_name" content="Wesley&#39;s blog">
 <meta property="og:description" content="cfa l1">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://chart.googleapis.com/chart?cht=tx&chl=L_%7By%7D%3D%5Cfrac%7B(n%2B1">
+<meta property="og:image" content="http://chart.googleapis.com/chart?cht=tx&chl=L_%7By%7D%3D%5Cfrac%7B(n%2B1)%7D%7Bpercentile%7D">
 <meta property="og:updated_time" content="2017-09-04T09:30:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Simple statistics">
 <meta name="twitter:description" content="cfa l1">
-<meta name="twitter:image" content="http://chart.googleapis.com/chart?cht=tx&chl=L_%7By%7D%3D%5Cfrac%7B(n%2B1">
+<meta name="twitter:image" content="http://chart.googleapis.com/chart?cht=tx&chl=L_%7By%7D%3D%5Cfrac%7B(n%2B1)%7D%7Bpercentile%7D">
 
 
 
@@ -235,6 +235,12 @@
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
         </li>
       
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-about"></i> <br />Über</a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -251,26 +257,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -316,7 +318,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wesley Shi">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -402,40 +404,50 @@
       
 
       
-        <h2 id="简单统计概念"><a href="#简单统计概念" class="headerlink" title="简单统计概念"></a>简单统计概念</h2><p>descriptive statistics &amp; inferential statistics</p>
+        <h2>简单统计概念</h2>
+<p>descriptive statistics &amp; inferential statistics</p>
 <ol>
 <li>nomial scale</li>
 <li>ordinal scale +排序</li>
 <li>interval scale +加减法</li>
 <li>ratio scale +乘除法</li>
 </ol>
-<h2 id="central-tendency"><a href="#central-tendency" class="headerlink" title="central tendency"></a>central tendency</h2><p>用于估计预期回报</p>
-<h3 id="均值"><a href="#均值" class="headerlink" title="均值"></a>均值</h3><p>population mean 总体的mean<br>sample mean 样本的mean</p>
-<h4 id="central-tendency-中心趋势"><a href="#central-tendency-中心趋势" class="headerlink" title="central tendency 中心趋势"></a>central tendency 中心趋势</h4><ol>
+<h2>central tendency</h2>
+<p>用于估计预期回报</p>
+<h3>均值</h3>
+<p>population mean 总体的mean
+sample mean 样本的mean</p>
+<h4>central tendency 中心趋势</h4>
+<ol>
 <li>arithmetic mean 对极值影响很大</li>
-<li>geometric mean<ul>
+<li>geometric mean
+<ul>
 <li>用于算平均回报，可以先+1，全部变为正的</li>
 </ul>
 </li>
-<li>harmonic mean<ul>
+<li>harmonic mean
+<ul>
 <li>多次等额不等价购买的平均成本</li>
 <li>机经</li>
 </ul>
 </li>
 </ol>
 <p>算数 &gt; 几何 &gt; 调和 数据集的varibility越大，3个数值的差距越大</p>
-<h3 id="other"><a href="#other" class="headerlink" title="other"></a>other</h3><p><strong>median</strong>, 不受极值影响, 当只使用了整个数据集中的一个/两个</p>
+<h3>other</h3>
+<p><strong>median</strong>, 不受极值影响, 当只使用了整个数据集中的一个/两个</p>
 <p><strong>mode</strong>, 可能有多个或没有, 对于nominal data比较适用</p>
-<h2 id="location-quantile"><a href="#location-quantile" class="headerlink" title="location - quantile"></a>location - quantile</h2><ol>
+<h2>location - quantile</h2>
+<ol>
 <li>quartile 四分位数</li>
 <li>quintile 五分位数</li>
 <li>deciles 十分位数</li>
 <li>percentiles 百分位数</li>
 </ol>
 <p>计算方式:</p>
-<p><img src="http://chart.googleapis.com/chart?cht=tx&amp;chl=L_%7By%7D%3D%5Cfrac%7B(n%2B1" alt="">%7D%7Bpercentile%7D)</p>
+<p><img src="http://chart.googleapis.com/chart?cht=tx&amp;chl=L_%7By%7D%3D%5Cfrac%7B(n%2B1)%7D%7Bpercentile%7D" alt=""></p>
 <p>求出来非整数，则将前后两个数按比例求一个中间数</p>
-<h2 id="dispersion"><a href="#dispersion" class="headerlink" title="dispersion"></a>dispersion</h2><p>用于衡量风险</p>
+<h2>dispersion</h2>
+<p>用于衡量风险</p>
 <ol>
 <li>range 极差，最大-最小</li>
 <li>mean absolute deviation(MAD) 平均绝对差</li>
@@ -444,25 +456,30 @@
 <li>coefficient of variation (CV)  变异系数</li>
 <li>sharp ratio 夏普比率</li>
 </ol>
-<p>Chebyshev’s inequality     切比雪夫不等式</p>
-<h2 id="skewness"><a href="#skewness" class="headerlink" title="skewness"></a>skewness</h2><p>skewness 偏度，一个分布是否对称</p>
+<p>Chebyshev's inequality 	切比雪夫不等式</p>
+<h2>skewness</h2>
+<p>skewness 偏度，一个分布是否对称</p>
 <ol>
 <li>= 0 对称，均值、中位数、众数相同</li>
-<li><blockquote>
+<li>
+<blockquote>
 <p>0 正偏，mean &gt; median &gt; mode</p>
 </blockquote>
 </li>
 <li>&lt; 0 负偏, mean &lt; median &lt; mode</li>
 </ol>
-<h2 id="kurtosis"><a href="#kurtosis" class="headerlink" title="kurtosis"></a>kurtosis</h2><p>峰度，和正太分布(峰度=3)相比</p>
+<h2>kurtosis</h2>
+<p>峰度，和正太分布(峰度=3)相比</p>
 <ol>
-<li>leptokurtic 尖峰态<ul>
+<li>leptokurtic 尖峰态
+<ul>
 <li>kurtosis &gt; 3, excess kurtosis &gt; 0</li>
 <li>more peaked, fatter tailed than normal distribution</li>
 </ul>
 </li>
 <li>mesokurtic 常峰态，正态分布</li>
-<li>platykurtic 平峰态<ul>
+<li>platykurtic 平峰态
+<ul>
 <li>kurtosis &lt; 3, excess kurtosis &lt; 0</li>
 <li>less peaked, slimmer tailed</li>
 </ul>
@@ -479,6 +496,20 @@
 
     
 
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>Wesley Shi</li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://yoursite.com/2017/09/02/simple-statistics/" title="Simple statistics">http://yoursite.com/2017/09/02/simple-statistics/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>All articles in this blog are licensed under CC BY 4.0 unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -531,6 +562,11 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="your uid"></div>
+    </div>
+
+  
 
 
 
@@ -566,6 +602,10 @@
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg"
+                alt="Wesley Shi" />
             
               <p class="site-author-name" itemprop="name">Wesley Shi</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -633,6 +673,12 @@
 
           
           
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
 
           
           
@@ -655,7 +701,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单统计概念"><span class="nav-number">1.</span> <span class="nav-text">简单统计概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#central-tendency"><span class="nav-number">2.</span> <span class="nav-text">central tendency</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#均值"><span class="nav-number">2.1.</span> <span class="nav-text">均值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#central-tendency-中心趋势"><span class="nav-number">2.1.1.</span> <span class="nav-text">central tendency 中心趋势</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#other"><span class="nav-number">2.2.</span> <span class="nav-text">other</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#location-quantile"><span class="nav-number">3.</span> <span class="nav-text">location - quantile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dispersion"><span class="nav-number">4.</span> <span class="nav-text">dispersion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#skewness"><span class="nav-number">5.</span> <span class="nav-text">skewness</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kurtosis"><span class="nav-number">6.</span> <span class="nav-text">kurtosis</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">简单统计概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">central tendency</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">均值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.1.</span> <span class="nav-text">central tendency 中心趋势</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">other</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">location - quantile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">dispersion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">skewness</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">kurtosis</span></a></li></ol></div>
             
 
           </div>
@@ -675,7 +721,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -835,6 +881,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
@@ -1169,19 +1226,6 @@
   </script>
 
 
-
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=6.0.2"></script>
 
 
 

@@ -238,6 +238,12 @@
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
         </li>
       
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-about"></i> <br />Über</a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -254,26 +260,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -319,7 +321,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wesley Shi">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -406,12 +408,14 @@
 
       
         <p>The mel-frequency cepstrum(MFC) is popular in sound processing. Mel-Frequency cepstral coefficients (MFCC) are coefficients that collectively make up an MFC. As the name suggests, MFC consists of two main parts: Mel frequency and cepstrum.</p>
-<h3 id="Mel-Frequency-Analysis"><a href="#Mel-Frequency-Analysis" class="headerlink" title="Mel Frequency Analysis"></a>Mel Frequency Analysis</h3><p>Mel-Frequency analysis is based on the finding of human perception experiments that human ear acts as filters, which is more sensitive to sound in low frequency than high frequency.</p>
+<h3>Mel Frequency Analysis</h3>
+<p>Mel-Frequency analysis is based on the finding of human perception experiments that human ear acts as filters, which is more sensitive to sound in low frequency than high frequency.</p>
 <p><img src="http://agriculture.oss-cn-shanghai.aliyuncs.com/Snip20170922_1.png" alt="mfcc slides from cmu"></p>
 <p>The mel-frequency function maps the linear frequency space, which is collected by audio devices, to a nonlinear space closer to human perception.</p>
 <p>$$mel(f) = 2595 \times log_{10}{(1+ \frac{f}{700})}$$</p>
 <p><img src="http://agriculture.oss-cn-shanghai.aliyuncs.com/Snip20170922_2.png" alt="function chart"></p>
-<h3 id="cepstrum-analysis"><a href="#cepstrum-analysis" class="headerlink" title="cepstrum analysis"></a>cepstrum analysis</h3><p>Suppose the speech spectrum as below:</p>
+<h3>cepstrum analysis</h3>
+<p>Suppose the speech spectrum as below:</p>
 <p><img src="http://agriculture.oss-cn-shanghai.aliyuncs.com/Snip20170922_5.png" alt=""></p>
 <p>The arrows point out the dominent frequencies in the spectrum, which carry the identity of the sound. These peaks make up an smooth curve, or envelope, of the spectrum, and the spectrum can be seperated as two parts, envolope and detail.</p>
 <p>Denote the total spectrum is X[k], the envolope is H[k] and detail is E[k]. We have (why??)</p>
@@ -423,12 +427,13 @@
 <p>Our goal is to extract the envolope from the spectrum. As is shown in charts above, if we treat the spectrum as a wave, the envelope corresponds to the <strong>low frequency</strong> part and details corresponds to <strong>high frequency</strong> part. So we take the FFT of the spectrum, which is named as inverse FFT(IFFT). Then we have the spectrum of spectrum :</p>
 <p>$$x[k]=h[k]+e[k]$$</p>
 <p>To get the envolope, we just put it through a low pass filter and transfer back to a spectrum.</p>
-<h3 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h3><p>The total progress is as follows:</p>
+<h3>summary</h3>
+<p>The total progress is as follows:</p>
 <ol>
 <li>transfer the original audio to spectrum by FFT</li>
 <li>map it to Mel-frequency scale</li>
 <li>get logarithm of the spectrum X[k]</li>
-<li>compute the ‘spectrum of spectrum’ x[k] by IFFT</li>
+<li>compute the 'spectrum of spectrum' x[k] by IFFT</li>
 <li>filter the high frequency part and transfer it back to a spectrum</li>
 </ol>
 <p>For speech synthesis task, we can get the MFCCs of two speech segments and join at the point that minimize the Euclidean distance of them.</p>
@@ -445,6 +450,20 @@
 
     
 
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>Wesley Shi</li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://yoursite.com/2017/09/22/Mel-Frequency-Cepstral-Coefficient/" title="Mel-Frequency Cepstral Coefficient">http://yoursite.com/2017/09/22/Mel-Frequency-Cepstral-Coefficient/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>All articles in this blog are licensed under CC BY 4.0 unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -497,6 +516,11 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="your uid"></div>
+    </div>
+
+  
 
 
 
@@ -532,6 +556,10 @@
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg"
+                alt="Wesley Shi" />
             
               <p class="site-author-name" itemprop="name">Wesley Shi</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -599,6 +627,12 @@
 
           
           
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
 
           
           
@@ -621,7 +655,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mel-Frequency-Analysis"><span class="nav-number">1.</span> <span class="nav-text">Mel Frequency Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cepstrum-analysis"><span class="nav-number">2.</span> <span class="nav-text">cepstrum analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summary"><span class="nav-number">3.</span> <span class="nav-text">summary</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Mel Frequency Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">cepstrum analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">summary</span></a></li></ol></div>
             
 
           </div>
@@ -641,7 +675,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -801,6 +835,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
@@ -1135,19 +1180,6 @@
   </script>
 
 
-
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=6.0.2"></script>
 
 
 

@@ -237,6 +237,12 @@
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
         </li>
       
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-about"></i> <br />Über</a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -253,26 +259,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -318,7 +320,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wesley Shi">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -404,10 +406,12 @@
       
 
       
-        <p>这段时间实验室比较闲，临时起意搭这么一个个人网站。<br>首先介绍一下用到的技术：这是一个纯静态网站，放在github pages上，使用jekyll生成，另外自己在namecheap上买了一个域名，绑到github自己生成的域名。技术其实相当简单。</p>
-<h2 id="jekyll"><a href="#jekyll" class="headerlink" title="jekyll"></a>jekyll</h2><p><a href="http://jekyll.com.cn" target="_blank" rel="noopener">jekyll</a>是一个将“纯文本转化为静态网站和博客”的工具，你可以用markdown（或Textile）写一堆文章，然后用jekyll的命令生成相同样式的html文件。</p>
+        <p>这段时间实验室比较闲，临时起意搭这么一个个人网站。
+首先介绍一下用到的技术：这是一个纯静态网站，放在github pages上，使用jekyll生成，另外自己在namecheap上买了一个域名，绑到github自己生成的域名。技术其实相当简单。</p>
+<h2>jekyll</h2>
+<p><a href="http://jekyll.com.cn" target="_blank" rel="noopener">jekyll</a>是一个将“纯文本转化为静态网站和博客”的工具，你可以用markdown（或Textile）写一堆文章，然后用jekyll的命令生成相同样式的html文件。</p>
 <p>jekyll几个重要的命令如下：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jekyll new my-site // 创建名为my-site的博客</span><br><span class="line"><span class="built_in">cd</span> my-site</span><br><span class="line">jekyll build // 编译</span><br><span class="line">jekyll serve // 起一个localhost服务器</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jekyll new my-site // 创建名为my-site的博客</span><br><span class="line"><span class="built_in">cd</span> my-site</span><br><span class="line">jekyll build // 编译</span><br><span class="line">jekyll serve // 起一个localhost服务器</span><br></pre></td></tr></table></figure></p>
 <p>手动赞一下 <em>jekyll serve</em>，支持实时更新，调试非常方便。</p>
 <p>jekyll项目一般包含这些文件：</p>
 <ul>
@@ -417,7 +421,8 @@
 <li>_data/ 网站可能用到的数据，可以是img、css、js等等</li>
 <li>_site/ 存放jekyll编译生成的静态网站</li>
 </ul>
-<h2 id="github-pages"><a href="#github-pages" class="headerlink" title="github pages"></a>github pages</h2><p>首先在github上新建一个repository存放网站。github会给你分配一个三级域名:</p>
+<h2>github pages</h2>
+<p>首先在github上新建一个repository存放网站。github会给你分配一个三级域名:</p>
 <blockquote>
 <p>username.github.io</p>
 </blockquote>
@@ -432,16 +437,18 @@
 <li>网上找个<a href="http://jekyllthemes.org" target="_blank" rel="noopener">jekyll theme</a>,自己只需要写文章放到 <strong>_posts</strong> 文件夹下面即可。</li>
 <li>github自带的主题</li>
 </ol>
-<p>笔者使用第二种方法。将选择的theme上传到repository中。需要注意的是，有的theme在github上有自己的repository，你可以fork或者 <strong>git push –mirror</strong> 迁移过来。repository中只需要保存原文件即可，github会自动帮你生成相应的html文件。因此，建议你将 <em>_site</em> 文件夹加到 <strong>.gitignore</strong> 中。</p>
-<h2 id="namecheap"><a href="#namecheap" class="headerlink" title="namecheap"></a>namecheap</h2><p>namecheap上的域名相对还是比较便宜的，购买需要paypal账号。假设你买的域名<strong>example.com</strong>，网站在github上的地址为<strong>username.github.io</strong>。先去github在repository setting页面，</p>
+<p>笔者使用第二种方法。将选择的theme上传到repository中。需要注意的是，有的theme在github上有自己的repository，你可以fork或者 <strong>git push --mirror</strong> 迁移过来。repository中只需要保存原文件即可，github会自动帮你生成相应的html文件。因此，建议你将 <em>_site</em> 文件夹加到 <strong>.gitignore</strong> 中。</p>
+<h2>namecheap</h2>
+<p>namecheap上的域名相对还是比较便宜的，购买需要paypal账号。假设你买的域名<strong>example.com</strong>，网站在github上的地址为<strong>username.github.io</strong>。先去github在repository setting页面，</p>
 <p><img src="http://livingalife.oss-cn-beijing.aliyuncs.com/github_settings.png" alt=""></p>
 <p>找到github pages一栏，修改custom domain</p>
 <p><img src="http://livingalife.oss-cn-beijing.aliyuncs.com/github_pages_custom.png" alt=""></p>
 <p>另外，你还需要去dns管理面板对<strong>www.example.com</strong>添加一个别名为<strong>username.github.io</strong></p>
 <p><img src="http://livingalife.oss-cn-beijing.aliyuncs.com/namecheap_hosts_record.png" alt=""></p>
 <p>CNAME记录需要过一段时间才能生效，linux或osx可以通过以下命令查看当前的域名解析情况。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig www.example.com</span><br></pre></td></tr></table></figure>
-<h1 id="完。"><a href="#完。" class="headerlink" title="完。"></a>完。</h1>
+<p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig www.example.com</span><br></pre></td></tr></table></figure></p>
+<h1>完。</h1>
+
       
     </div>
     
@@ -452,6 +459,20 @@
 
     
 
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>Wesley Shi</li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://yoursite.com/2017/08/01/github-pages-setup/" title="github pages建站">http://yoursite.com/2017/08/01/github-pages-setup/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>All articles in this blog are licensed under CC BY 4.0 unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -504,6 +525,11 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="your uid"></div>
+    </div>
+
+  
 
 
 
@@ -539,6 +565,10 @@
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg"
+                alt="Wesley Shi" />
             
               <p class="site-author-name" itemprop="name">Wesley Shi</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -606,6 +636,12 @@
 
           
           
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
 
           
           
@@ -628,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jekyll"><span class="nav-number">1.</span> <span class="nav-text">jekyll</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#github-pages"><span class="nav-number">2.</span> <span class="nav-text">github pages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#namecheap"><span class="nav-number">3.</span> <span class="nav-text">namecheap</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#完。"><span class="nav-number"></span> <span class="nav-text">完。</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">jekyll</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">github pages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">namecheap</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">完。</span></a></div>
             
 
           </div>
@@ -648,7 +684,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -808,6 +844,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
@@ -1142,19 +1189,6 @@
   </script>
 
 
-
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=6.0.2"></script>
 
 
 

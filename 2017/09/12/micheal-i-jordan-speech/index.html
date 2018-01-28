@@ -233,6 +233,12 @@
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
         </li>
       
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-about"></i> <br />Über</a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -249,26 +255,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -314,7 +316,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wesley Shi">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -402,22 +404,25 @@
       
         <p>machine learning = statistics + optimization</p>
 <p>data science = machine learning + system</p>
-<h2 id="covex-optimization"><a href="#covex-optimization" class="headerlink" title="covex optimization"></a>covex optimization</h2><p>smooth –&gt; unsmooth<br>differentiate –&gt; subgradient</p>
+<h2>covex optimization</h2>
+<p>smooth --&gt; unsmooth<br>
+differentiate --&gt; subgradient</p>
 <p>Lipschitz function</p>
 <p>Nesterov acceleration</p>
 <p><strong>strong convex</strong></p>
 <p>gradient descent is dimension-independent</p>
 <p>stocahstic gradient descent</p>
 <p>SAGA, SVRG and SCSG</p>
-<p>Y. Nesterov’s book</p>
+<p>Y. Nesterov's book</p>
 <p>how to proof gradient descent</p>
-<p>blog: off the convex path – Chi Jin</p>
-<h2 id="statistics"><a href="#statistics" class="headerlink" title="statistics"></a>statistics</h2><p>frequency is more about analysis and baye sian is more about design.</p>
+<p>blog: off the convex path -- Chi Jin</p>
+<h2>statistics</h2>
+<p>frequency is more about analysis and baye sian is more about design.</p>
 <p>frequency statistics think of many datasets, but beyesian statistics only stick to one dataset, the truth.</p>
-<p>Boncheron lugosi and Massart’s book</p>
+<p>Boncheron lugosi and Massart's book</p>
 <p><strong>Bootstrap</strong> randomly choose data from dataset to compose different datasets.</p>
-<p>Efron &amp; Tibshirani’s book about bootstrap</p>
-<p>Aadityn Ranmdas Berkeley – false discovery rate(FDR)</p>
+<p>Efron &amp; Tibshirani's book about bootstrap</p>
+<p>Aadityn Ranmdas Berkeley -- false discovery rate(FDR)</p>
 
       
     </div>
@@ -429,6 +434,20 @@
 
     
 
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>Wesley Shi</li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://yoursite.com/2017/09/12/micheal-i-jordan-speech/" title="speech of Micheal Jordan">http://yoursite.com/2017/09/12/micheal-i-jordan-speech/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>All articles in this blog are licensed under CC BY 4.0 unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -481,6 +500,11 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="your uid"></div>
+    </div>
+
+  
 
 
 
@@ -516,6 +540,10 @@
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://livingalife.oss-cn-beijing.aliyuncs.com/onepunch.jpg"
+                alt="Wesley Shi" />
             
               <p class="site-author-name" itemprop="name">Wesley Shi</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -583,6 +611,12 @@
 
           
           
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
 
           
           
@@ -605,7 +639,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#covex-optimization"><span class="nav-number">1.</span> <span class="nav-text">covex optimization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#statistics"><span class="nav-number">2.</span> <span class="nav-text">statistics</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">covex optimization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">statistics</span></a></li></ol></div>
             
 
           </div>
@@ -625,7 +659,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -785,6 +819,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
@@ -1119,19 +1164,6 @@
   </script>
 
 
-
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=6.0.2"></script>
 
 
 
