@@ -412,13 +412,13 @@
 
       
         <p>The mel-frequency cepstrum(MFC) is popular in sound processing. Mel-Frequency cepstral coefficients (MFCC) are coefficients that collectively make up an MFC. As the name suggests, MFC consists of two main parts: Mel frequency and cepstrum.</p>
-<h3>Mel Frequency Analysis</h3>
+<h3 id="mel-frequency-analysis">Mel Frequency Analysis</h3>
 <p>Mel-Frequency analysis is based on the finding of human perception experiments that human ear acts as filters, which is more sensitive to sound in low frequency than high frequency.</p>
 <p><img src="http://agriculture.oss-cn-shanghai.aliyuncs.com/Snip20170922_1.png" alt="mfcc slides from cmu"></p>
 <p>The mel-frequency function maps the linear frequency space, which is collected by audio devices, to a nonlinear space closer to human perception.</p>
 <p>$$mel(f) = 2595 \times log_{10}{(1+ \frac{f}{700})}$$</p>
 <p><img src="http://agriculture.oss-cn-shanghai.aliyuncs.com/Snip20170922_2.png" alt="function chart"></p>
-<h3>cepstrum analysis</h3>
+<h3 id="cepstrum-analysis">cepstrum analysis</h3>
 <p>Suppose the speech spectrum as below:</p>
 <p><img src="http://agriculture.oss-cn-shanghai.aliyuncs.com/Snip20170922_5.png" alt=""></p>
 <p>The arrows point out the dominent frequencies in the spectrum, which carry the identity of the sound. These peaks make up an smooth curve, or envelope, of the spectrum, and the spectrum can be seperated as two parts, envolope and detail.</p>
@@ -431,7 +431,7 @@
 <p>Our goal is to extract the envolope from the spectrum. As is shown in charts above, if we treat the spectrum as a wave, the envelope corresponds to the <strong>low frequency</strong> part and details corresponds to <strong>high frequency</strong> part. So we take the FFT of the spectrum, which is named as inverse FFT(IFFT). Then we have the spectrum of spectrum :</p>
 <p>$$x[k]=h[k]+e[k]$$</p>
 <p>To get the envolope, we just put it through a low pass filter and transfer back to a spectrum.</p>
-<h3>summary</h3>
+<h3 id="summary">summary</h3>
 <p>The total progress is as follows:</p>
 <ol>
 <li>transfer the original audio to spectrum by FFT</li>
@@ -606,6 +606,23 @@
               
 
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
             </nav>
           
 
@@ -659,7 +676,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Mel Frequency Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">cepstrum analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">summary</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#mel-frequency-analysis"><span class="nav-number">1.</span> <span class="nav-text">Mel Frequency Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cepstrum-analysis"><span class="nav-number">2.</span> <span class="nav-text">cepstrum analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summary"><span class="nav-number">3.</span> <span class="nav-text">summary</span></a></li></ol></div>
             
 
           </div>

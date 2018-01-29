@@ -408,7 +408,7 @@
       
         <p>问题是这样的，一个图(direct or undirect)中每条边不仅有长度(length)这个属性，还有花费(cost)属性，要求在所有可能的生成树中找到一棵 总长度/总花费 最大的一个。</p>
 <p>这样的树称为<em>最优比例生成树</em>，例题可以看 <a href="http://poj.org/problem?id=2728" target="_blank" rel="noopener">POJ 2728</a>。这类问题是典型的使用<em>01分数规划</em>解决的问题。</p>
-<h4>01分数规划</h4>
+<h4 id="01分数规划">01分数规划</h4>
 <p>给定两个数组，$a[i]$表示取i的收益，$b[i]$表示取i的代价，选择一部分元素，使单位收益的代价最小，即</p>
 <p>$$max{\frac{\sum{a[i]x[i]}}{\sum{b[i]x[i]}}}$$</p>
 <p>$x[i]=1$表示选择i元素，$x[i]=0$表示不选。</p>
@@ -429,7 +429,7 @@
 <li>根据这个$x[1..n]$值计算ratio，更新$l$值。迭代23步，直到$f$值等于0(理想结果)或小于一个tolerance $\epsilon$</li>
 </ol>
 <p>这种方法会使$l$朝着一个方向逼近最优值，实际性能比二分法好不少。</p>
-<h4>最优比例生成树</h4>
+<h4 id="最优比例生成树">最优比例生成树</h4>
 <p>回到原问题，我们需要找到一个生成树(对应01问题的解)，使比例最大。</p>
 <p>那么，对于每次迭代的$l$值，我们建立边权重为$d[i]$的图，找到<em>权重和最大</em>的生成树，此时$f$去最大。若$f$值小于0，意味着不存在解，下一次迭代$l$值应该减小；若$f$值大于0，意味着这个生成树便是一个解，更新$l$值继续迭代。<strong>必然存在一个临界状态，得到的生成树使得$f$值刚好为0</strong>，便是目标解。</p>
 <p>找权重最大的生成树用Prime或Kruskal算法即可，其他没什么区别。</p>
@@ -596,6 +596,23 @@
               
 
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
             </nav>
           
 
@@ -649,7 +666,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">01分数规划</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">最优比例生成树</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#01分数规划"><span class="nav-number">1.</span> <span class="nav-text">01分数规划</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最优比例生成树"><span class="nav-number">2.</span> <span class="nav-text">最优比例生成树</span></a></li></ol></div>
             
 
           </div>

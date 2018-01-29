@@ -406,28 +406,28 @@
       
 
       
-        <h2>题目</h2>
-<h4>139.</h4>
+        <h2 id="题目">题目</h2>
+<h4 id="139">139.</h4>
 <p>Give you a string and a string array:</p>
 <blockquote>
 <p>s = 'leetcode'
 array = ['leet', 'code']</p>
 </blockquote>
 <p>Now, tell me weather string $s$ can be concatenated by words in $array$?</p>
-<h4>472.</h4>
+<h4 id="472">472.</h4>
 <p>Give you a string array:</p>
 <blockquote>
 <p>array = [&quot;cat&quot;, &quot;cats&quot;, &quot;catsdogcats&quot;, &quot;dog&quot;, &quot;dogcatsdog&quot;, &quot;hippopotamuses&quot;, &quot;rat&quot;, &quot;ratcatsdogcat&quot;]</p>
 </blockquote>
 <p>Now, tell me which word can be concatenated by other words except itself.</p>
 <p>Note: the same words can be used multiple times.</p>
-<h2>分析</h2>
+<h2 id="分析">分析</h2>
 <p>These two question is similar. There are mainly two kind of solutions for both.</p>
-<h4>1. DP solution</h4>
+<h4 id="1-dp-solution">1. DP solution</h4>
 <p>Define a bool array s[...] to be whether the prefix of a word can be concatenated.</p>
 <p>For example, for word w, if s[k] is true, it means that w[1...k] can be concatenated by words in the $array$. We split w[1...k] in any positions to find whether there exists one position t, where w[t...k] is in the $array$ and s[t] is true.</p>
 <p>So the complexity for this function is $O(n^2)$, ignoring the time of map search.</p>
-<h4>2. Trie</h4>
+<h4 id="2-trie">2. Trie</h4>
 <p>First, construct the Trie tree using all the words in the array.</p>
 <p>Then, DFS the target word. When it come to a leaf node and the target word still has chars, researching the remaining chars from the root.</p>
 <p>....</p>
@@ -594,6 +594,23 @@ array = ['leet', 'code']</p>
               
 
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
             </nav>
           
 
@@ -647,7 +664,7 @@ array = ['leet', 'code']</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.1.</span> <span class="nav-text">139.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.2.</span> <span class="nav-text">472.</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.0.1.</span> <span class="nav-text">1. DP solution</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.0.2.</span> <span class="nav-text">2. Trie</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#139"><span class="nav-number">1.0.1.</span> <span class="nav-text">139.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#472"><span class="nav-number">1.0.2.</span> <span class="nav-text">472.</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-dp-solution"><span class="nav-number">2.0.1.</span> <span class="nav-text">1. DP solution</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-trie"><span class="nav-number">2.0.2.</span> <span class="nav-text">2. Trie</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

@@ -406,18 +406,18 @@
       
 
       
-        <h3>R-cnn</h3>
+        <h3 id="r-cnn">R-cnn</h3>
 <p>...</p>
-<h3>Fast R-cnn</h3>
+<h3 id="fast-r-cnn">Fast R-cnn</h3>
 <p>Fast R-cnn相比于R-cnn有两个改动。</p>
 <ol>
 <li>对原始图片先提取特征，在特征图上用SS获取推荐的region。相比于RCNN先提取region，再对每个region提取特征，Fast R-cnn对每张图片只需要提取一次特征。但是带来的问题是，在特征图上推荐的bbox大小不一，需要resize到一个尺寸才能进入下一层网络。如果简单的使用resize(R-cnn中的做法)，在cnn中不能做反向传播，因此作者设计了新的层——<strong>RoI pooling</strong>，做法就是将ROI等分为$n \times m$个区域，对每个小区域进行pooling，这样对于任何大小的ROI特征，都能转化为$n \times m$个特征。</li>
 <li>使用softmax进行分类，R-cnn使用SVM。</li>
 </ol>
-<h3>Faster R-cnn</h3>
+<h3 id="faster-r-cnn">Faster R-cnn</h3>
 <p>前面两个RCNN使用Selective Search来获取ROI，但是SS算法的效果还不是很好，Faster R-cnn提出使用一种神经网络提取ROI，即<strong>Region Proposal Network</strong>(RPN)，而其他部分和Fast R-cnn相同。</p>
 <p>RPN先根据这个特征图，在图上选择一些点设置锚(anchor)框作为初始ROI，经过Conv网络分成两个分支，分别执行两个任务：框的微调(bounding box regression)和分类。分类的任务在于判断这个初始ROI是背景还是前景(即我们要识别的物体)。RPN得到最终的训练结果后，只将判定为前景的BBox输出。</p>
-<h3>SSD</h3>
+<h3 id="ssd">SSD</h3>
 <p><strong>Single Shot MultiBox Detector</strong> 单发多框检测器</p>
 <p>SSD将region proposal和分类同意成一个步骤进行，即“单发”。这样模型更简单、更快。</p>
 <p>主要有两点思路：</p>
@@ -588,6 +588,23 @@
               
 
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
             </nav>
           
 
@@ -641,7 +658,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">R-cnn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Fast R-cnn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Faster R-cnn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">SSD</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#r-cnn"><span class="nav-number">1.</span> <span class="nav-text">R-cnn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fast-r-cnn"><span class="nav-number">2.</span> <span class="nav-text">Fast R-cnn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#faster-r-cnn"><span class="nav-number">3.</span> <span class="nav-text">Faster R-cnn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssd"><span class="nav-number">4.</span> <span class="nav-text">SSD</span></a></li></ol></div>
             
 
           </div>

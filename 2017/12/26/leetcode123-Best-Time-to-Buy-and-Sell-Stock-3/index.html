@@ -406,9 +406,9 @@
       
 
       
-        <h2>题目</h2>
+        <h2 id="题目">题目</h2>
 <p>给你一个数列，每个数字代表一个时刻的股票价格，求最多两次交易的情况下，能获得的最大收益。</p>
-<h2>题解</h2>
+<h2 id="题解">题解</h2>
 <p>由于最多两次交易，定义4个状态：</p>
 <ol>
 <li>只买入一次</li>
@@ -419,7 +419,7 @@
 <p>子问题结构是，我们已知前$i$个时刻 1~4 个状态下的最大收益，更新前$i+1$时刻的最大收益。例如：</p>
 <p>前$i+1$个时刻只买入一次的最大收益为<em>前$i$时刻只买一次的最大收益</em>和<em>只买$i+1$时刻的收益</em>的最大值。</p>
 <p>前$i+1$个时刻买入一次，卖出一次的最大收益为<em>前$i$时刻只买入一次并在$i+1$时刻卖出的收益</em>和*前$i$时刻买入一次，卖出一次的最大收益($i+1$时刻啥都不做)*的最大值。</p>
-<h2>code</h2>
+<h2 id="code">code</h2>
 <p>。。。</p>
 
       
@@ -584,6 +584,23 @@
               
 
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
             </nav>
           
 
@@ -637,7 +654,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">code</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code"><span class="nav-number">3.</span> <span class="nav-text">code</span></a></li></ol></div>
             
 
           </div>

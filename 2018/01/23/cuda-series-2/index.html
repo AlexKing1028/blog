@@ -406,7 +406,7 @@
       
 
       
-        <h2>一些术语</h2>
+        <h2 id="一些术语">一些术语</h2>
 <ol>
 <li>host 主机端，即CPU</li>
 <li>Device 设备端，即GPU</li>
@@ -419,13 +419,13 @@
 </ul>
 </li>
 </ol>
-<h2>线程的层次</h2>
+<h2 id="线程的层次">线程的层次</h2>
 <p>grid(公司) --&gt; block(科室) --&gt; thread(员工)</p>
 <p>线程块之间彼此独立运行，块内线程可以同步</p>
 <p>线程不可以写constant memory</p>
-<h2>函数</h2>
-<p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cudaMalloc((<span class="keyword">void</span>**)&amp;p, size)</span><br><span class="line"></span><br><span class="line"><span class="comment">// host与device的内存拷贝</span></span><br><span class="line">cudaMemcpy()</span><br></pre></td></tr></table></figure></p>
-<h2>算法框架</h2>
+<h2 id="函数">函数</h2>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cudaMalloc((<span class="keyword">void</span>**)&amp;p, size)</span><br><span class="line"></span><br><span class="line"><span class="comment">// host与device的内存拷贝</span></span><br><span class="line">cudaMemcpy()</span><br></pre></td></tr></table></figure>
+<h2 id="算法框架">算法框架</h2>
 <ul>
 <li>allocate memory
 <ol>
@@ -599,6 +599,23 @@
               
 
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
             </nav>
           
 
@@ -652,7 +669,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">一些术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">线程的层次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">算法框架</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一些术语"><span class="nav-number">1.</span> <span class="nav-text">一些术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程的层次"><span class="nav-number">2.</span> <span class="nav-text">线程的层次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">3.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法框架"><span class="nav-number">4.</span> <span class="nav-text">算法框架</span></a></li></ol></div>
             
 
           </div>

@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[773 Sliding Puzzle]]></title>
+    <url>%2F2018%2F01%2F29%2F773-Sliding-Puzzle%2F</url>
+    <content type="text"><![CDATA[题目链接 description 对于一个 $2 \times 3$的长方形方格，分别填上$1,2,3,4,5,0$。格子中的$0$可以和上下左右的方块交换位置。给定一个填上数字的方格，例如： 4 1 3 2 5 0 求问最少经过多少交换能到达： 1 2 3 4 5 0 小时候其实大家应该都玩过，类似拼图的东西，英文叫做sliding puzzle wiki 思路 最开始考虑能不能找到什么策略能够保证找到的路径是最短的，没想到…… 那么暴力搜索呢？ 可以发现，搜索空间并不大，总共6个格子，$6!=720$种可能。因此很简单，BFS或者DFS搜索即可。。。 一些小优化 如果对于每个乱序的方格，我们都从它开始搜索到达 123450 的次数。但是，如果考虑多次查询的情况，我们可以从 123450 开始搜索，直到找到原始的方格。我们可以顺便记录下BFS遍历到的所有状态，方便下次查询。 所以，这个题目由于搜索空间比较小，其实还是很简单的。。。]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[tensorflow备忘录]]></title>
-    <url>%2F2018%2F01%2F27%2Ftensorflow-memorandum%2F</url>
-    <content type="text"><![CDATA[Estimators Tensors]]></content>
+    <url>%2F2018%2F01%2F29%2Ftensorflow-memorandum%2F</url>
+    <content type="text"><![CDATA[Tensor main types Variable constant placeholder SparseTensor basic usages 12345678910111213141516171819202122# inita0 = tf.Variable(3.0, tf.float64)a1 = tf.Variable([3.0, 3.1], tf.float64)# ranktf.rank(a1) # output 1# slicematrix[1,2]matrix[2] # 2nd linematrix[:,3] # 3rd column# shapematrix.shape # a tensorshape object# reshapetf.reshape(matrix, target_shape)# casttf.cast(matrix, tf.target_type)# evalmatrix.eval() # compute the graph and get the value Variable a special tensor, constant in multiple session.run() calls 1234567891011121314151617181920# initmy_local = tf.get_variable("variable name", shape=[shape], dtype=tf.type, initializer=init_op)# set not trainablemy_local = tf.get_variable("my_local", shape=(), collections=[tf.GraphKeys.LOCAL_VARIABLES])# variables should be placed on parameter serverswith tf.device("/device:GPU:1"): v = tf.get_variable("v", [1]) # initialization dependencyw = tf.get_variable("w", initializer=v.initialized_value() + 1)# scopewith tf.variable_scope("conv1"): weights = tf.get_variable("weights", kernel_shape, initializer=tf.random_normal_initializer()) # reuse scope.reuse_variables() ... Estimator pre-made estimator input function 123def input_fn(dataset): ...# manipulate dataset, extracting feature names and the label return feature_dict, label feature columns 12345# Define three numeric feature columns.population = tf.feature_column.numeric_column('population')crime_rate = tf.feature_column.numeric_column('crime_rate')median_education = tf.feature_column.numeric_column('median_education', normalizer_fn='lambda x: x - global_education_mean') init estimator 123estimator = tf.estimator.Estimator.LinearClassifier( feature_columns=[population, crime_rate, median_education], ) training, evaluation or prediction 1estimator.train(input_fn=my_training_set, steps=2000) custom estimator The only difference from pre-made estimators is that the mode function should be implemented by yourself. input function, similar to pre-made ones feature columns... model function 1234567# return tf.estimator.EstimatorSpec object# see https://www.tensorflow.org/api_docs/python/tf/estimator/EstimatorSpecdef my_model_fn( features, # This is batch_features from input_fn labels, # This is batch_labels from input_fn mode, # An instance of tf.estimator.ModeKeys params): # Additional configuration init estimator 123456789classifier = tf.estimator.Estimator( model_fn=my_model_fn, params=&#123; 'feature_columns': my_feature_columns, # Two hidden layers of 10 nodes each. 'hidden_units': [10, 10], # The model must choose between 3 classes. 'n_classes': 3, &#125;) train, evaluation and prediction]]></content>
       <categories>
         <category>machine learning</category>
       </categories>
+      <tags>
+        <tag>deep learning</tag>
+        <tag>tensorflow</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[最近接到的关于动漫图像识别的任务调研]]></title>
@@ -59,7 +74,7 @@
   <entry>
     <title><![CDATA[Suffix Automaton]]></title>
     <url>%2F2017%2F12%2F27%2Fsuffix-series%2F</url>
-    <content type="text"><![CDATA[后缀自动机 网上有很多关于后缀自动机的文章，我这边就简单记录一下： suffix_automata 不过是俄文…… 后缀自动机详解—CSDN 这篇对原理讲的还算清楚，给了代码模板 后缀自动机学习总结 想看例子的这个比较好，给出了 $ACADD$ 构成自动机的完整过程 usage 从根节点出发，任一的路径对应一个子串 节点i可以接受的状态相互呈后缀关系，且长度为一个区间，即$[maxlen, minlen]$ 节点i的父亲所能接受的所有子串是节点i能接受的子串的后缀 给几个应用的习题 给一个字符串，每次可以将第一个字符移到最后面，问所能得到的字典序最小的字符是什么？例如BBAAB，最小是AABBB。提示：对字符串S，创建SS的自动机 求两个字符串的最长公共子序列？我们知道常见的思路是dp，时间复杂度在$O(AB)$。提示：对字符串A创建自动机，依次读取字符串B，求$B_j$之前最长有多少字符和A匹配，时间复杂度创建自动机O(A)，搜索O(B) 求子序列s在A中出现的次数？提示：在子串s对于的状态S下，逆向遍历后缀链接，求子孙节点总数 求A的所有子序列中字典序第$k$个是？提示：对字符串A创建自动机，记录从状态s开始能接收的总子序列数，再用dfs搜索第k个 变体：区分不同位置的相同子序列？ OJ 找到子串在字符串中第一次出现的位置？提示：在构建自动机时，记录子串第一次出现的位置，等于状态的$len-1$，clone时将其等于clone的那个q的值 code 找到子串在字符串中所有位置？ 提示：与4类似，先求出第一次出现位置，逆向遍历所有后缀链接，指向的状态的首次出现的位置都是子串能够出现的位置 code 一些思考 后缀自动机的每个节点对应一个终点等价类，即right集合。例如状态v对应一组长度从[minlen, maxlen]的子串集合，这些子串在字符串中出现的位置的终点是完全相同的。 状态v中的子串第一次出现的位置便是状态第一次添加的位置。逆向遍历后缀链接可以得到某子串所有出现的位置。 后缀数组 这里只讲一下倍增算法。code 倍增算法的主要思想就是，如果我对所有后缀的前$2^k$进行排序，那么对前$2^{k+1}$进行排序时，后缀$s[i]$和$s[j]$若前$2^k$个字符相同，则只需要检查$s[i+2^k]$和$s[j+2^k]$的顺序即可。 核心还是使用了短后缀必然是长后缀的后缀这样的性质简化了判断。 具体实现中，我们从$k=0, 2^k=1$开始，进行桶排序，对每个后缀标号，相同前缀的后缀的标号相同。从$k$到$k+1$的迭代中，先根据后缀的$2^k+1...2^{k+1}$位的排序（直接根据前$2^k$位的排序结果），然后依次往$2^k$的桶里面填，就得到了$2^{k+1}$的排序结果。最后要注意更新标号。]]></content>
+    <content type="text"><![CDATA[后缀自动机 网上有很多关于后缀自动机的文章，我这边就简单记录一下： suffix_automata 不过是俄文…… 后缀自动机详解—CSDN 这篇对原理讲的还算清楚，给了代码模板 后缀自动机学习总结 想看例子的这个比较好，给出了 $ACADD$ 构成自动机的完整过程 usage 从根节点出发，任一的路径对应一个子串 节点i可以接受的状态相互呈后缀关系，且长度为一个区间，即$[maxlen, minlen]$ 节点i的父亲所能接受的所有子串是节点i能接受的子串的后缀 给几个应用的习题 给一个字符串，每次可以将第一个字符移到最后面，问所能得到的字典序最小的字符是什么？例如BBAAB，最小是AABBB。提示：对字符串S，创建SS的自动机 求两个字符串的最长公共子序列？我们知道常见的思路是dp，时间复杂度在$O(AB)$。提示：对字符串A创建自动机，依次读取字符串B，求$B_j$之前最长有多少字符和A匹配，时间复杂度创建自动机O(A)，搜索O(B) 求子序列s在A中出现的次数？提示：在子串s对于的状态S下，逆向遍历后缀链接，求子孙节点总数 求A的所有子序列中字典序第$k$个是？提示：对字符串A创建自动机，记录从状态s开始能接收的总子序列数，再用dfs搜索第k个 变体：区分不同位置的相同子序列？ OJ 找到子串在字符串中第一次出现的位置？提示：在构建自动机时，记录子串第一次出现的位置，等于状态的$len-1$，clone时将其等于clone的那个q的值 code 找到子串在字符串中所有位置？ 提示：与4类似，先求出第一次出现位置，逆向遍历所有后缀链接，指向的状态的首次出现的位置都是子串能够出现的位置 code 一些思考 后缀自动机的每个节点对应一个终点等价类，即right集合。例如状态v对应一组长度从[minlen, maxlen]的子串集合，这些子串在字符串中出现的位置的终点是完全相同的。 状态v中的子串第一次出现的位置便是状态第一次添加的位置。逆向遍历后缀链接可以得到某子串所有出现的位置。 后缀数组 这里只讲一下倍增算法。code 倍增算法的主要思想就是，如果我对所有后缀的前$2k$进行排序，那么对前$2{k+1}$进行排序时，后缀$s[i]$和$s[j]$若前$2k$个字符相同，则只需要检查$s[i+2k]$和$s[j+2^k]$的顺序即可。 核心还是使用了短后缀必然是长后缀的后缀这样的性质简化了判断。 具体实现中，我们从$k=0, 2k=1$开始，进行桶排序，对每个后缀标号，相同前缀的后缀的标号相同。从$k$到$k+1$的迭代中，先根据后缀的$2k+1...2{k+1}$位的排序（直接根据前$2k$位的排序结果），然后依次往$2k$的桶里面填，就得到了$2{k+1}$的排序结果。最后要注意更新标号。]]></content>
       <categories>
         <category>algorithm</category>
       </categories>
@@ -185,17 +200,17 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[行业分析、股票估值]]></title>
-    <url>%2F2017%2F08%2F21%2Findustrial-analysis%2F</url>
-    <content type="text"><![CDATA[internal competitive forces number of competitiors: + products differences: - exit barrier: +, e.g. 生产设备的投资很高 demand for product: + product shelf life: the shorter, the greater the price competition new entrant threats economies of scale: difficult to enter ... supplier bargaining forces(来自供应商的压力) customer bargaining forces(来自消费者) macroeconomic influences GDP, Interest rates, Inflation... technological influences social influences e.g. spend more money in travelling... demographic influences age distribution, population size equity valuation model discounted cash flow model multiplier models(价格乘数模型): P/E 市盈率 P/B 市净率 ... law of one price: 设置一个benchmark，和上述比率相比]]></content>
+    <title><![CDATA[cfa l1 经济学基础知识补缺]]></title>
+    <url>%2F2017%2F08%2F21%2Fbasics-gleaning%2F</url>
+    <content type="text"><![CDATA[失业类型 frictional unemployment(摩擦性失业): 在双选期间的失业状态 structural unemployment(结构性失业): 经济结构调整的结果 cyclical unemployment(周期性失业): 经济衰退引发的失业 贸易区类别 free trade areas(自由贸易区): 自由交易，东南亚 customs union(关税同盟): 相同的关税政策 common market(共同市场): 要素自由流动，南美 economic union(经济联盟): 相同的经济政策 monetary union(货币联盟): 相同的货币政策 证券 固定收益证券 Repurchase Agreements(RPs, 回购协议): 卖出自己的债权，并承诺一段时间后以更高的价格购回 权益证券 Preffered Stock(优先股): 可以定期分红，没有表决权，没有期限 Warrant(认股权证): 可以在一段时间之后以之前约定的价格购买股票 集合投资工具 Mutual Fund(共同基金，互惠基金): 股票基金：投资标的，筹得的基金去投资股票 债权基金 货币市场基金 Exchange-Traded Fund(ETF, 交易所交易基金): 基金份额可以公开交易，比Mutual Fund流动性更好，相比股票税率更低 衍生产品 合约： Forward Contract(远期合约): 有信用风险，到期强制购买 Futures Contract(期货合约): 交易所担保的，到期强制购买 Options Contract(期权合约): 到期可以选择不购买]]></content>
       <categories>
         <category>cfa</category>
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[cfa l1 经济学基础知识补缺]]></title>
-    <url>%2F2017%2F08%2F21%2Fbasics-gleaning%2F</url>
-    <content type="text"><![CDATA[失业类型 frictional unemployment(摩擦性失业): 在双选期间的失业状态 structural unemployment(结构性失业): 经济结构调整的结果 cyclical unemployment(周期性失业): 经济衰退引发的失业 贸易区类别 free trade areas(自由贸易区): 自由交易，东南亚 customs union(关税同盟): 相同的关税政策 common market(共同市场): 要素自由流动，南美 economic union(经济联盟): 相同的经济政策 monetary union(货币联盟): 相同的货币政策 证券 固定收益证券 Repurchase Agreements(RPs, 回购协议): 卖出自己的债权，并承诺一段时间后以更高的价格购回 权益证券 Preffered Stock(优先股): 可以定期分红，没有表决权，没有期限 Warrant(认股权证): 可以在一段时间之后以之前约定的价格购买股票 集合投资工具 Mutual Fund(共同基金，互惠基金): 股票基金：投资标的，筹得的基金去投资股票 债权基金 货币市场基金 Exchange-Traded Fund(ETF, 交易所交易基金): 基金份额可以公开交易，比Mutual Fund流动性更好，相比股票税率更低 衍生产品 合约： Forward Contract(远期合约): 有信用风险，到期强制购买 Futures Contract(期货合约): 交易所担保的，到期强制购买 Options Contract(期权合约): 到期可以选择不购买]]></content>
+    <title><![CDATA[行业分析、股票估值]]></title>
+    <url>%2F2017%2F08%2F21%2Findustrial-analysis%2F</url>
+    <content type="text"><![CDATA[internal competitive forces number of competitiors: + products differences: - exit barrier: +, e.g. 生产设备的投资很高 demand for product: + product shelf life: the shorter, the greater the price competition new entrant threats economies of scale: difficult to enter ... supplier bargaining forces(来自供应商的压力) customer bargaining forces(来自消费者) macroeconomic influences GDP, Interest rates, Inflation... technological influences social influences e.g. spend more money in travelling... demographic influences age distribution, population size equity valuation model discounted cash flow model multiplier models(价格乘数模型): P/E 市盈率 P/B 市净率 ... law of one price: 设置一个benchmark，和上述比率相比]]></content>
       <categories>
         <category>cfa</category>
       </categories>
@@ -223,10 +238,5 @@
       <categories>
         <category>tools</category>
       </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2017%2F01%2F01%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick Start Create a new post 1$ hexo new "My New Post" More info: Writing Run server 1$ hexo server More info: Server Generate static files 1$ hexo generate More info: Generating Deploy to remote sites 1$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>

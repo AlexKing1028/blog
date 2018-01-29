@@ -108,30 +108,31 @@
 
 
   
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="leetcode," />
 
 
-<meta name="description" content="cfa l1">
+<meta name="description" content="leetcode 773">
+<meta name="keywords" content="leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cfa l1 前导知识点--利率计算">
-<meta property="og:url" content="http://www.livinga.life/2017/08/20/cfa-pre-course/index.html">
+<meta property="og:title" content="773 Sliding Puzzle">
+<meta property="og:url" content="http://www.livinga.life/2018/01/29/773-Sliding-Puzzle/index.html">
 <meta property="og:site_name" content="Wesley&#39;s blog">
-<meta property="og:description" content="cfa l1">
+<meta property="og:description" content="leetcode 773">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-08-20T16:34:00.000Z">
+<meta property="og:updated_time" content="2018-01-29T15:38:18.839Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cfa l1 前导知识点--利率计算">
-<meta name="twitter:description" content="cfa l1">
+<meta name="twitter:title" content="773 Sliding Puzzle">
+<meta name="twitter:description" content="leetcode 773">
 
 
 
 
 
 
-  <link rel="canonical" href="http://www.livinga.life/2017/08/20/cfa-pre-course/"/>
+  <link rel="canonical" href="http://www.livinga.life/2018/01/29/773-Sliding-Puzzle/"/>
 
 
-  <title>cfa l1 前导知识点--利率计算 | Wesley's blog</title>
+  <title>773 Sliding Puzzle | Wesley's blog</title>
   
 
 
@@ -315,7 +316,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.livinga.life/2017/08/20/cfa-pre-course/">
+    <link itemprop="mainEntityOfPage" href="http://www.livinga.life/2018/01/29/773-Sliding-Puzzle/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wesley Shi">
@@ -332,7 +333,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">cfa l1 前导知识点--利率计算</h1>
+          <h1 class="post-title" itemprop="name headline">773 Sliding Puzzle</h1>
         
 
         <div class="post-meta">
@@ -344,7 +345,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-20T00:00:00+08:00">2017-08-20</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-29T23:00:39+08:00">2018-01-29</time>
             
 
             
@@ -365,7 +366,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/cfa/" itemprop="url" rel="index"><span itemprop="name">cfa</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a></span>
 
                 
                 
@@ -390,7 +391,7 @@
           
 
           
-              <div class="post-description">cfa l1</div>
+              <div class="post-description">leetcode 773</div>
           
 
         </div>
@@ -406,39 +407,50 @@
       
 
       
-        <p>该文为cfa前导课程的学习笔记</p>
-<h2 id="npv-net-present-value-与irr-internal-rate-of-return">NPV(net present value)与IRR(internal rate of return)</h2>
-<h4 id="npv">NPV</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pv(compound inflow) - pv(compound outflow)</span><br></pre></td></tr></table></figure>
-<h4 id="irr">IRR</h4>
-<p>使得NPV等于0是的discount rate，门槛收益率，与资金成本比较。资金成本比IRR小则盈利。</p>
-<p>NPV法则优先于IRR法则</p>
-<h2 id="收益率计算">收益率计算</h2>
-<h4 id="hpr-holding-period-return-持有期收益率">HPR(holding period return)持有期收益率</h4>
-<p>例如，股票<strong>持有</strong>期间的收益，包括股票的增值和分红</p>
-<h4 id="twr-time-weighted-return-时间加权收益率">TWR(time weighted return)时间加权收益率</h4>
-<p>不同period的收益（期末-期初）的比率的几何平均值</p>
-<h4 id="mwr-money-weighted-return-货币加权收益率">MWR(money weighted return)货币加权收益率</h4>
-<p>和IRR相同，要求NPV为0的收益率</p>
-<ol>
-<li>在HPR下行时增加投资，MWR降低；反之……</li>
-<li>MWR比TWR对以上变动更敏感</li>
-</ol>
-<h4 id="mwr和twr对比">MWR和TWR对比</h4>
-<ol>
-<li>TWR只考虑期初收益与期末收益的对比，期间的交易没有影响</li>
-<li>MWR考虑期间的进出</li>
-<li>公募基金经理无法完全知道期间现金流的进出，因此只能计算TWR；私募可以完全知道现金的进出，因此可以使用MWR</li>
-</ol>
-<h2 id="短期货币市场的收益率">短期货币市场的收益率</h2>
-<p>一年以内的，例如国债</p>
-<ol>
-<li>HPV, Holding period yield: holding period return，在1年以内</li>
-<li>BPY, Bank period yield: 针对纯贴现工具，取决于银行出的价格，单利的形式</li>
-<li>MMY, Money market yield: 与BPY区别在于除以的是购买价格</li>
-<li>Bond equivalent yield: 365天进行年化</li>
-<li>Effective annual yield: 复利形式</li>
-</ol>
+        <p><a href="https://leetcode.com/problems/sliding-puzzle/description/" target="_blank" rel="noopener">题目链接</a></p>
+<h1>description</h1>
+<p>对于一个 $2 \times 3$的长方形方格，分别填上$1,2,3,4,5,0$。格子中的$0$可以和上下左右的方块交换位置。给定一个填上数字的方格，例如：</p>
+<table>
+<thead>
+<tr>
+<th>4</th>
+<th>1</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>5</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>求问最少经过多少交换能到达：</p>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>5</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>小时候其实大家应该都玩过，类似拼图的东西，英文叫做sliding puzzle <a href="https://en.wikipedia.org/wiki/Sliding_puzzle" target="_blank" rel="noopener">wiki</a></p>
+<h1>思路</h1>
+<p>最开始考虑能不能找到什么策略能够保证找到的路径是最短的，没想到……</p>
+<p>那么暴力搜索呢？</p>
+<p>可以发现，搜索空间并不大，总共6个格子，$6!=720$种可能。因此很简单，BFS或者DFS搜索即可。。。</p>
+<h1>一些小优化</h1>
+<p>如果对于每个乱序的方格，我们都从它开始搜索到达 <strong>123450</strong> 的次数。但是，如果考虑多次查询的情况，我们可以从 <strong>123450</strong> 开始搜索，直到找到原始的方格。我们可以顺便记录下BFS遍历到的所有状态，方便下次查询。</p>
+<p>所以，这个题目由于搜索空间比较小，其实还是很简单的。。。</p>
 
       
     </div>
@@ -457,7 +469,7 @@
     <strong>Post author:</strong>Wesley Shi</li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="http://www.livinga.life/2017/08/20/cfa-pre-course/" title="cfa l1 前导知识点--利率计算">http://www.livinga.life/2017/08/20/cfa-pre-course/</a>
+    <a href="http://www.livinga.life/2018/01/29/773-Sliding-Puzzle/" title="773 Sliding Puzzle">http://www.livinga.life/2018/01/29/773-Sliding-Puzzle/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>All articles in this blog are licensed under CC BY 4.0 unless stating additionally.</li>
@@ -468,6 +480,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+        </div>
+      
 
       
       
@@ -477,8 +495,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/02/activemq-usage-sample/" rel="next" title="activemq使用浅析">
-                <i class="fa fa-chevron-left"></i> activemq使用浅析
+              <a href="/2018/01/29/tensorflow-memorandum/" rel="next" title="tensorflow备忘录">
+                <i class="fa fa-chevron-left"></i> tensorflow备忘录
               </a>
             
           </div>
@@ -486,10 +504,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/21/industrial-analysis/" rel="prev" title="行业分析、股票估值">
-                行业分析、股票估值 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -672,7 +686,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#npv-net-present-value-与irr-internal-rate-of-return"><span class="nav-number">1.</span> <span class="nav-text">NPV(net present value)与IRR(internal rate of return)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#npv"><span class="nav-number">1.0.1.</span> <span class="nav-text">NPV</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#irr"><span class="nav-number">1.0.2.</span> <span class="nav-text">IRR</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#收益率计算"><span class="nav-number">2.</span> <span class="nav-text">收益率计算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hpr-holding-period-return-持有期收益率"><span class="nav-number">2.0.1.</span> <span class="nav-text">HPR(holding period return)持有期收益率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#twr-time-weighted-return-时间加权收益率"><span class="nav-number">2.0.2.</span> <span class="nav-text">TWR(time weighted return)时间加权收益率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mwr-money-weighted-return-货币加权收益率"><span class="nav-number">2.0.3.</span> <span class="nav-text">MWR(money weighted return)货币加权收益率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mwr和twr对比"><span class="nav-number">2.0.4.</span> <span class="nav-text">MWR和TWR对比</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#短期货币市场的收益率"><span class="nav-number">3.</span> <span class="nav-text">短期货币市场的收益率</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">一些小优化</span></a></li></ol></div>
             
 
           </div>
