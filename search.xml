@@ -43,17 +43,17 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[cuda coding series 1]]></title>
-    <url>%2F2018%2F01%2F23%2Fcuda-series-1%2F</url>
-    <content type="text"><![CDATA[CPU structure 几个常识： cpu运行桌面应用，轻量级进程、少量线程，大量分支和交互，大量存储器访问，只有1%的指令在运算上 cpu芯片大部分面积是三级缓存和io相关的接口，只有小部分是计算单元 cpu发展遇到的‘墙’：能量（散热等），存储器（带宽跟不上） GPU structure shader core， ALU单元，完成指令流，一个核可以加入多个alu单元。 同一个核内部只有一个取址译码单元，因此只能步调一致的做工作，遇到分支不能并行。 以上成为stall，通过多个任务来回切换hide stalls work distributor，工作分配 Fermi架构 一个计算单元（SM）分成两组ALU Kepler架构 一个SM中多个小组。。。 与CPU（的L3 cache）不同，GPU的存储器放在外面， 依然存在访存慢的问题，因此带宽很重要 GPU线程组织架构 一个kernel具有大量的线程 线程被分成线程块block，一个block内部的线程共享 shared memory 若干block组成grid，kernel启动 线程和硬件的对应关系 线程 -- ALU单元 -- 线程私有的local memory block -- sm单元 -- block的shared memory grid -- gpu device -- 设备共有的global memory ####SIMT single instruction multiple thread GPU版本的SIMD 大量线程模型获得高度并行，线程切换来hide stalls]]></content>
+    <title><![CDATA[cuda coding series 2]]></title>
+    <url>%2F2018%2F01%2F23%2Fcuda-series-2%2F</url>
+    <content type="text"><![CDATA[一些术语 host 主机端，即CPU Device 设备端，即GPU kernel 核函数，数据并行函数 标识符 global device threadIdx.x 线程ID 线程的层次 grid(公司) --&gt; block(科室) --&gt; thread(员工) 线程块之间彼此独立运行，块内线程可以同步 线程不可以写constant memory 函数 1234cudaMalloc((void**)&amp;p, size)// host与device的内存拷贝cudaMemcpy() 算法框架 allocate memory 分配内存 cpu --&gt; gpu拷贝数据 compute on device -- 实现kernel free memory]]></content>
       <categories>
         <category>machine learning</category>
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[cuda coding series 2]]></title>
-    <url>%2F2018%2F01%2F23%2Fcuda-series-2%2F</url>
-    <content type="text"><![CDATA[一些术语 host 主机端，即CPU Device 设备端，即GPU kernel 核函数，数据并行函数 标识符 global device threadIdx.x 线程ID 线程的层次 grid(公司) --&gt; block(科室) --&gt; thread(员工) 线程块之间彼此独立运行，块内线程可以同步 线程不可以写constant memory 函数 1234cudaMalloc((void**)&amp;p, size)// host与device的内存拷贝cudaMemcpy() 算法框架 allocate memory 分配内存 cpu --&gt; gpu拷贝数据 compute on device -- 实现kernel free memory]]></content>
+    <title><![CDATA[cuda coding series 1]]></title>
+    <url>%2F2018%2F01%2F23%2Fcuda-series-1%2F</url>
+    <content type="text"><![CDATA[CPU structure 几个常识： cpu运行桌面应用，轻量级进程、少量线程，大量分支和交互，大量存储器访问，只有1%的指令在运算上 cpu芯片大部分面积是三级缓存和io相关的接口，只有小部分是计算单元 cpu发展遇到的‘墙’：能量（散热等），存储器（带宽跟不上） GPU structure shader core， ALU单元，完成指令流，一个核可以加入多个alu单元。 同一个核内部只有一个取址译码单元，因此只能步调一致的做工作，遇到分支不能并行。 以上成为stall，通过多个任务来回切换hide stalls work distributor，工作分配 Fermi架构 一个计算单元（SM）分成两组ALU Kepler架构 一个SM中多个小组。。。 与CPU（的L3 cache）不同，GPU的存储器放在外面， 依然存在访存慢的问题，因此带宽很重要 GPU线程组织架构 一个kernel具有大量的线程 线程被分成线程块block，一个block内部的线程共享 shared memory 若干block组成grid，kernel启动 线程和硬件的对应关系 线程 -- ALU单元 -- 线程私有的local memory block -- sm单元 -- block的shared memory grid -- gpu device -- 设备共有的global memory ####SIMT single instruction multiple thread GPU版本的SIMD 大量线程模型获得高度并行，线程切换来hide stalls]]></content>
       <categories>
         <category>machine learning</category>
       </categories>
@@ -211,17 +211,17 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[cfa l1 经济学基础知识补缺]]></title>
-    <url>%2F2017%2F08%2F21%2Fbasics-gleaning%2F</url>
-    <content type="text"><![CDATA[失业类型 frictional unemployment(摩擦性失业): 在双选期间的失业状态 structural unemployment(结构性失业): 经济结构调整的结果 cyclical unemployment(周期性失业): 经济衰退引发的失业 贸易区类别 free trade areas(自由贸易区): 自由交易，东南亚 customs union(关税同盟): 相同的关税政策 common market(共同市场): 要素自由流动，南美 economic union(经济联盟): 相同的经济政策 monetary union(货币联盟): 相同的货币政策 证券 固定收益证券 Repurchase Agreements(RPs, 回购协议): 卖出自己的债权，并承诺一段时间后以更高的价格购回 权益证券 Preffered Stock(优先股): 可以定期分红，没有表决权，没有期限 Warrant(认股权证): 可以在一段时间之后以之前约定的价格购买股票 集合投资工具 Mutual Fund(共同基金，互惠基金): 股票基金：投资标的，筹得的基金去投资股票 债权基金 货币市场基金 Exchange-Traded Fund(ETF, 交易所交易基金): 基金份额可以公开交易，比Mutual Fund流动性更好，相比股票税率更低 衍生产品 合约： Forward Contract(远期合约): 有信用风险，到期强制购买 Futures Contract(期货合约): 交易所担保的，到期强制购买 Options Contract(期权合约): 到期可以选择不购买]]></content>
+    <title><![CDATA[行业分析、股票估值]]></title>
+    <url>%2F2017%2F08%2F21%2Findustrial-analysis%2F</url>
+    <content type="text"><![CDATA[internal competitive forces number of competitiors: + products differences: - exit barrier: +, e.g. 生产设备的投资很高 demand for product: + product shelf life: the shorter, the greater the price competition new entrant threats economies of scale: difficult to enter ... supplier bargaining forces(来自供应商的压力) customer bargaining forces(来自消费者) macroeconomic influences GDP, Interest rates, Inflation... technological influences social influences e.g. spend more money in travelling... demographic influences age distribution, population size equity valuation model discounted cash flow model multiplier models(价格乘数模型): P/E 市盈率 P/B 市净率 ... law of one price: 设置一个benchmark，和上述比率相比]]></content>
       <categories>
         <category>cfa</category>
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[行业分析、股票估值]]></title>
-    <url>%2F2017%2F08%2F21%2Findustrial-analysis%2F</url>
-    <content type="text"><![CDATA[internal competitive forces number of competitiors: + products differences: - exit barrier: +, e.g. 生产设备的投资很高 demand for product: + product shelf life: the shorter, the greater the price competition new entrant threats economies of scale: difficult to enter ... supplier bargaining forces(来自供应商的压力) customer bargaining forces(来自消费者) macroeconomic influences GDP, Interest rates, Inflation... technological influences social influences e.g. spend more money in travelling... demographic influences age distribution, population size equity valuation model discounted cash flow model multiplier models(价格乘数模型): P/E 市盈率 P/B 市净率 ... law of one price: 设置一个benchmark，和上述比率相比]]></content>
+    <title><![CDATA[cfa l1 经济学基础知识补缺]]></title>
+    <url>%2F2017%2F08%2F21%2Fbasics-gleaning%2F</url>
+    <content type="text"><![CDATA[失业类型 frictional unemployment(摩擦性失业): 在双选期间的失业状态 structural unemployment(结构性失业): 经济结构调整的结果 cyclical unemployment(周期性失业): 经济衰退引发的失业 贸易区类别 free trade areas(自由贸易区): 自由交易，东南亚 customs union(关税同盟): 相同的关税政策 common market(共同市场): 要素自由流动，南美 economic union(经济联盟): 相同的经济政策 monetary union(货币联盟): 相同的货币政策 证券 固定收益证券 Repurchase Agreements(RPs, 回购协议): 卖出自己的债权，并承诺一段时间后以更高的价格购回 权益证券 Preffered Stock(优先股): 可以定期分红，没有表决权，没有期限 Warrant(认股权证): 可以在一段时间之后以之前约定的价格购买股票 集合投资工具 Mutual Fund(共同基金，互惠基金): 股票基金：投资标的，筹得的基金去投资股票 债权基金 货币市场基金 Exchange-Traded Fund(ETF, 交易所交易基金): 基金份额可以公开交易，比Mutual Fund流动性更好，相比股票税率更低 衍生产品 合约： Forward Contract(远期合约): 有信用风险，到期强制购买 Futures Contract(期货合约): 交易所担保的，到期强制购买 Options Contract(期权合约): 到期可以选择不购买]]></content>
       <categories>
         <category>cfa</category>
       </categories>
