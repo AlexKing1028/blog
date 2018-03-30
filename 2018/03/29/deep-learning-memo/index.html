@@ -108,31 +108,30 @@
 
 
   
-  <meta name="keywords" content="memo,类型转换," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
-<meta name="description" content="相比于c，c++新引入的类型转换符及其用处">
-<meta name="keywords" content="memo,类型转换">
+<meta name="description" content="一些深度学习模型的基本知识">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cast operators">
-<meta property="og:url" content="http://www.livinga.life/2018/03/11/c-memo/index.html">
+<meta property="og:title" content="deep learning memo">
+<meta property="og:url" content="http://www.livinga.life/2018/03/29/deep-learning-memo/index.html">
 <meta property="og:site_name" content="Wesley&#39;s blog">
-<meta property="og:description" content="相比于c，c++新引入的类型转换符及其用处">
+<meta property="og:description" content="一些深度学习模型的基本知识">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-13T13:49:43.160Z">
+<meta property="og:updated_time" content="2018-03-30T12:13:52.813Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cast operators">
-<meta name="twitter:description" content="相比于c，c++新引入的类型转换符及其用处">
+<meta name="twitter:title" content="deep learning memo">
+<meta name="twitter:description" content="一些深度学习模型的基本知识">
 
 
 
 
 
 
-  <link rel="canonical" href="http://www.livinga.life/2018/03/11/c-memo/"/>
+  <link rel="canonical" href="http://www.livinga.life/2018/03/29/deep-learning-memo/"/>
 
 
-  <title>cast operators | Wesley's blog</title>
+  <title>deep learning memo | Wesley's blog</title>
   
 
 
@@ -316,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.livinga.life/2018/03/11/c-memo/">
+    <link itemprop="mainEntityOfPage" href="http://www.livinga.life/2018/03/29/deep-learning-memo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wesley Shi">
@@ -333,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">cast operators</h1>
+          <h1 class="post-title" itemprop="name headline">deep learning memo</h1>
         
 
         <div class="post-meta">
@@ -345,7 +344,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-11T22:30:20+08:00">2018-03-11</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-29T10:35:51+08:00">2018-03-29</time>
             
 
             
@@ -366,7 +365,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/c/" itemprop="url" rel="index"><span itemprop="name">c++</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/machine-learning/" itemprop="url" rel="index"><span itemprop="name">machine learning</span></a></span>
 
                 
                 
@@ -391,7 +390,7 @@
           
 
           
-              <div class="post-description">相比于c，c++新引入的类型转换符及其用处</div>
+              <div class="post-description">一些深度学习模型的基本知识</div>
           
 
         </div>
@@ -407,16 +406,68 @@
       
 
       
-        <h1>cast operators</h1>
-<p><strong>static_cast&lt;new_type&gt;()</strong></p>
- <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//static_cast不能转换掉expression的const、volatile、或者__unaligned属性。</span></span><br><span class="line"> <span class="keyword">const</span> <span class="keyword">int</span> g = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">int</span> *h = <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>*&gt;(&amp;g);</span><br><span class="line"><span class="comment">//编译错误，static_cast不能转换掉g的const属性</span></span><br></pre></td></tr></table></figure>
-<p><strong>dynamic_cast&lt;new_type&gt;()</strong></p>
-<p>有类型检查，与static的不同在于，转型失败会返。运行成本较大。</p>
-<p><strong>const_cast&lt;new_type&gt;()</strong></p>
-<p>该运算符用来修改类型的const(唯一有此能力的C++-style转型操作符)或volatile属性。除了const 或volatile修饰之外， new_type和expression的类型是一样的。</p>
-<p><strong>reinterpret_cast&lt;new_type&gt;()</strong></p>
-<p>new_type必须是一个指针、引用、算术类型、函数指针或者成员指针。它可以把一个指针转换成一个整数，也可以把一个整数转换成一个指针。可以用在存hash函数中。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">output</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; p &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">　　<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">int</span> <span class="params">(*test_func)</span><span class="params">(<span class="keyword">int</span> )</span></span>;<span class="comment">//定义函数指针test_func</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">10</span>;</span><br><span class="line">    test_func fun1 = output;</span><br><span class="line">    fun1(p);<span class="comment">//正确</span></span><br><span class="line">    test_func fun2 = <span class="keyword">reinterpret_cast</span>&lt;test_func&gt;(&amp;p);</span><br><span class="line">    fun2(p);<span class="comment">//...处有未经处理的异常: 0xC0000005: Access violation</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> :</span> <span class="keyword">public</span> A, <span class="keyword">public</span> B &#123;&#125;;</span><br><span class="line">C c;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%p, %p, %p"</span>, &amp;c, <span class="keyword">reinterpret_cast</span>&lt;B*&gt;(&amp;c), <span class="keyword">static_cast</span> &lt;B*&gt;(&amp;c));</span><br><span class="line"><span class="comment">// static_cast会自动将指针移至父类B的元素上，而reinterpret_cast不会</span></span><br></pre></td></tr></table></figure>
+        <h1>CNN</h1>
+<h2 id="卷积操作">卷积操作</h2>
+<p>输入层为$ Z^l$，卷积核为W，输出为$ Z^{l+1}$。
+那么我们有</p>
+<p>$$ Z^{l+1}= W* \sigma(Z^l)$$</p>
+<p>$$ Z_{x,y}^{l+1} =\sum_{a}\sum_{b}w_{a,b} \sigma(Z^l_{x-a,y-b})$$</p>
+<p>有个相似的操作是互相关，cross relation</p>
+<p>$$ Z_{x,y}^{l+1} =\sum_{a}{\sum_{b}{w_{a,b}\sigma(Z^l_{x+a,y+b})}}$$</p>
+<h3 id="bp">BP</h3>
+<p>$$\frac{ \partial C}{\partial Z_{x,y}^l} = \sum_{x'}{\sum_{y'}{\frac{\partial C}{\partial Z_{x',y'}^{l+1}} \frac{\partial Z_{x',y'}^{l+1}}{\partial Z^{l}_{x,y}}}}$$</p>
+<p>$$\frac{\partial Z_{x',y'}^{l+1}}{\partial Z_{x,y}^{l}} = \frac{\partial {(\sum_a{\sum_b{W_{a,b}\sigma (Z_{x'-a,y'-b}^l)}} + B})}{\partial Z_{x,y}^{l}}$$</p>
+<p>上式中只有$x'-a=x, y'-b=y$时导数不为0，因此带入可得</p>
+<p>$$\frac{\partial C}{\partial Z_{x,y}^l} = \sum_{x'}\sum_{y'} \delta_{x',y'}^{l+1} W_{x'-x,y'-y} \sigma'(Z_{x,y}^l)$$</p>
+<p>也可以写成：</p>
+<p>$$\frac{\partial C}{\partial Z_{x,y}^l} = \sum_{a}\sum_{b} \delta_{x+a,y+b}^{l+1} W_{a,b} \sigma'(Z_{x,y}^l)$$</p>
+<p>这个就是$\delta$和$W$的互相关（cross correlation），和卷积差一个翻转180度，因此可以看成：</p>
+<p>$$ \frac{\partial C}{\partial Z_{x,y}^l} = \delta^{l+1}* rot180(W_{x,y}^{l+1}) \sigma'(Z_{x,y}^l)$$</p>
+<p>相似的可以得到 $\frac{\partial C}{\partial W^l_{a,b}}$</p>
+<h1>RCNNs</h1>
+<h2 id="rcnn">RCNN</h2>
+<ol>
+<li>提出region proposal，利用selective search获得</li>
+<li>在局部区域上提取feature，做前后景分类和回归</li>
+</ol>
+<h2 id="fast-rcnn">fast rcnn</h2>
+<ol>
+<li>将region proposal投影到最后一层feature map，不必重复提取feature</li>
+<li>加入ROI pooling，不同大小的特征map映射到同一特征。</li>
+</ol>
+<p>如何将原始图片和特征map的像素点对应起来？</p>
+<p>计算<strong>感受野</strong>，特征map的某一点是原始图片通过多层cnn卷积得到的，padding不影响感受野，stride影响和map size影响。</p>
+<h2 id="faster-rcnn">faster rcnn</h2>
+<p><strong>RPN</strong>: 抛弃selective search，提出RPN，输入固定的region，输出是region前后景判断和位置修正（第一次回归），判断为前景的region便是region proposal。</p>
+<p>RPN loss:</p>
+<p>$$ L = \frac{1}{N_{cls}} \sum {L_{cls} (p_i, p_i^g)} + \lambda \frac{1}{N_{reg}} \sum { p_i^{g} L_{reg} (t_i, t_i^{g})}$$</p>
+<p>后一项是regression的loss，只计算正样本。为了确保每个正样本的anchor只对应一个ground truth box，选择超过0.7的IOU、且值最大的ground truth。</p>
+<h2 id="mask-rcnn">mask rcnn</h2>
+<h1>YOLO</h1>
+<h2 id="yolo-v1">YOLO v1</h2>
+<p>将图片分割成7*7等分，对每个方格预测其类别，并预测该方格“负责”的bounding box。</p>
+<p>网络输出为7*7*30的维度，每个1*1*30对应一个网格。</p>
+<p>网格中前10个数为预测的两个bounding box的坐标（4位），confidence（1位）。confidence是一个示性函数和IOU的乘积。示性函数当bounding box负责一个ground truth box的学习时为1，其他情况为0。如何判断负责？每个ground truth box会选择所有bounding box中IOU最大的负责。这种做法称作bounding box predictor specialization(专职化)。</p>
+<p>后20项为20分类，每一项对应一类的置信值。</p>
+<p><strong>缺点</strong></p>
+<ol>
+<li>一个网格只预测两个框，且认定两个框都是同一物体，对相近的物体和小群体检测不好</li>
+<li>泛化能力弱</li>
+</ol>
+<h2 id="yolo-v2">YOLO v2</h2>
+<ol>
+<li>batch normalization</li>
+<li>anchor box提升精度，k-means选择box大小</li>
+<li>...</li>
+</ol>
+<h1>损失函数</h1>
+<h2 id="softmax-with-cross-entropy-loss">softmax with cross entropy loss</h2>
+<p>softmax:</p>
+<p>$$a_i = \frac{e^{z_i}}{\sum_k e^{z_k}}$$</p>
+<p>cross entropy loss</p>
+<p>$$H(p,q) = \sum_i p(i)log(q(i)) = log(a_y) = z_y - log(\sum_k e^{z_k})$$</p>
+<p>对应还有一个概念：<strong>相对熵</strong>，也称为KL散度，表示两个分布的差异性</p>
+<p>$$D(p||q) = H(p,q)-H(p) = \sum_i p(i)log(\frac{p(i)}{q(i)})$$</p>
 
       
     </div>
@@ -435,7 +486,7 @@
     <strong>Post author:</strong>Wesley Shi</li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="http://www.livinga.life/2018/03/11/c-memo/" title="cast operators">http://www.livinga.life/2018/03/11/c-memo/</a>
+    <a href="http://www.livinga.life/2018/03/29/deep-learning-memo/" title="deep learning memo">http://www.livinga.life/2018/03/29/deep-learning-memo/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>All articles in this blog are licensed under CC BY 4.0 unless stating additionally.</li>
@@ -446,14 +497,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/memo/" rel="tag"># memo</a>
-          
-            <a href="/tags/类型转换/" rel="tag"># 类型转换</a>
-          
-        </div>
-      
 
       
       
@@ -463,8 +506,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/07/face-recognition/" rel="next" title="face recognition">
-                <i class="fa fa-chevron-left"></i> face recognition
+              <a href="/2018/03/28/overlapping-matrix/" rel="next" title="overlapping matrix">
+                <i class="fa fa-chevron-left"></i> overlapping matrix
               </a>
             
           </div>
@@ -472,10 +515,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/11/c-friend-machanism/" rel="prev" title="c++ friend machanism">
-                c++ friend machanism <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -670,7 +709,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">cast operators</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积操作"><span class="nav-number">1.1.</span> <span class="nav-text">卷积操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bp"><span class="nav-number">1.1.1.</span> <span class="nav-text">BP</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">RCNNs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rcnn"><span class="nav-number">2.1.</span> <span class="nav-text">RCNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fast-rcnn"><span class="nav-number">2.2.</span> <span class="nav-text">fast rcnn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#faster-rcnn"><span class="nav-number">2.3.</span> <span class="nav-text">faster rcnn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mask-rcnn"><span class="nav-number">2.4.</span> <span class="nav-text">mask rcnn</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">YOLO</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#yolo-v1"><span class="nav-number">3.1.</span> <span class="nav-text">YOLO v1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yolo-v2"><span class="nav-number">3.2.</span> <span class="nav-text">YOLO v2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#softmax-with-cross-entropy-loss"><span class="nav-number">4.1.</span> <span class="nav-text">softmax with cross entropy loss</span></a></li></ol></li></ol></div>
             
 
           </div>

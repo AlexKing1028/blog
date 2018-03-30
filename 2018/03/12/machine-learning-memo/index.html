@@ -120,7 +120,7 @@
 <meta property="og:description" content="虽然现在deep learning大火，但是传统的机器学习方法还是需要了解一下的！">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/em_procedure.jpg">
-<meta property="og:updated_time" content="2018-03-13T14:05:11.686Z">
+<meta property="og:updated_time" content="2018-03-30T11:33:17.317Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="machine learning memo">
 <meta name="twitter:description" content="虽然现在deep learning大火，但是传统的机器学习方法还是需要了解一下的！">
@@ -414,7 +414,7 @@
 <p>$$P(Y=0|x)=\frac{1}{1+exp(wx+b)}$$</p>
 <p>极大似然估计，利用梯度下降计算得到$w,b$的值，代入公式判断新实例的类型。</p>
 <h1>SVM</h1>
-<p>优化函数--最大间隔</p>
+<p>优化函数--最大间隔 $\frac{2}{||w||}$</p>
 <p>$$min_{w,b} \frac{1}{2}||w||^2$$</p>
 <p>给定：$y_i(wx_i+b)-1\ge0$</p>
 <p>引入拉格朗日乘子，再求对偶问题……</p>
@@ -434,21 +434,52 @@
 <p>属于生成模型</p>
 <p><strong>基本步骤</strong></p>
 <ol>
-<li>明确隐变量，写出完全数据的对数似然函数</li>
-<li>E步(estimate,计算期望)：确定$Q(\theta|\theta^i)$函数
-$$Q(\theta|\theta<sup>i)=E_z[P(Y,Z|\theta)|Y,\theta</sup>i]$$</li>
-<li>M步(maximization,对Q函数求极大值)：对$Q(\theta|\theta<sup>i)$求极大值，得到$\theta</sup>{i+1}$，重复2-3步</li>
+<li>
+<p>明确隐变量，写出完全数据的对数似然函数</p>
+</li>
+<li>
+<p>E步(estimate,计算期望)：确定</p>
+<p>$$Q( \theta | \theta^i) = E_z[P(Y,Z| \theta )|Y,\theta^{i}]$$</p>
+</li>
+<li>
+<p>M步(maximization,对Q函数求极大值)：对$Q( \theta | \theta^i)$求极大值，得到$ \theta^{i+1}$，重复2-3步</p>
+</li>
 </ol>
-<p>$Q(\theta|\theta<sup>i)$是关于对数似然函数$L(\theta)$的一个下界，利用Jensen不等式的出来的。对Q函数求极大，则可以保证在每个迭代过程中，$L(\theta</sup>{i+1})$总比$L(\theta^i)$大。</p>
+<p>$Q( \theta|\theta^i)$是关于对数似然函数$L( \theta)$的一个下界，利用Jensen不等式的出来的。对Q函数求极大，则可以保证在每个迭代过程中，$L( \theta^{i+1})$总比$L( \theta^i)$大。</p>
 <p><img src="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/em_procedure.jpg" alt="示意图"></p>
 <h1>图模型</h1>
 <h2 id="hmm">HMM</h2>
-<p>to be done...</p>
+<p>判别式模型</p>
+<h3 id="算法">算法</h3>
+<p><strong>前向算法和后向算法</strong>：用于评估问题，计算给定的观测数据在模型下的概率。</p>
+<p><strong>维特比算法</strong>：给定观察序列，求最可能的隐状态序列，实际上就是求联合概率最大的状态。</p>
+<p><strong>Baum-welch算法</strong>：已知观测序列、隐状态个数，计算<em>状态转移概率</em>和<em>发射概率</em>。实际上就是一种em算法，迭代的求隐变量的期望和最大似然概率。</p>
 <h2 id="crf">CRF</h2>
 <p>...</p>
+<h1>指数族分布</h1>
+<p>$p(y;\eta)= b(y)exp(\eta^T T(y) - a(y))$</p>
+<p>其中，$a(y)$为一个归一化因子，保证概率的积分为1；$T(y)$为充分统计量，一般为y；$\eta$为nature parameter，改变它的值决定了同一类型不同的指数族分布。</p>
+<ol>
+<li>伯努利分布 $p(x;\theta)=\theta<sup>x(1-\theta)</sup>{1-x}$；转换为指数族分布后，$\theta = \frac{1}{1+e^{-\eta}}$，实际上就是sigmoid函数。</li>
+<li>...</li>
+</ol>
+<h2 id="3个假设">3个假设</h2>
+<p>一般对问题我们有三个假设：</p>
+<ol>
+<li>给定x和参数$\theta$，y符合指数族分布</li>
+<li>我们学习的目标函数为 $h(x)=E[y|x]$</li>
+<li>$\eta = \theta^Tx$</li>
+</ol>
+<p>基于这三个假设，我们可以设计$T(y)$，假设一个指数族分布，并将$\eta = \theta^Tx$带入。</p>
 <h1>一些问题</h1>
 <ol>
 <li>生成模型与判别模型？生成模型先求联合概率分布$P(X,Y)$，再求$P(Y|X)$，模型表示了给定输入X产生Y的生成关系；判别方法直接学习$P(Y|X)$或者一个决策函数$f(x)$。</li>
+<li>支持度和置信度：
+<ul>
+<li>支持度：同时购买A和B商品的次数/总交易次数</li>
+<li>置信度：同时购买A和B商品的次数/购买A的次数</li>
+</ul>
+</li>
 </ol>
 
       
@@ -589,7 +620,7 @@ $$Q(\theta|\theta<sup>i)=E_z[P(Y,Z|\theta)|Y,\theta</sup>i]$$</li>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -701,7 +732,7 @@ $$Q(\theta|\theta<sup>i)=E_z[P(Y,Z|\theta)|Y,\theta</sup>i]$$</li>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">logistics regression</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">SVM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">决策树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">naive Bayes</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">EM算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">图模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hmm"><span class="nav-number">6.1.</span> <span class="nav-text">HMM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#crf"><span class="nav-number">6.2.</span> <span class="nav-text">CRF</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">一些问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">logistics regression</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">SVM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">决策树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">naive Bayes</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">EM算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">图模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hmm"><span class="nav-number">6.1.</span> <span class="nav-text">HMM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法"><span class="nav-number">6.1.1.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#crf"><span class="nav-number">6.2.</span> <span class="nav-text">CRF</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">指数族分布</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3个假设"><span class="nav-number">7.1.</span> <span class="nav-text">3个假设</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">一些问题</span></a></li></ol></div>
             
 
           </div>

@@ -108,31 +108,27 @@
 
 
   
-  <meta name="keywords" content="memo,类型转换," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
-<meta name="description" content="相比于c，c++新引入的类型转换符及其用处">
-<meta name="keywords" content="memo,类型转换">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cast operators">
-<meta property="og:url" content="http://www.livinga.life/2018/03/11/c-memo/index.html">
+<meta property="og:title" content="overlapping matrix">
+<meta property="og:url" content="http://www.livinga.life/2018/03/28/overlapping-matrix/index.html">
 <meta property="og:site_name" content="Wesley&#39;s blog">
-<meta property="og:description" content="相比于c，c++新引入的类型转换符及其用处">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-13T13:49:43.160Z">
+<meta property="og:updated_time" content="2018-03-28T13:20:58.062Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cast operators">
-<meta name="twitter:description" content="相比于c，c++新引入的类型转换符及其用处">
+<meta name="twitter:title" content="overlapping matrix">
 
 
 
 
 
 
-  <link rel="canonical" href="http://www.livinga.life/2018/03/11/c-memo/"/>
+  <link rel="canonical" href="http://www.livinga.life/2018/03/28/overlapping-matrix/"/>
 
 
-  <title>cast operators | Wesley's blog</title>
+  <title>overlapping matrix | Wesley's blog</title>
   
 
 
@@ -316,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.livinga.life/2018/03/11/c-memo/">
+    <link itemprop="mainEntityOfPage" href="http://www.livinga.life/2018/03/28/overlapping-matrix/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wesley Shi">
@@ -333,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">cast operators</h1>
+          <h1 class="post-title" itemprop="name headline">overlapping matrix</h1>
         
 
         <div class="post-meta">
@@ -345,7 +341,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-11T22:30:20+08:00">2018-03-11</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-28T00:31:56+08:00">2018-03-28</time>
             
 
             
@@ -354,24 +350,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/c/" itemprop="url" rel="index"><span itemprop="name">c++</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -391,8 +369,6 @@
           
 
           
-              <div class="post-description">相比于c，c++新引入的类型转换符及其用处</div>
-          
 
         </div>
       </header>
@@ -407,16 +383,7 @@
       
 
       
-        <h1>cast operators</h1>
-<p><strong>static_cast&lt;new_type&gt;()</strong></p>
- <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//static_cast不能转换掉expression的const、volatile、或者__unaligned属性。</span></span><br><span class="line"> <span class="keyword">const</span> <span class="keyword">int</span> g = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">int</span> *h = <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>*&gt;(&amp;g);</span><br><span class="line"><span class="comment">//编译错误，static_cast不能转换掉g的const属性</span></span><br></pre></td></tr></table></figure>
-<p><strong>dynamic_cast&lt;new_type&gt;()</strong></p>
-<p>有类型检查，与static的不同在于，转型失败会返。运行成本较大。</p>
-<p><strong>const_cast&lt;new_type&gt;()</strong></p>
-<p>该运算符用来修改类型的const(唯一有此能力的C++-style转型操作符)或volatile属性。除了const 或volatile修饰之外， new_type和expression的类型是一样的。</p>
-<p><strong>reinterpret_cast&lt;new_type&gt;()</strong></p>
-<p>new_type必须是一个指针、引用、算术类型、函数指针或者成员指针。它可以把一个指针转换成一个整数，也可以把一个整数转换成一个指针。可以用在存hash函数中。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">output</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; p &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">　　<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">int</span> <span class="params">(*test_func)</span><span class="params">(<span class="keyword">int</span> )</span></span>;<span class="comment">//定义函数指针test_func</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">10</span>;</span><br><span class="line">    test_func fun1 = output;</span><br><span class="line">    fun1(p);<span class="comment">//正确</span></span><br><span class="line">    test_func fun2 = <span class="keyword">reinterpret_cast</span>&lt;test_func&gt;(&amp;p);</span><br><span class="line">    fun2(p);<span class="comment">//...处有未经处理的异常: 0xC0000005: Access violation</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> :</span> <span class="keyword">public</span> A, <span class="keyword">public</span> B &#123;&#125;;</span><br><span class="line">C c;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%p, %p, %p"</span>, &amp;c, <span class="keyword">reinterpret_cast</span>&lt;B*&gt;(&amp;c), <span class="keyword">static_cast</span> &lt;B*&gt;(&amp;c));</span><br><span class="line"><span class="comment">// static_cast会自动将指针移至父类B的元素上，而reinterpret_cast不会</span></span><br></pre></td></tr></table></figure>
+        <h1></h1>
 
       
     </div>
@@ -435,7 +402,7 @@
     <strong>Post author:</strong>Wesley Shi</li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="http://www.livinga.life/2018/03/11/c-memo/" title="cast operators">http://www.livinga.life/2018/03/11/c-memo/</a>
+    <a href="http://www.livinga.life/2018/03/28/overlapping-matrix/" title="overlapping matrix">http://www.livinga.life/2018/03/28/overlapping-matrix/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>All articles in this blog are licensed under CC BY 4.0 unless stating additionally.</li>
@@ -446,14 +413,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/memo/" rel="tag"># memo</a>
-          
-            <a href="/tags/类型转换/" rel="tag"># 类型转换</a>
-          
-        </div>
-      
 
       
       
@@ -463,8 +422,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/07/face-recognition/" rel="next" title="face recognition">
-                <i class="fa fa-chevron-left"></i> face recognition
+              <a href="/2018/03/24/eight-digital-games/" rel="next" title="eight digital games">
+                <i class="fa fa-chevron-left"></i> eight digital games
               </a>
             
           </div>
@@ -473,8 +432,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/11/c-friend-machanism/" rel="prev" title="c++ friend machanism">
-                c++ friend machanism <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/29/deep-learning-memo/" rel="prev" title="deep learning memo">
+                deep learning memo <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -670,7 +629,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">cast operators</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li></ol></div>
             
 
           </div>

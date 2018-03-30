@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[deep learning memo]]></title>
+    <url>%2F2018%2F03%2F29%2Fdeep-learning-memo%2F</url>
+    <content type="text"><![CDATA[CNN 卷积操作 输入层为$ Z^l$，卷积核为W，输出为$ Z^{l+1}$。 那么我们有 $$ Z^{l+1}= W* \sigma(Z^l)$$ $$ Z_{x,y}^{l+1} =\sum_{a}\sum_{b}w_{a,b} \sigma(Z^l_{x-a,y-b})$$ 有个相似的操作是互相关，cross relation $$ Z_{x,y}^{l+1} =\sum_{a}{\sum_{b}{w_{a,b}\sigma(Z^l_{x+a,y+b})}}$$ BP $$\frac{ \partial C}{\partial Z_{x,y}^l} = \sum_{x'}{\sum_{y'}{\frac{\partial C}{\partial Z_{x',y'}^{l+1}} \frac{\partial Z_{x',y'}^{l+1}}{\partial Z^{l}_{x,y}}}}$$ $$\frac{\partial Z_{x',y'}^{l+1}}{\partial Z_{x,y}^{l}} = \frac{\partial {(\sum_a{\sum_b{W_{a,b}\sigma (Z_{x'-a,y'-b}^l)}} + B})}{\partial Z_{x,y}^{l}}$$ 上式中只有$x'-a=x, y'-b=y$时导数不为0，因此带入可得 $$\frac{\partial C}{\partial Z_{x,y}^l} = \sum_{x'}\sum_{y'} \delta_{x',y'}^{l+1} W_{x'-x,y'-y} \sigma'(Z_{x,y}^l)$$ 也可以写成： $$\frac{\partial C}{\partial Z_{x,y}^l} = \sum_{a}\sum_{b} \delta_{x+a,y+b}^{l+1} W_{a,b} \sigma'(Z_{x,y}^l)$$ 这个就是$\delta$和$W$的互相关（cross correlation），和卷积差一个翻转180度，因此可以看成： $$ \frac{\partial C}{\partial Z_{x,y}^l} = \delta^{l+1}* rot180(W_{x,y}^{l+1}) \sigma'(Z_{x,y}^l)$$ 相似的可以得到 $\frac{\partial C}{\partial W^l_{a,b}}$ RCNNs RCNN 提出region proposal，利用selective search获得 在局部区域上提取feature，做前后景分类和回归 fast rcnn 将region proposal投影到最后一层feature map，不必重复提取feature 加入ROI pooling，不同大小的特征map映射到同一特征。 如何将原始图片和特征map的像素点对应起来？ 计算感受野，特征map的某一点是原始图片通过多层cnn卷积得到的，padding不影响感受野，stride影响和map size影响。 faster rcnn RPN: 抛弃selective search，提出RPN，输入固定的region，输出是region前后景判断和位置修正（第一次回归），判断为前景的region便是region proposal。 RPN loss: $$ L = \frac{1}{N_{cls}} \sum {L_{cls} (p_i, p_i^g)} + \lambda \frac{1}{N_{reg}} \sum { p_i^{g} L_{reg} (t_i, t_i^{g})}$$ 后一项是regression的loss，只计算正样本。为了确保每个正样本的anchor只对应一个ground truth box，选择超过0.7的IOU、且值最大的ground truth。 mask rcnn YOLO YOLO v1 将图片分割成7*7等分，对每个方格预测其类别，并预测该方格“负责”的bounding box。 网络输出为7*7*30的维度，每个1*1*30对应一个网格。 网格中前10个数为预测的两个bounding box的坐标（4位），confidence（1位）。confidence是一个示性函数和IOU的乘积。示性函数当bounding box负责一个ground truth box的学习时为1，其他情况为0。如何判断负责？每个ground truth box会选择所有bounding box中IOU最大的负责。这种做法称作bounding box predictor specialization(专职化)。 后20项为20分类，每一项对应一类的置信值。 缺点 一个网格只预测两个框，且认定两个框都是同一物体，对相近的物体和小群体检测不好 泛化能力弱 YOLO v2 batch normalization anchor box提升精度，k-means选择box大小 ... 损失函数 softmax with cross entropy loss softmax: $$a_i = \frac{e^{z_i}}{\sum_k e^{z_k}}$$ cross entropy loss $$H(p,q) = \sum_i p(i)log(q(i)) = log(a_y) = z_y - log(\sum_k e^{z_k})$$ 对应还有一个概念：相对熵，也称为KL散度，表示两个分布的差异性 $$D(p||q) = H(p,q)-H(p) = \sum_i p(i)log(\frac{p(i)}{q(i)})$$]]></content>
+      <categories>
+        <category>machine learning</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[overlapping matrix]]></title>
+    <url>%2F2018%2F03%2F28%2Foverlapping-matrix%2F</url>
+    <content type="text"><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[eight digital games]]></title>
+    <url>%2F2018%2F03%2F24%2Feight-digital-games%2F</url>
+    <content type="text"><![CDATA[原题链接 八数码游戏 如图所示，棋盘分为$3\times 3$的区域，在上面放置1~8八个数字，剩下一个区域为空，空区域的周围区域可以移动到空区域处，问最少需要多少次移动能够达到如下状态： 分析 康拓展开+启发式算法解决 康拓展开]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[procedure of jvm]]></title>
     <url>%2F2018%2F03%2F13%2Fjvm-garbage-collection%2F</url>
     <content type="text"><![CDATA[JAVA内存管理 java代码的执行过程 （盗几张图，侵删……） 我们看到，在jvm字节码运行部分存在两个分支，JIT解释器和编译器。主流的jvm系统都采用两种模式并存的技术。 JIT(just in time)解释器直接拿字节码一行一行解释，边解释边运行，对于一般代码是这个流程。 在程序运行过程中，jvm通过计数或采样找出一些热点代码块，将其编译为本地代码，每次使用时直接调用本地代码。 类加载器 内存模型 垃圾回收机制 主要用于管理堆内存 判断依据 一个对象如果不会被用到了，就会被判断为垃圾 引用计数法：记录总共被其他对象应用过多少次，当没有被对象引用时，就是垃圾。但是解决不了循环引用的情况。 根搜索算法：可以将引用关系看成一张图，从gc root开始沿着引用搜索，如果某个对象不可达了，就是垃圾 回收策略 mark-sweep(标记-清除)算法：两个阶段，会产生内存碎片 标记需要回收的对象 清除标记了的对象 copying算法：每次只使用一半的内存，使用完后把存活的复制到另一块上，剩下的全部清理掉。没有内存碎片，但可用内存减半了 mark-compact算法：标记阶段和mark-sweep一样，但清除的时候将存活的对象向一端移动，剩余空间全部回收 generational collection算法(分代收集)：分新生代、老年代和持久代 老年代特点是需要收集的垃圾较少，此外一般大对象会直接分配到老年代中。从年轻代“涅槃”的对象会放在老年代。 年轻代每次回收的垃圾很多，一般采用copying算法，不过不是对半划分，而是分三份，一个大的Eden空间，两个小的survivor空间。当回收时，将Eden和正在使用的survivor A空间存活的对象全部复制到未使用的survivor B中，清理Eden和survivor A，如此两个survivor轮换使用。如果回收剩下的存活对象survivor装不下，多余的会放到老年代中。 持久代存放静态文件，不同的jvm实现不同。]]></content>
@@ -26,7 +44,7 @@
   <entry>
     <title><![CDATA[machine learning memo]]></title>
     <url>%2F2018%2F03%2F12%2Fmachine-learning-memo%2F</url>
-    <content type="text"><![CDATA[logistics regression $$P(Y=1|x)=\frac{exp(wx+b)}{1+exp(wx+b)}$$ $$P(Y=0|x)=\frac{1}{1+exp(wx+b)}$$ 极大似然估计，利用梯度下降计算得到$w,b$的值，代入公式判断新实例的类型。 SVM 优化函数--最大间隔 $$min_{w,b} \frac{1}{2}||w||^2$$ 给定：$y_i(wx_i+b)-1\ge0$ 引入拉格朗日乘子，再求对偶问题…… 核函数…… 决策树 本质上就是通过递归的选择用于分类的特征拟合训练数据。特征选择的依据是信息增益(infomation gain)，每次选择信息增益(比)最大的。 熵（entropy），随机变量的不确定性越大，entropy就越大。 $$H(D)=-\sum{p_i logp_i}$$ 条件熵 $$H(D|A)=\sum{P(A=a_i)H(D|A=a_i)}$$ 信息增益指的是在没有特征A的情况和给定特征A的情况下的信息熵之差。 $$g(D,A)=H(D)-H(D|A)$$ naive Bayes 朴素贝叶斯算法，期望风险最小化==后验概率最大化 贝叶斯算法，防止出现概率值为0的情况 EM算法 属于生成模型 基本步骤 明确隐变量，写出完全数据的对数似然函数 E步(estimate,计算期望)：确定$Q(\theta|\theta^i)$函数 $$Q(\theta|\thetai)=E_z[P(Y,Z|\theta)|Y,\thetai]$$ M步(maximization,对Q函数求极大值)：对$Q(\theta|\thetai)$求极大值，得到$\theta{i+1}$，重复2-3步 $Q(\theta|\thetai)$是关于对数似然函数$L(\theta)$的一个下界，利用Jensen不等式的出来的。对Q函数求极大，则可以保证在每个迭代过程中，$L(\theta{i+1})$总比$L(\theta^i)$大。 图模型 HMM to be done... CRF ... 一些问题 生成模型与判别模型？生成模型先求联合概率分布$P(X,Y)$，再求$P(Y|X)$，模型表示了给定输入X产生Y的生成关系；判别方法直接学习$P(Y|X)$或者一个决策函数$f(x)$。]]></content>
+    <content type="text"><![CDATA[logistics regression $$P(Y=1|x)=\frac{exp(wx+b)}{1+exp(wx+b)}$$ $$P(Y=0|x)=\frac{1}{1+exp(wx+b)}$$ 极大似然估计，利用梯度下降计算得到$w,b$的值，代入公式判断新实例的类型。 SVM 优化函数--最大间隔 $\frac{2}{||w||}$ $$min_{w,b} \frac{1}{2}||w||^2$$ 给定：$y_i(wx_i+b)-1\ge0$ 引入拉格朗日乘子，再求对偶问题…… 核函数…… 决策树 本质上就是通过递归的选择用于分类的特征拟合训练数据。特征选择的依据是信息增益(infomation gain)，每次选择信息增益(比)最大的。 熵（entropy），随机变量的不确定性越大，entropy就越大。 $$H(D)=-\sum{p_i logp_i}$$ 条件熵 $$H(D|A)=\sum{P(A=a_i)H(D|A=a_i)}$$ 信息增益指的是在没有特征A的情况和给定特征A的情况下的信息熵之差。 $$g(D,A)=H(D)-H(D|A)$$ naive Bayes 朴素贝叶斯算法，期望风险最小化==后验概率最大化 贝叶斯算法，防止出现概率值为0的情况 EM算法 属于生成模型 基本步骤 明确隐变量，写出完全数据的对数似然函数 E步(estimate,计算期望)：确定 $$Q( \theta | \theta^i) = E_z[P(Y,Z| \theta )|Y,\theta^{i}]$$ M步(maximization,对Q函数求极大值)：对$Q( \theta | \theta^i)$求极大值，得到$ \theta^{i+1}$，重复2-3步 $Q( \theta|\theta^i)$是关于对数似然函数$L( \theta)$的一个下界，利用Jensen不等式的出来的。对Q函数求极大，则可以保证在每个迭代过程中，$L( \theta^{i+1})$总比$L( \theta^i)$大。 图模型 HMM 判别式模型 算法 前向算法和后向算法：用于评估问题，计算给定的观测数据在模型下的概率。 维特比算法：给定观察序列，求最可能的隐状态序列，实际上就是求联合概率最大的状态。 Baum-welch算法：已知观测序列、隐状态个数，计算状态转移概率和发射概率。实际上就是一种em算法，迭代的求隐变量的期望和最大似然概率。 CRF ... 指数族分布 $p(y;\eta)= b(y)exp(\eta^T T(y) - a(y))$ 其中，$a(y)$为一个归一化因子，保证概率的积分为1；$T(y)$为充分统计量，一般为y；$\eta$为nature parameter，改变它的值决定了同一类型不同的指数族分布。 伯努利分布 $p(x;\theta)=\thetax(1-\theta){1-x}$；转换为指数族分布后，$\theta = \frac{1}{1+e^{-\eta}}$，实际上就是sigmoid函数。 ... 3个假设 一般对问题我们有三个假设： 给定x和参数$\theta$，y符合指数族分布 我们学习的目标函数为 $h(x)=E[y|x]$ $\eta = \theta^Tx$ 基于这三个假设，我们可以设计$T(y)$，假设一个指数族分布，并将$\eta = \theta^Tx$带入。 一些问题 生成模型与判别模型？生成模型先求联合概率分布$P(X,Y)$，再求$P(Y|X)$，模型表示了给定输入X产生Y的生成关系；判别方法直接学习$P(Y|X)$或者一个决策函数$f(x)$。 支持度和置信度： 支持度：同时购买A和B商品的次数/总交易次数 置信度：同时购买A和B商品的次数/购买A的次数]]></content>
       <categories>
         <category>machine learning</category>
       </categories>
@@ -156,17 +174,17 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[472&139 about word concatenation matching]]></title>
-    <url>%2F2017%2F12%2F26%2Fleetcode-472-139-word-concatenation%2F</url>
-    <content type="text"><![CDATA[题目 139. Give you a string and a string array: s = 'leetcode' array = ['leet', 'code'] Now, tell me weather string $s$ can be concatenated by words in $array$? 472. Give you a string array: array = [&quot;cat&quot;, &quot;cats&quot;, &quot;catsdogcats&quot;, &quot;dog&quot;, &quot;dogcatsdog&quot;, &quot;hippopotamuses&quot;, &quot;rat&quot;, &quot;ratcatsdogcat&quot;] Now, tell me which word can be concatenated by other words except itself. Note: the same words can be used multiple times. 分析 These two question is similar. There are mainly two kind of solutions for both. 1. DP solution Define a bool array s[...] to be whether the prefix of a word can be concatenated. For example, for word w, if s[k] is true, it means that w[1...k] can be concatenated by words in the $array$. We split w[1...k] in any positions to find whether there exists one position t, where w[t...k] is in the $array$ and s[t] is true. So the complexity for this function is $O(n^2)$, ignoring the time of map search. 2. Trie First, construct the Trie tree using all the words in the array. Then, DFS the target word. When it come to a leaf node and the target word still has chars, researching the remaining chars from the root. ....]]></content>
+    <title><![CDATA[123. Best Time to Buy and Sell Stock 3]]></title>
+    <url>%2F2017%2F12%2F26%2Fleetcode123-Best-Time-to-Buy-and-Sell-Stock-3%2F</url>
+    <content type="text"><![CDATA[题目 给你一个数列，每个数字代表一个时刻的股票价格，求最多两次交易的情况下，能获得的最大收益。 题解 由于最多两次交易，定义4个状态： 只买入一次 买入一次，卖出一次 买入两次，卖出一次 买入两次，卖出两次 子问题结构是，我们已知前$i$个时刻 1~4 个状态下的最大收益，更新前$i+1$时刻的最大收益。例如： 前$i+1$个时刻只买入一次的最大收益为前$i$时刻只买一次的最大收益和只买$i+1$时刻的收益的最大值。 前$i+1$个时刻买入一次，卖出一次的最大收益为前$i$时刻只买入一次并在$i+1$时刻卖出的收益和*前$i$时刻买入一次，卖出一次的最大收益($i+1$时刻啥都不做)*的最大值。 code 。。。]]></content>
       <categories>
         <category>algorithm</category>
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[123. Best Time to Buy and Sell Stock 3]]></title>
-    <url>%2F2017%2F12%2F26%2Fleetcode123-Best-Time-to-Buy-and-Sell-Stock-3%2F</url>
-    <content type="text"><![CDATA[题目 给你一个数列，每个数字代表一个时刻的股票价格，求最多两次交易的情况下，能获得的最大收益。 题解 由于最多两次交易，定义4个状态： 只买入一次 买入一次，卖出一次 买入两次，卖出一次 买入两次，卖出两次 子问题结构是，我们已知前$i$个时刻 1~4 个状态下的最大收益，更新前$i+1$时刻的最大收益。例如： 前$i+1$个时刻只买入一次的最大收益为前$i$时刻只买一次的最大收益和只买$i+1$时刻的收益的最大值。 前$i+1$个时刻买入一次，卖出一次的最大收益为前$i$时刻只买入一次并在$i+1$时刻卖出的收益和*前$i$时刻买入一次，卖出一次的最大收益($i+1$时刻啥都不做)*的最大值。 code 。。。]]></content>
+    <title><![CDATA[472&139 about word concatenation matching]]></title>
+    <url>%2F2017%2F12%2F26%2Fleetcode-472-139-word-concatenation%2F</url>
+    <content type="text"><![CDATA[题目 139. Give you a string and a string array: s = 'leetcode' array = ['leet', 'code'] Now, tell me weather string $s$ can be concatenated by words in $array$? 472. Give you a string array: array = [&quot;cat&quot;, &quot;cats&quot;, &quot;catsdogcats&quot;, &quot;dog&quot;, &quot;dogcatsdog&quot;, &quot;hippopotamuses&quot;, &quot;rat&quot;, &quot;ratcatsdogcat&quot;] Now, tell me which word can be concatenated by other words except itself. Note: the same words can be used multiple times. 分析 These two question is similar. There are mainly two kind of solutions for both. 1. DP solution Define a bool array s[...] to be whether the prefix of a word can be concatenated. For example, for word w, if s[k] is true, it means that w[1...k] can be concatenated by words in the $array$. We split w[1...k] in any positions to find whether there exists one position t, where w[t...k] is in the $array$ and s[t] is true. So the complexity for this function is $O(n^2)$, ignoring the time of map search. 2. Trie First, construct the Trie tree using all the words in the array. Then, DFS the target word. When it come to a leaf node and the target word still has chars, researching the remaining chars from the root. ....]]></content>
       <categories>
         <category>algorithm</category>
       </categories>
