@@ -118,7 +118,7 @@
 <meta property="og:site_name" content="Wesley&#39;s blog">
 <meta property="og:description" content="一些深度学习模型的基本知识">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-30T12:13:52.813Z">
+<meta property="og:updated_time" content="2018-04-03T04:42:32.260Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="deep learning memo">
 <meta name="twitter:description" content="一些深度学习模型的基本知识">
@@ -443,6 +443,7 @@
 <p>$$ L = \frac{1}{N_{cls}} \sum {L_{cls} (p_i, p_i^g)} + \lambda \frac{1}{N_{reg}} \sum { p_i^{g} L_{reg} (t_i, t_i^{g})}$$</p>
 <p>后一项是regression的loss，只计算正样本。为了确保每个正样本的anchor只对应一个ground truth box，选择超过0.7的IOU、且值最大的ground truth。</p>
 <h2 id="mask-rcnn">mask rcnn</h2>
+<p>..</p>
 <h1>YOLO</h1>
 <h2 id="yolo-v1">YOLO v1</h2>
 <p>将图片分割成7*7等分，对每个方格预测其类别，并预测该方格“负责”的bounding box。</p>
@@ -460,6 +461,7 @@
 <li>anchor box提升精度，k-means选择box大小</li>
 <li>...</li>
 </ol>
+<h1>SSD</h1>
 <h1>损失函数</h1>
 <h2 id="softmax-with-cross-entropy-loss">softmax with cross entropy loss</h2>
 <p>softmax:</p>
@@ -515,6 +517,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/30/network-tricks/" rel="prev" title="network tricks">
+                network tricks <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -597,7 +603,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -709,7 +715,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积操作"><span class="nav-number">1.1.</span> <span class="nav-text">卷积操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bp"><span class="nav-number">1.1.1.</span> <span class="nav-text">BP</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">RCNNs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rcnn"><span class="nav-number">2.1.</span> <span class="nav-text">RCNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fast-rcnn"><span class="nav-number">2.2.</span> <span class="nav-text">fast rcnn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#faster-rcnn"><span class="nav-number">2.3.</span> <span class="nav-text">faster rcnn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mask-rcnn"><span class="nav-number">2.4.</span> <span class="nav-text">mask rcnn</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">YOLO</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#yolo-v1"><span class="nav-number">3.1.</span> <span class="nav-text">YOLO v1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yolo-v2"><span class="nav-number">3.2.</span> <span class="nav-text">YOLO v2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#softmax-with-cross-entropy-loss"><span class="nav-number">4.1.</span> <span class="nav-text">softmax with cross entropy loss</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积操作"><span class="nav-number">1.1.</span> <span class="nav-text">卷积操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bp"><span class="nav-number">1.1.1.</span> <span class="nav-text">BP</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">RCNNs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rcnn"><span class="nav-number">2.1.</span> <span class="nav-text">RCNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fast-rcnn"><span class="nav-number">2.2.</span> <span class="nav-text">fast rcnn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#faster-rcnn"><span class="nav-number">2.3.</span> <span class="nav-text">faster rcnn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mask-rcnn"><span class="nav-number">2.4.</span> <span class="nav-text">mask rcnn</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">YOLO</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#yolo-v1"><span class="nav-number">3.1.</span> <span class="nav-text">YOLO v1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yolo-v2"><span class="nav-number">3.2.</span> <span class="nav-text">YOLO v2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">SSD</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#softmax-with-cross-entropy-loss"><span class="nav-number">5.1.</span> <span class="nav-text">softmax with cross entropy loss</span></a></li></ol></li></ol></div>
             
 
           </div>

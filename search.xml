@@ -1,9 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[terrible installation guide for caffe2]]></title>
+    <url>%2F2018%2F04%2F06%2Fterrible-installation-guide-for-caffe2%2F</url>
+    <content type="text"><![CDATA[CUDA + CUDNN + NCCL 前两个其他框架一般也都会装，但是需要注意一下版本。 NCCL注意要安装version2，github上的那个没用了。 installation by anaconda anaconda是个很好的python整合包，你可以用 1conda install -c caffe2 caffe2-cuda8.0-cudnn7 是不是很简单！ 。 。 。 然而如果你想运行Detectron，装这个测试用例都通不过。提示有些编译好的c库函数找不到…… 此时你可能需要自己编译caffe2…… installation by source code 先从github上把项目down下来吧，官网写的挺详细的。然后 1sudo make install 没通过，缺nnpack.h，看上去是NNPACK没装上。 回到cmake步，发现NNPACK没装，但是提示“brace yourself~we will install for you”。看来默认安装失败了。。。再往上找发现编译NNPACK需要安装confu和ninja。 不过需要注意的是，单用 1sudo apt-get install ninja-build 安装的是1.5版本的，编译NNPACK需要最低1.7。于是去ninja官网下载一个最新的安装上去。 编译NNPACK需要的依赖装完后再试一下编译caffe2，这下直接好了。 No module named caffe2.python 如果直接上 1sudo make install 会直接把文件放到/usr/local下面。笔者使用anaconda env，还是希望不要污染根目录的，因此加上*&quot;DESTDIR=&quot;*参数，指定将文件放在哪里，注意这个只是个path prefix，因此还是会存在 DESTDIR/usr/local下面。 接着就是加入到对应的python的包目录下面。一种方法是改环境变量PYTHONPATH，笔者使用的是conda environment，这个方法好像没成功。遂用第二种方法，简单粗暴的把生成的lib、bin、include、share下面的所有文件复制到python环境的对应目录下面了，反正正常安装包也是这么个步骤。这么搞不用设置环境变量，也不会和其他的python环境串起来。 搞定之后试一下import，终于可以了。。。]]></content>
+      <categories>
+        <category>machine learning</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[survey of instance segmentation]]></title>
+    <url>%2F2018%2F04%2F04%2Fsurvey-of-instance-segmentation%2F</url>
+    <content type="text"><![CDATA[Deepmask]]></content>
+      <categories>
+        <category>machine learning</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[memo of combinatorial mathematics]]></title>
+    <url>%2F2018%2F04%2F02%2Fmemo-of-combinatorial-mathematics%2F</url>
+    <content type="text"><![CDATA[错排问题 将问题分成 第n个元素和前n-1个元素中的一个互换，其他元素自行错排 前n-1个元素错排，第n个元素和其中一个交换 $$ D_n = (n-1)(D_{n-1}+D_{n-2})$$ $$ D_n = n!(1-\frac{1}{1!}+\frac{1}{2!}...+\frac{(-1)^n}{n!})$$ 格路问题 基本问题 从（0,0）到（m,n）的路径个数 $$S = C(m+n, m)$$ 不穿过y=x（可以在线上）？ 下移对角线，求对称路径 $$S = C(n+m,m)-C(m+n,m-1)$$ 不穿过y=x（不能在线上）？ 不用下移，考虑先走（1,0）和先走（0,1） $$S = C(n+m-1,m)-C(m+n-1,m-1)$$ 环排列 人的环排列：$(n-1)!$ 珍珠：$\frac{(n-1)!}{2}$，考虑到珍珠可以翻转 可重组合 从非空集合 X={1,2,...,n} 中，每次取出 r 个元素，允许元素重复，且不计顺序 or 取r个无标志的球，n个有区别的盒子，每个盒子允许放多于一个球。 $$S=C(n+r-1,r)$$ 可重排列 从一个长度为n的集合 $s={x_1,x_2,...,x_n}$ 中，选出k个元素，集合中的每个元素可以被重复选出，即这k个元素当中允许出现重复元素，对这k个元素形成的k元有序元组进行排列 $$S = n^k$$]]></content>
+      <categories>
+        <category>math</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[network tricks]]></title>
+    <url>%2F2018%2F03%2F30%2Fnetwork-tricks%2F</url>
+    <content type="text"><![CDATA[network compression 低秩矩阵，近似原有的w矩阵，例如使用svd分解、Toeplitz矩阵配合Krylov分解近似原矩阵 参考：Exploiting linear structure within convolutional networks for efﬁcient evaluation. 剪枝，在训练结束后将不重要的神经元或滤波器去除 量化+权值共享。 通过kmeans对同一层的权值分类，每一类权值只存储其kmeans中心点，整个权值矩阵只有k个不同的值，用$logk$比特存储。 同一类权值共享一个值，在update时也保持一致 参考：Deep compression: Compressing DNNs with pruning, trained quantization and huffman coding. 结构设计。 bottleneck和1*1卷积（减少通道数，实际上就是将各个通道按不同的权值累加） 分组卷积 扩展卷积，dilated convolution，跳着卷积，扩大感受野 用小模型模仿大模型 小模型去模仿大模型的中间层和结果的输出 knowledge distillation，A Gift From Knowledge Distillation: Fast Optimization, Network Minimization and Transfer Learning，让小模型和大模型的层间关系（两层通道的内积）相同。]]></content>
+      <categories>
+        <category>machine learning</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[deep learning memo]]></title>
     <url>%2F2018%2F03%2F29%2Fdeep-learning-memo%2F</url>
-    <content type="text"><![CDATA[CNN 卷积操作 输入层为$ Z^l$，卷积核为W，输出为$ Z^{l+1}$。 那么我们有 $$ Z^{l+1}= W* \sigma(Z^l)$$ $$ Z_{x,y}^{l+1} =\sum_{a}\sum_{b}w_{a,b} \sigma(Z^l_{x-a,y-b})$$ 有个相似的操作是互相关，cross relation $$ Z_{x,y}^{l+1} =\sum_{a}{\sum_{b}{w_{a,b}\sigma(Z^l_{x+a,y+b})}}$$ BP $$\frac{ \partial C}{\partial Z_{x,y}^l} = \sum_{x'}{\sum_{y'}{\frac{\partial C}{\partial Z_{x',y'}^{l+1}} \frac{\partial Z_{x',y'}^{l+1}}{\partial Z^{l}_{x,y}}}}$$ $$\frac{\partial Z_{x',y'}^{l+1}}{\partial Z_{x,y}^{l}} = \frac{\partial {(\sum_a{\sum_b{W_{a,b}\sigma (Z_{x'-a,y'-b}^l)}} + B})}{\partial Z_{x,y}^{l}}$$ 上式中只有$x'-a=x, y'-b=y$时导数不为0，因此带入可得 $$\frac{\partial C}{\partial Z_{x,y}^l} = \sum_{x'}\sum_{y'} \delta_{x',y'}^{l+1} W_{x'-x,y'-y} \sigma'(Z_{x,y}^l)$$ 也可以写成： $$\frac{\partial C}{\partial Z_{x,y}^l} = \sum_{a}\sum_{b} \delta_{x+a,y+b}^{l+1} W_{a,b} \sigma'(Z_{x,y}^l)$$ 这个就是$\delta$和$W$的互相关（cross correlation），和卷积差一个翻转180度，因此可以看成： $$ \frac{\partial C}{\partial Z_{x,y}^l} = \delta^{l+1}* rot180(W_{x,y}^{l+1}) \sigma'(Z_{x,y}^l)$$ 相似的可以得到 $\frac{\partial C}{\partial W^l_{a,b}}$ RCNNs RCNN 提出region proposal，利用selective search获得 在局部区域上提取feature，做前后景分类和回归 fast rcnn 将region proposal投影到最后一层feature map，不必重复提取feature 加入ROI pooling，不同大小的特征map映射到同一特征。 如何将原始图片和特征map的像素点对应起来？ 计算感受野，特征map的某一点是原始图片通过多层cnn卷积得到的，padding不影响感受野，stride影响和map size影响。 faster rcnn RPN: 抛弃selective search，提出RPN，输入固定的region，输出是region前后景判断和位置修正（第一次回归），判断为前景的region便是region proposal。 RPN loss: $$ L = \frac{1}{N_{cls}} \sum {L_{cls} (p_i, p_i^g)} + \lambda \frac{1}{N_{reg}} \sum { p_i^{g} L_{reg} (t_i, t_i^{g})}$$ 后一项是regression的loss，只计算正样本。为了确保每个正样本的anchor只对应一个ground truth box，选择超过0.7的IOU、且值最大的ground truth。 mask rcnn YOLO YOLO v1 将图片分割成7*7等分，对每个方格预测其类别，并预测该方格“负责”的bounding box。 网络输出为7*7*30的维度，每个1*1*30对应一个网格。 网格中前10个数为预测的两个bounding box的坐标（4位），confidence（1位）。confidence是一个示性函数和IOU的乘积。示性函数当bounding box负责一个ground truth box的学习时为1，其他情况为0。如何判断负责？每个ground truth box会选择所有bounding box中IOU最大的负责。这种做法称作bounding box predictor specialization(专职化)。 后20项为20分类，每一项对应一类的置信值。 缺点 一个网格只预测两个框，且认定两个框都是同一物体，对相近的物体和小群体检测不好 泛化能力弱 YOLO v2 batch normalization anchor box提升精度，k-means选择box大小 ... 损失函数 softmax with cross entropy loss softmax: $$a_i = \frac{e^{z_i}}{\sum_k e^{z_k}}$$ cross entropy loss $$H(p,q) = \sum_i p(i)log(q(i)) = log(a_y) = z_y - log(\sum_k e^{z_k})$$ 对应还有一个概念：相对熵，也称为KL散度，表示两个分布的差异性 $$D(p||q) = H(p,q)-H(p) = \sum_i p(i)log(\frac{p(i)}{q(i)})$$]]></content>
+    <content type="text"><![CDATA[CNN 卷积操作 输入层为$ Z^l$，卷积核为W，输出为$ Z^{l+1}$。 那么我们有 $$ Z^{l+1}= W* \sigma(Z^l)$$ $$ Z_{x,y}^{l+1} =\sum_{a}\sum_{b}w_{a,b} \sigma(Z^l_{x-a,y-b})$$ 有个相似的操作是互相关，cross relation $$ Z_{x,y}^{l+1} =\sum_{a}{\sum_{b}{w_{a,b}\sigma(Z^l_{x+a,y+b})}}$$ BP $$\frac{ \partial C}{\partial Z_{x,y}^l} = \sum_{x'}{\sum_{y'}{\frac{\partial C}{\partial Z_{x',y'}^{l+1}} \frac{\partial Z_{x',y'}^{l+1}}{\partial Z^{l}_{x,y}}}}$$ $$\frac{\partial Z_{x',y'}^{l+1}}{\partial Z_{x,y}^{l}} = \frac{\partial {(\sum_a{\sum_b{W_{a,b}\sigma (Z_{x'-a,y'-b}^l)}} + B})}{\partial Z_{x,y}^{l}}$$ 上式中只有$x'-a=x, y'-b=y$时导数不为0，因此带入可得 $$\frac{\partial C}{\partial Z_{x,y}^l} = \sum_{x'}\sum_{y'} \delta_{x',y'}^{l+1} W_{x'-x,y'-y} \sigma'(Z_{x,y}^l)$$ 也可以写成： $$\frac{\partial C}{\partial Z_{x,y}^l} = \sum_{a}\sum_{b} \delta_{x+a,y+b}^{l+1} W_{a,b} \sigma'(Z_{x,y}^l)$$ 这个就是$\delta$和$W$的互相关（cross correlation），和卷积差一个翻转180度，因此可以看成： $$ \frac{\partial C}{\partial Z_{x,y}^l} = \delta^{l+1}* rot180(W_{x,y}^{l+1}) \sigma'(Z_{x,y}^l)$$ 相似的可以得到 $\frac{\partial C}{\partial W^l_{a,b}}$ RCNNs RCNN 提出region proposal，利用selective search获得 在局部区域上提取feature，做前后景分类和回归 fast rcnn 将region proposal投影到最后一层feature map，不必重复提取feature 加入ROI pooling，不同大小的特征map映射到同一特征。 如何将原始图片和特征map的像素点对应起来？ 计算感受野，特征map的某一点是原始图片通过多层cnn卷积得到的，padding不影响感受野，stride影响和map size影响。 faster rcnn RPN: 抛弃selective search，提出RPN，输入固定的region，输出是region前后景判断和位置修正（第一次回归），判断为前景的region便是region proposal。 RPN loss: $$ L = \frac{1}{N_{cls}} \sum {L_{cls} (p_i, p_i^g)} + \lambda \frac{1}{N_{reg}} \sum { p_i^{g} L_{reg} (t_i, t_i^{g})}$$ 后一项是regression的loss，只计算正样本。为了确保每个正样本的anchor只对应一个ground truth box，选择超过0.7的IOU、且值最大的ground truth。 mask rcnn .. YOLO YOLO v1 将图片分割成7*7等分，对每个方格预测其类别，并预测该方格“负责”的bounding box。 网络输出为7*7*30的维度，每个1*1*30对应一个网格。 网格中前10个数为预测的两个bounding box的坐标（4位），confidence（1位）。confidence是一个示性函数和IOU的乘积。示性函数当bounding box负责一个ground truth box的学习时为1，其他情况为0。如何判断负责？每个ground truth box会选择所有bounding box中IOU最大的负责。这种做法称作bounding box predictor specialization(专职化)。 后20项为20分类，每一项对应一类的置信值。 缺点 一个网格只预测两个框，且认定两个框都是同一物体，对相近的物体和小群体检测不好 泛化能力弱 YOLO v2 batch normalization anchor box提升精度，k-means选择box大小 ... SSD 损失函数 softmax with cross entropy loss softmax: $$a_i = \frac{e^{z_i}}{\sum_k e^{z_k}}$$ cross entropy loss $$H(p,q) = \sum_i p(i)log(q(i)) = log(a_y) = z_y - log(\sum_k e^{z_k})$$ 对应还有一个概念：相对熵，也称为KL散度，表示两个分布的差异性 $$D(p||q) = H(p,q)-H(p) = \sum_i p(i)log(\frac{p(i)}{q(i)})$$]]></content>
       <categories>
         <category>machine learning</category>
       </categories>
@@ -174,17 +206,17 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[123. Best Time to Buy and Sell Stock 3]]></title>
-    <url>%2F2017%2F12%2F26%2Fleetcode123-Best-Time-to-Buy-and-Sell-Stock-3%2F</url>
-    <content type="text"><![CDATA[题目 给你一个数列，每个数字代表一个时刻的股票价格，求最多两次交易的情况下，能获得的最大收益。 题解 由于最多两次交易，定义4个状态： 只买入一次 买入一次，卖出一次 买入两次，卖出一次 买入两次，卖出两次 子问题结构是，我们已知前$i$个时刻 1~4 个状态下的最大收益，更新前$i+1$时刻的最大收益。例如： 前$i+1$个时刻只买入一次的最大收益为前$i$时刻只买一次的最大收益和只买$i+1$时刻的收益的最大值。 前$i+1$个时刻买入一次，卖出一次的最大收益为前$i$时刻只买入一次并在$i+1$时刻卖出的收益和*前$i$时刻买入一次，卖出一次的最大收益($i+1$时刻啥都不做)*的最大值。 code 。。。]]></content>
+    <title><![CDATA[472&139 about word concatenation matching]]></title>
+    <url>%2F2017%2F12%2F26%2Fleetcode-472-139-word-concatenation%2F</url>
+    <content type="text"><![CDATA[题目 139. Give you a string and a string array: s = 'leetcode' array = ['leet', 'code'] Now, tell me weather string $s$ can be concatenated by words in $array$? 472. Give you a string array: array = [&quot;cat&quot;, &quot;cats&quot;, &quot;catsdogcats&quot;, &quot;dog&quot;, &quot;dogcatsdog&quot;, &quot;hippopotamuses&quot;, &quot;rat&quot;, &quot;ratcatsdogcat&quot;] Now, tell me which word can be concatenated by other words except itself. Note: the same words can be used multiple times. 分析 These two question is similar. There are mainly two kind of solutions for both. 1. DP solution Define a bool array s[...] to be whether the prefix of a word can be concatenated. For example, for word w, if s[k] is true, it means that w[1...k] can be concatenated by words in the $array$. We split w[1...k] in any positions to find whether there exists one position t, where w[t...k] is in the $array$ and s[t] is true. So the complexity for this function is $O(n^2)$, ignoring the time of map search. 2. Trie First, construct the Trie tree using all the words in the array. Then, DFS the target word. When it come to a leaf node and the target word still has chars, researching the remaining chars from the root. ....]]></content>
       <categories>
         <category>algorithm</category>
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[472&139 about word concatenation matching]]></title>
-    <url>%2F2017%2F12%2F26%2Fleetcode-472-139-word-concatenation%2F</url>
-    <content type="text"><![CDATA[题目 139. Give you a string and a string array: s = 'leetcode' array = ['leet', 'code'] Now, tell me weather string $s$ can be concatenated by words in $array$? 472. Give you a string array: array = [&quot;cat&quot;, &quot;cats&quot;, &quot;catsdogcats&quot;, &quot;dog&quot;, &quot;dogcatsdog&quot;, &quot;hippopotamuses&quot;, &quot;rat&quot;, &quot;ratcatsdogcat&quot;] Now, tell me which word can be concatenated by other words except itself. Note: the same words can be used multiple times. 分析 These two question is similar. There are mainly two kind of solutions for both. 1. DP solution Define a bool array s[...] to be whether the prefix of a word can be concatenated. For example, for word w, if s[k] is true, it means that w[1...k] can be concatenated by words in the $array$. We split w[1...k] in any positions to find whether there exists one position t, where w[t...k] is in the $array$ and s[t] is true. So the complexity for this function is $O(n^2)$, ignoring the time of map search. 2. Trie First, construct the Trie tree using all the words in the array. Then, DFS the target word. When it come to a leaf node and the target word still has chars, researching the remaining chars from the root. ....]]></content>
+    <title><![CDATA[123. Best Time to Buy and Sell Stock 3]]></title>
+    <url>%2F2017%2F12%2F26%2Fleetcode123-Best-Time-to-Buy-and-Sell-Stock-3%2F</url>
+    <content type="text"><![CDATA[题目 给你一个数列，每个数字代表一个时刻的股票价格，求最多两次交易的情况下，能获得的最大收益。 题解 由于最多两次交易，定义4个状态： 只买入一次 买入一次，卖出一次 买入两次，卖出一次 买入两次，卖出两次 子问题结构是，我们已知前$i$个时刻 1~4 个状态下的最大收益，更新前$i+1$时刻的最大收益。例如： 前$i+1$个时刻只买入一次的最大收益为前$i$时刻只买一次的最大收益和只买$i+1$时刻的收益的最大值。 前$i+1$个时刻买入一次，卖出一次的最大收益为前$i$时刻只买入一次并在$i+1$时刻卖出的收益和*前$i$时刻买入一次，卖出一次的最大收益($i+1$时刻啥都不做)*的最大值。 code 。。。]]></content>
       <categories>
         <category>algorithm</category>
       </categories>
