@@ -118,7 +118,7 @@
 <meta property="og:site_name" content="Wesley&#39;s blog">
 <meta property="og:description" content="神经网络的一些优化方法">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-30T15:28:13.508Z">
+<meta property="og:updated_time" content="2018-04-10T07:28:18.519Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="network tricks">
 <meta name="twitter:description" content="神经网络的一些优化方法">
@@ -435,6 +435,30 @@
 </ul>
 </li>
 </ol>
+<h1>imbalanced learning</h1>
+<p>类不平衡会导致</p>
+<ol>
+<li>模型对少样本类训练较差。精度假象，少样本类别召回率低</li>
+<li>不好设置概率阈值</li>
+</ol>
+<h2 id="采样">采样</h2>
+<p>通过采样调整不同类别的样本数量</p>
+<ol>
+<li>过采样：对小样本类别随机抽取多次，直到和大样本数量相当。对小样本重复采样容易引入噪声。</li>
+<li>欠采样：从大样本随机抽取与小样本数量相当的数据。样本个数不够。</li>
+<li>SMOTE采样：通过插值对小样本进行补充。随机选一个样本作为中心点a，计算k近邻，从中随机选一个点b，用这两个点插值出一个新的点。</li>
+</ol>
+<h2 id="阈值">阈值</h2>
+<p>调整阈值和样本类个数相对应，但是这需要假设样本分布和总体分布一致。</p>
+<h2 id="集成学习">集成学习</h2>
+<ol>
+<li>bagging：bootstrap aggregation，在原样本集上随机可重选择k个样本，组成新的训练集，这样重复n次，分别训练n个模型，再聚合预测。</li>
+<li>boosting：每次迭代分类器将重点放在被错误分类的那一类上。</li>
+</ol>
+<h1>CNN things</h1>
+<h2 id="deconvolution">Deconvolution</h2>
+<h2 id="unsampling">UNSampling</h2>
+<h2 id="unpooling">UNPooling</h2>
 
       
     </div>
@@ -680,7 +704,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">network compression</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">network compression</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">imbalanced learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#采样"><span class="nav-number">2.1.</span> <span class="nav-text">采样</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阈值"><span class="nav-number">2.2.</span> <span class="nav-text">阈值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成学习"><span class="nav-number">2.3.</span> <span class="nav-text">集成学习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">CNN things</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#deconvolution"><span class="nav-number">3.1.</span> <span class="nav-text">Deconvolution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unsampling"><span class="nav-number">3.2.</span> <span class="nav-text">UNSampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unpooling"><span class="nav-number">3.3.</span> <span class="nav-text">UNPooling</span></a></li></ol></li></ol></div>
             
 
           </div>

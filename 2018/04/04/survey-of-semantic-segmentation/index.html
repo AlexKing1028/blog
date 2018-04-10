@@ -111,27 +111,27 @@
   <meta name="keywords" content="Hexo, NexT" />
 
 
-<meta name="description" content="instance级别的像素分割的已有工作">
+<meta name="description" content="语义像素分割的已有工作">
 <meta property="og:type" content="article">
-<meta property="og:title" content="survey of instance segmentation">
-<meta property="og:url" content="http://www.livinga.life/2018/04/04/survey-of-instance-segmentation/index.html">
+<meta property="og:title" content="survey of semantic segmentation">
+<meta property="og:url" content="http://www.livinga.life/2018/04/04/survey-of-semantic-segmentation/index.html">
 <meta property="og:site_name" content="Wesley&#39;s blog">
-<meta property="og:description" content="instance级别的像素分割的已有工作">
+<meta property="og:description" content="语义像素分割的已有工作">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-04T02:33:19.496Z">
+<meta property="og:updated_time" content="2018-04-10T07:29:06.935Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="survey of instance segmentation">
-<meta name="twitter:description" content="instance级别的像素分割的已有工作">
+<meta name="twitter:title" content="survey of semantic segmentation">
+<meta name="twitter:description" content="语义像素分割的已有工作">
 
 
 
 
 
 
-  <link rel="canonical" href="http://www.livinga.life/2018/04/04/survey-of-instance-segmentation/"/>
+  <link rel="canonical" href="http://www.livinga.life/2018/04/04/survey-of-semantic-segmentation/"/>
 
 
-  <title>survey of instance segmentation | Wesley's blog</title>
+  <title>survey of semantic segmentation | Wesley's blog</title>
   
 
 
@@ -315,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.livinga.life/2018/04/04/survey-of-instance-segmentation/">
+    <link itemprop="mainEntityOfPage" href="http://www.livinga.life/2018/04/04/survey-of-semantic-segmentation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wesley Shi">
@@ -332,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">survey of instance segmentation</h1>
+          <h1 class="post-title" itemprop="name headline">survey of semantic segmentation</h1>
         
 
         <div class="post-meta">
@@ -390,7 +390,7 @@
           
 
           
-              <div class="post-description">instance级别的像素分割的已有工作</div>
+              <div class="post-description">语义像素分割的已有工作</div>
           
 
         </div>
@@ -406,7 +406,22 @@
       
 
       
-        <h1>Deepmask</h1>
+        <p><a href="http://blog.qure.ai/notes/semantic-segmentation-deep-learning-review" target="_blank" rel="noopener">参考文献</a></p>
+<h1>FCN</h1>
+<h1>SegNet</h1>
+<h1>Dilated Convolutions</h1>
+<p>replace the pooling layer, without increasing parameter number.</p>
+<h1>DeepLab</h1>
+<h2 id="v1">V1</h2>
+<p>使用fully connected CRF对结果进行校准</p>
+<h2 id="v2-refinenet">V2 RefineNet</h2>
+<p>提出RCN结构，对resnet不同stage的feature进行‘refine’，再汇总起来得到最终的预测结果。</p>
+<h2 id="v3">v3</h2>
+<h1>RefineNet</h1>
+<h1>PSPNet</h1>
+<p>对提取的feature pooling到不同的大小，做卷积，再upsampling、加和。</p>
+<h1>Large Kernel Matters</h1>
+<h1>Deepmask</h1>
 
       
     </div>
@@ -425,7 +440,7 @@
     <strong>Post author:</strong>Wesley Shi</li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="http://www.livinga.life/2018/04/04/survey-of-instance-segmentation/" title="survey of instance segmentation">http://www.livinga.life/2018/04/04/survey-of-instance-segmentation/</a>
+    <a href="http://www.livinga.life/2018/04/04/survey-of-semantic-segmentation/" title="survey of semantic segmentation">http://www.livinga.life/2018/04/04/survey-of-semantic-segmentation/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>All articles in this blog are licensed under CC BY 4.0 unless stating additionally.</li>
@@ -652,7 +667,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Deepmask</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">FCN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">SegNet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Dilated Convolutions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">DeepLab</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#v1"><span class="nav-number">4.1.</span> <span class="nav-text">V1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v2-refinenet"><span class="nav-number">4.2.</span> <span class="nav-text">V2 RefineNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v3"><span class="nav-number">4.3.</span> <span class="nav-text">v3</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">RefineNet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">PSPNet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">Large Kernel Matters</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">Deepmask</span></a></li></ol></div>
             
 
           </div>

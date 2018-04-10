@@ -9,9 +9,9 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[survey of instance segmentation]]></title>
-    <url>%2F2018%2F04%2F04%2Fsurvey-of-instance-segmentation%2F</url>
-    <content type="text"><![CDATA[Deepmask]]></content>
+    <title><![CDATA[survey of semantic segmentation]]></title>
+    <url>%2F2018%2F04%2F04%2Fsurvey-of-semantic-segmentation%2F</url>
+    <content type="text"><![CDATA[参考文献 FCN SegNet Dilated Convolutions replace the pooling layer, without increasing parameter number. DeepLab V1 使用fully connected CRF对结果进行校准 V2 RefineNet 提出RCN结构，对resnet不同stage的feature进行‘refine’，再汇总起来得到最终的预测结果。 v3 RefineNet PSPNet 对提取的feature pooling到不同的大小，做卷积，再upsampling、加和。 Large Kernel Matters Deepmask]]></content>
       <categories>
         <category>machine learning</category>
       </categories>
@@ -27,7 +27,7 @@
   <entry>
     <title><![CDATA[network tricks]]></title>
     <url>%2F2018%2F03%2F30%2Fnetwork-tricks%2F</url>
-    <content type="text"><![CDATA[network compression 低秩矩阵，近似原有的w矩阵，例如使用svd分解、Toeplitz矩阵配合Krylov分解近似原矩阵 参考：Exploiting linear structure within convolutional networks for efﬁcient evaluation. 剪枝，在训练结束后将不重要的神经元或滤波器去除 量化+权值共享。 通过kmeans对同一层的权值分类，每一类权值只存储其kmeans中心点，整个权值矩阵只有k个不同的值，用$logk$比特存储。 同一类权值共享一个值，在update时也保持一致 参考：Deep compression: Compressing DNNs with pruning, trained quantization and huffman coding. 结构设计。 bottleneck和1*1卷积（减少通道数，实际上就是将各个通道按不同的权值累加） 分组卷积 扩展卷积，dilated convolution，跳着卷积，扩大感受野 用小模型模仿大模型 小模型去模仿大模型的中间层和结果的输出 knowledge distillation，A Gift From Knowledge Distillation: Fast Optimization, Network Minimization and Transfer Learning，让小模型和大模型的层间关系（两层通道的内积）相同。]]></content>
+    <content type="text"><![CDATA[network compression 低秩矩阵，近似原有的w矩阵，例如使用svd分解、Toeplitz矩阵配合Krylov分解近似原矩阵 参考：Exploiting linear structure within convolutional networks for efﬁcient evaluation. 剪枝，在训练结束后将不重要的神经元或滤波器去除 量化+权值共享。 通过kmeans对同一层的权值分类，每一类权值只存储其kmeans中心点，整个权值矩阵只有k个不同的值，用$logk$比特存储。 同一类权值共享一个值，在update时也保持一致 参考：Deep compression: Compressing DNNs with pruning, trained quantization and huffman coding. 结构设计。 bottleneck和1*1卷积（减少通道数，实际上就是将各个通道按不同的权值累加） 分组卷积 扩展卷积，dilated convolution，跳着卷积，扩大感受野 用小模型模仿大模型 小模型去模仿大模型的中间层和结果的输出 knowledge distillation，A Gift From Knowledge Distillation: Fast Optimization, Network Minimization and Transfer Learning，让小模型和大模型的层间关系（两层通道的内积）相同。 imbalanced learning 类不平衡会导致 模型对少样本类训练较差。精度假象，少样本类别召回率低 不好设置概率阈值 采样 通过采样调整不同类别的样本数量 过采样：对小样本类别随机抽取多次，直到和大样本数量相当。对小样本重复采样容易引入噪声。 欠采样：从大样本随机抽取与小样本数量相当的数据。样本个数不够。 SMOTE采样：通过插值对小样本进行补充。随机选一个样本作为中心点a，计算k近邻，从中随机选一个点b，用这两个点插值出一个新的点。 阈值 调整阈值和样本类个数相对应，但是这需要假设样本分布和总体分布一致。 集成学习 bagging：bootstrap aggregation，在原样本集上随机可重选择k个样本，组成新的训练集，这样重复n次，分别训练n个模型，再聚合预测。 boosting：每次迭代分类器将重点放在被错误分类的那一类上。 CNN things Deconvolution UNSampling UNPooling]]></content>
       <categories>
         <category>machine learning</category>
       </categories>
@@ -224,7 +224,7 @@
   <entry>
     <title><![CDATA[R-cnn]]></title>
     <url>%2F2017%2F11%2F07%2Frcnn%2F</url>
-    <content type="text"><![CDATA[R-cnn ... Fast R-cnn Fast R-cnn相比于R-cnn有两个改动。 对原始图片先提取特征，在特征图上用SS获取推荐的region。相比于RCNN先提取region，再对每个region提取特征，Fast R-cnn对每张图片只需要提取一次特征。但是带来的问题是，在特征图上推荐的bbox大小不一，需要resize到一个尺寸才能进入下一层网络。如果简单的使用resize(R-cnn中的做法)，在cnn中不能做反向传播，因此作者设计了新的层——RoI pooling，做法就是将ROI等分为$n \times m$个区域，对每个小区域进行pooling，这样对于任何大小的ROI特征，都能转化为$n \times m$个特征。 使用softmax进行分类，R-cnn使用SVM。 Faster R-cnn 前面两个RCNN使用Selective Search来获取ROI，但是SS算法的效果还不是很好，Faster R-cnn提出使用一种神经网络提取ROI，即Region Proposal Network(RPN)，而其他部分和Fast R-cnn相同。 RPN先根据这个特征图，在图上选择一些点设置锚(anchor)框作为初始ROI，经过Conv网络分成两个分支，分别执行两个任务：框的微调(bounding box regression)和分类。分类的任务在于判断这个初始ROI是背景还是前景(即我们要识别的物体)。RPN得到最终的训练结果后，只将判定为前景的BBox输出。 SSD Single Shot MultiBox Detector 单发多框检测器 SSD将region proposal和分类同意成一个步骤进行，即“单发”。这样模型更简单、更快。 主要有两点思路： 对Conv提取的特征图直接使用$n+1$个分类器分别判断是n个类别的物体和背景。具体实现是，特征图经过一个$a\times(n+1)$个channel的$3\times3$卷积层(a代表每个像素点的anchor个数)，结果的一个像素点点对应特征图对应点在某一个anchor、判断某一个类别时的特征。 这样的结构一层一层往上叠，越往上特征图越小，实现多尺度预测的效果。这种“金字塔”式的结构在后来的FPN上也有体现。]]></content>
+    <content type="text"><![CDATA[R-cnn ... Fast R-cnn Fast R-cnn相比于R-cnn有两个改动。 对原始图片先提取特征，在特征图上用SS获取推荐的region。相比于RCNN先提取region，再对每个region提取特征，Fast R-cnn对每张图片只需要提取一次特征。但是带来的问题是，在特征图上推荐的bbox大小不一，需要resize到一个尺寸才能进入下一层网络。如果简单的使用resize(R-cnn中的做法)，在cnn中不能做反向传播，因此作者设计了新的层——RoI pooling，做法就是将ROI等分为$n \times m$个区域，对每个小区域进行pooling，这样对于任何大小的ROI特征，都能转化为$n \times m$个特征。 使用softmax进行分类，R-cnn使用SVM。 Faster R-cnn 前面两个RCNN使用Selective Search来获取ROI，但是SS算法的效果还不是很好，Faster R-cnn提出使用一种神经网络提取ROI，即Region Proposal Network(RPN)，而其他部分和Fast R-cnn相同。 RPN先根据这个特征图，在图上选择一些点设置锚(anchor)框作为初始ROI，经过Conv网络分成两个分支，分别执行两个任务：框的微调(bounding box regression)和分类。分类的任务在于判断这个初始ROI是背景还是前景(即我们要识别的物体)。RPN得到最终的训练结果后，只将判定为前景的BBox输出。 SSD Single Shot MultiBox Detector 单发多框检测器 SSD将region proposal和分类同意成一个步骤进行，即“单发”。这样模型更简单、更快。 主要有两点思路： 对Conv提取的特征图直接使用$n+1$个分类器分别判断是n个类别的物体和背景。具体实现是，特征图经过一个$a\times(n+1)$个channel的$3\times3$卷积层(a代表每个像素点的anchor个数)，结果的一个像素点点对应特征图对应点在某一个anchor、判断某一个类别时的特征。 这样的结构一层一层往上叠，越往上特征图越小，实现多尺度预测的效果。这种“金字塔”式的结构在后来的FPN上也有体现。 some tricks NMS non maximum suppression 由于rpn或其他获得的检测框之间存在很多重叠的区域，nms主要用于消除多于的窗口。 traditional nms 根据score排序，设置一个IOU阈值 取score最大的框a，查找剩下所有box中与a的IOU超过阈值的框，删除 重复第2步，直到不存在框 NMS convnet 论文地址 传统的方法（如上）需要人为设定一个IOU阈值，]]></content>
       <categories>
         <category>machine learning</category>
       </categories>
