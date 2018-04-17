@@ -111,27 +111,40 @@
   <meta name="keywords" content="Hexo, NexT" />
 
 
-<meta name="description" content="compare R-cnn, fast R-cnn and faster R-cnn">
+<meta name="description" content="关于instance segmentation任务的研究工作的survey">
 <meta property="og:type" content="article">
-<meta property="og:title" content="R-cnn">
-<meta property="og:url" content="http://www.livinga.life/2017/11/07/rcnn/index.html">
+<meta property="og:title" content="survey of instance segmentation">
+<meta property="og:url" content="http://www.livinga.life/2018/04/17/survey-of-instance-segmentation/index.html">
 <meta property="og:site_name" content="Wesley&#39;s blog">
-<meta property="og:description" content="compare R-cnn, fast R-cnn and faster R-cnn">
+<meta property="og:description" content="关于instance segmentation任务的研究工作的survey">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-09T07:06:43.579Z">
+<meta property="og:image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/sds_model.png">
+<meta property="og:image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/Snip20180417_5.png">
+<meta property="og:image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/deepmask_model.png">
+<meta property="og:image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/deepmask_score.png">
+<meta property="og:image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/deepmask_loss.png">
+<meta property="og:image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/ifcn_proposal.png">
+<meta property="og:image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/ifcn_model.png">
+<meta property="og:image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/FCIS_model.png">
+<meta property="og:image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/FCIS_example.png">
+<meta property="og:image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/panet_model.png">
+<meta property="og:image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/panet_lateral.png">
+<meta property="og:image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/panet_tongji.png">
+<meta property="og:updated_time" content="2018-04-17T18:27:54.550Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="R-cnn">
-<meta name="twitter:description" content="compare R-cnn, fast R-cnn and faster R-cnn">
+<meta name="twitter:title" content="survey of instance segmentation">
+<meta name="twitter:description" content="关于instance segmentation任务的研究工作的survey">
+<meta name="twitter:image" content="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/sds_model.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://www.livinga.life/2017/11/07/rcnn/"/>
+  <link rel="canonical" href="http://www.livinga.life/2018/04/17/survey-of-instance-segmentation/"/>
 
 
-  <title>R-cnn | Wesley's blog</title>
+  <title>survey of instance segmentation | Wesley's blog</title>
   
 
 
@@ -315,7 +328,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.livinga.life/2017/11/07/rcnn/">
+    <link itemprop="mainEntityOfPage" href="http://www.livinga.life/2018/04/17/survey-of-instance-segmentation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wesley Shi">
@@ -332,7 +345,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">R-cnn</h1>
+          <h1 class="post-title" itemprop="name headline">survey of instance segmentation</h1>
         
 
         <div class="post-meta">
@@ -344,7 +357,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-07T00:00:00+08:00">2017-11-07</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-17T10:16:26+08:00">2018-04-17</time>
             
 
             
@@ -390,7 +403,7 @@
           
 
           
-              <div class="post-description">compare R-cnn, fast R-cnn and faster R-cnn</div>
+              <div class="post-description">关于instance segmentation任务的研究工作的survey</div>
           
 
         </div>
@@ -406,38 +419,97 @@
       
 
       
-        <h1>R-cnn</h1>
-<p>...</p>
-<h1>Fast R-cnn</h1>
-<p>Fast R-cnn相比于R-cnn有两个改动。</p>
+        <h1>proposal based</h1>
+<h2 id="simultaneous-detection-and-segmentation-2014">Simultaneous Detection and Segmentation（2014）</h2>
+<p>Based on R-CNN</p>
+<p><img src="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/sds_model.png" alt=""></p>
 <ol>
-<li>对原始图片先提取特征，在特征图上用SS获取推荐的region。相比于RCNN先提取region，再对每个region提取特征，Fast R-cnn对每张图片只需要提取一次特征。但是带来的问题是，在特征图上推荐的bbox大小不一，需要resize到一个尺寸才能进入下一层网络。如果简单的使用resize(R-cnn中的做法)，在cnn中不能做反向传播，因此作者设计了新的层——<strong>RoI pooling</strong>，做法就是将ROI等分为$n \times m$个区域，对每个小区域进行pooling，这样对于任何大小的ROI特征，都能转化为$n \times m$个特征。</li>
-<li>使用softmax进行分类，R-cnn使用SVM。</li>
+<li>MCG, get region proposal and foreground(replace for selective search)</li>
+<li>feather extraction, two branch of CNN</li>
+<li>classification, linear svm</li>
+<li>refinement, logistic regression+cnn</li>
 </ol>
-<h1>Faster R-cnn</h1>
-<p>前面两个RCNN使用Selective Search来获取ROI，但是SS算法的效果还不是很好，Faster R-cnn提出使用一种神经网络提取ROI，即<strong>Region Proposal Network</strong>(RPN)，而其他部分和Fast R-cnn相同。</p>
-<p>RPN先根据这个特征图，在图上选择一些点设置锚(anchor)框作为初始ROI，经过Conv网络分成两个分支，分别执行两个任务：框的微调(bounding box regression)和分类。分类的任务在于判断这个初始ROI是背景还是前景(即我们要识别的物体)。RPN得到最终的训练结果后，只将判定为前景的BBox输出。</p>
-<h1>SSD</h1>
-<p><strong>Single Shot MultiBox Detector</strong> 单发多框检测器</p>
-<p>SSD将region proposal和分类同意成一个步骤进行，即“单发”。这样模型更简单、更快。</p>
-<p>主要有两点思路：</p>
+<p><img src="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/Snip20180417_5.png" alt=""></p>
+<h2 id="deepmask">DeepMask</h2>
+<p><img src="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/deepmask_model.png" alt=""></p>
+<p>DeepMask对每一个图片的patch x（或者说proposal）经过VGG提取特征之后，分为两个分支</p>
 <ol>
-<li>对Conv提取的特征图直接使用$n+1$个分类器分别判断是n个类别的物体和背景。具体实现是，特征图经过一个$a\times(n+1)$个channel的$3\times3$卷积层(a代表每个像素点的anchor个数)，结果的一个像素点点对应特征图对应点在某一个anchor、判断某一个类别时的特征。</li>
-<li>这样的结构一层一层往上叠，越往上特征图越小，实现多尺度预测的效果。这种“金字塔”式的结构在后来的FPN上也有体现。</li>
+<li>segmentation branch：获得512个feature map，在经过两次全连接得到一张mask，经过upsampling（具体是bilinear interpolation）获得原patch大小的mask。</li>
+<li>score branch：多层全连接后得到一个score，表示该patch是否为正例。</li>
 </ol>
-<h1>some tricks</h1>
-<h2 id="nms">NMS</h2>
-<p>non maximum suppression</p>
-<p>由于rpn或其他获得的检测框之间存在很多重叠的区域，nms主要用于消除多于的窗口。</p>
-<h3 id="traditional-nms">traditional nms</h3>
+<h3 id="what-is-a-positive-sample">what is a positive sample?</h3>
+<p>正例必须满足以下两个条件：</p>
 <ol>
-<li>根据score排序，设置一个IOU阈值</li>
-<li>取score最大的框a，查找剩下所有box中与a的IOU超过阈值的框，删除</li>
-<li>重复第2步，直到不存在框</li>
+<li>instance的中心也在patch的中心。</li>
+<li>patch必须完全包含instance</li>
 </ol>
-<h3 id="nms-convnet">NMS convnet</h3>
-<p><a href="https://arxiv.org/abs/1511.06437?context=cs.CV" target="_blank" rel="noopener">论文地址</a></p>
-<p>传统的方法（如上）需要人为设定一个IOU阈值，</p>
+<p>如下图，每一对图左边为原图，右边为ground truth mask，绿框为正例，红框为负例</p>
+<p><img src="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/deepmask_score.png" alt=""></p>
+<h3 id="train">train</h3>
+<p><img src="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/deepmask_loss.png" alt=""></p>
+<p>上式为loss function，总共k个training patch，第一项为mask的loss，<strong>只训练正例部分</strong>，第二项为score loss。</p>
+<p>训练样本由每张图片ground truth的多个instance的bounding box组成。实际训练中，为了保证模型的稳定性，patch和instance的中心和大小允许一定程度的偏移。</p>
+<h3 id="test-inference">test/inference</h3>
+<p>密集的选取不同scale和location的patch</p>
+<h2 id="instancefcn">instanceFCN</h2>
+<p><img src="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/ifcn_proposal.png" alt=""></p>
+<h3 id="score-map-in-sliding-window">score map in sliding window</h3>
+<p>sliding window为图中绿色大框。作者将sliding window分割为$k \times k$等分，每个区域对应instance的身体部位，分别对全图生成一个score map，仅检测图中存在的所有部位。因此对每个proposal，对应输出有$k \times k$个channel，分别对应每个区域的检测结果。</p>
+<p>例如图中有两个人，区域4的feature map对身体的左边识别比较高。</p>
+<h3 id="instance-assembling">instance assembling</h3>
+<p>在得到$k \times k$个特征图之后，我们将第i个特征图的区域i放入新的map中，组成$k \times k$大小的新的map，作为对该proposal的mask。</p>
+<h3 id="model-structure">model structure</h3>
+<p><img src="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/ifcn_model.png" alt=""></p>
+<p>网络先通过13层的vgg提取特征，分为两个支路，上一个支路负责预测mask，下一个支路负责预测bounding box。在获得$k \times k$个feature channel后，将每个选取的sliding window分割为$k \times k$块，分别填上对应channel的feature。</p>
+<h3 id="train-v2">train</h3>
+<p>随机选取n个sliding window，预测mask和判断是否为bounding box的正例。损失函数如下：</p>
+<p>$$loss = \sum_i(L(p_i,p_i<sup>*)+\sum_{i,j}L(S_{i,j},S_{i,j}</sup>*))$$</p>
+<p>p表示sliding window是否为正例，S表示每个pixel的label，其中带*表示ground truth，L为logistic regression loss。</p>
+<p>实际训练对样本进行缩放，随机选择256个sliding window进行训练。</p>
+<h3 id="test">test</h3>
+<p>为了保证精度，按固定stride密集的选取sliding window，根据score和mask使用NMS筛选得到最终结果。</p>
+<h2 id="fcis">FCIS</h2>
+<p>全名fully convolutional instance sementic segmentation</p>
+<p>主要是基于instance FCN的改进版，主要有三点：</p>
+<ol>
+<li>由于两个任务有密切的关联，detection和segmentation统一到一个分支。之前大部分工作是两个任务共享提取feature的map，然后分成两个分支进行训练</li>
+<li>增加类别，instance FCN只能识别背景和前景（即物体），FCIS能够识别c个类别的物体和背景。</li>
+<li>使用RPN获得ROI，相比instance FCN增加了尺寸和形状</li>
+</ol>
+<p><img src="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/FCIS_model.png" alt=""></p>
+<h3 id="procedure">procedure</h3>
+<ol>
+<li>CNN提取feature</li>
+<li>RPN获得N个ROIs</li>
+<li>对于每个ROI，获得$2k^2 \times (C+1)$个channel的score map，系数2是包括每个pixel的detection和segmentation的score，k表示ROI分割的块数，C为类别数，加1表示背景。
+<ul>
+<li>detection score表示该pixel是否在该类别的instance的bounding box中。</li>
+<li>segmentation score表示该pixel是否在该类别的前景。</li>
+</ul>
+</li>
+<li>经过instance assembling获得$2(C+1)$个channel</li>
+<li>对这$C+1$个类别，每一个预测detection score和segmentation score
+<ul>
+<li>detection score：对2个score map先逐pixel取max，再计算全图的平均值作为ROI为该类别的score，对$C+1$个类计算一个softmax</li>
+<li>segmentation：对2个score map逐pixel计算softmax，segmentation大于detection的为mask</li>
+</ul>
+</li>
+</ol>
+<p>例如下图:</p>
+<p><img src="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/FCIS_example.png" alt=""></p>
+<h3 id="loss-function">loss function</h3>
+<p>三部分，RPN+classificaiton+segmentation</p>
+<h2 id="panet">PANet</h2>
+<p><img src="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/panet_model.png" alt=""></p>
+<h3 id="bottom-up-augmentation">bottom-up augmentation</h3>
+<p>FPN证明了高层级的特征结合低层级可以获得到更精确的位置信息，但是不同层级之间隔了太多层，不利于获得位置信息。</p>
+<p><strong>augmented path</strong></p>
+<p>在FPN的基础上增加了一层自底向上的downsample的层，即part b网络部分。和FPN相似，下一层卷积和平行层经过lateral connection的结果逐个元素累加。不同层之间总共只隔了不超过10层。</p>
+<p><img src="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/panet_lateral.png" alt=""></p>
+<h3 id="adaptive-feature-pooling">Adaptive feature pooling</h3>
+<p>FPN用于Fast RCNN时，对不同大小的ROI，分别使用不同的特征层做预测。作者认为各个特征层都对ROI的预测存在影响。因此作者提出任意ROI都在所有层计算特征区域，再利用ROIAlign+max/sum pooling获得最终结果。</p>
+<p>下图是作者统计的，在取max的情况下，选择不同特征层的特征的统计。</p>
+<p><img src="http://livingalife.oss-cn-beijing.aliyuncs.com/hexo/panet_tongji.png" alt=""></p>
 
       
     </div>
@@ -456,7 +528,7 @@
     <strong>Post author:</strong>Wesley Shi</li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="http://www.livinga.life/2017/11/07/rcnn/" title="R-cnn">http://www.livinga.life/2017/11/07/rcnn/</a>
+    <a href="http://www.livinga.life/2018/04/17/survey-of-instance-segmentation/" title="survey of instance segmentation">http://www.livinga.life/2018/04/17/survey-of-instance-segmentation/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>All articles in this blog are licensed under CC BY 4.0 unless stating additionally.</li>
@@ -476,8 +548,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/31/some-abbreviation-in-ML/" rel="next" title="Abbreviations in Machine Learning">
-                <i class="fa fa-chevron-left"></i> Abbreviations in Machine Learning
+              <a href="/2018/04/16/basics-in-deep-reinforcement-learning/" rel="next" title="basics in deep reinforcement learning">
+                <i class="fa fa-chevron-left"></i> basics in deep reinforcement learning
               </a>
             
           </div>
@@ -485,10 +557,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/26/leetcode123-Best-Time-to-Buy-and-Sell-Stock-3/" rel="prev" title="123. Best Time to Buy and Sell Stock 3">
-                123. Best Time to Buy and Sell Stock 3 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -683,7 +751,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">R-cnn</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Fast R-cnn</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Faster R-cnn</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">SSD</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">some tricks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nms"><span class="nav-number">5.1.</span> <span class="nav-text">NMS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#traditional-nms"><span class="nav-number">5.1.1.</span> <span class="nav-text">traditional nms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nms-convnet"><span class="nav-number">5.1.2.</span> <span class="nav-text">NMS convnet</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">proposal based</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simultaneous-detection-and-segmentation-2014"><span class="nav-number">1.1.</span> <span class="nav-text">Simultaneous Detection and Segmentation（2014）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deepmask"><span class="nav-number">1.2.</span> <span class="nav-text">DeepMask</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#what-is-a-positive-sample"><span class="nav-number">1.2.1.</span> <span class="nav-text">what is a positive sample?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#train"><span class="nav-number">1.2.2.</span> <span class="nav-text">train</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-inference"><span class="nav-number">1.2.3.</span> <span class="nav-text">test/inference</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#instancefcn"><span class="nav-number">1.3.</span> <span class="nav-text">instanceFCN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#score-map-in-sliding-window"><span class="nav-number">1.3.1.</span> <span class="nav-text">score map in sliding window</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#instance-assembling"><span class="nav-number">1.3.2.</span> <span class="nav-text">instance assembling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#model-structure"><span class="nav-number">1.3.3.</span> <span class="nav-text">model structure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#train-v2"><span class="nav-number">1.3.4.</span> <span class="nav-text">train</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test"><span class="nav-number">1.3.5.</span> <span class="nav-text">test</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fcis"><span class="nav-number">1.4.</span> <span class="nav-text">FCIS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#procedure"><span class="nav-number">1.4.1.</span> <span class="nav-text">procedure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#loss-function"><span class="nav-number">1.4.2.</span> <span class="nav-text">loss function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#panet"><span class="nav-number">1.5.</span> <span class="nav-text">PANet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bottom-up-augmentation"><span class="nav-number">1.5.1.</span> <span class="nav-text">bottom-up augmentation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#adaptive-feature-pooling"><span class="nav-number">1.5.2.</span> <span class="nav-text">Adaptive feature pooling</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

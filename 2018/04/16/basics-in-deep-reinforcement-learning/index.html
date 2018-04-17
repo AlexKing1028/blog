@@ -111,27 +111,27 @@
   <meta name="keywords" content="Hexo, NexT" />
 
 
-<meta name="description" content="compare R-cnn, fast R-cnn and faster R-cnn">
+<meta name="description" content="深度增强学习基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="R-cnn">
-<meta property="og:url" content="http://www.livinga.life/2017/11/07/rcnn/index.html">
+<meta property="og:title" content="basics in deep reinforcement learning">
+<meta property="og:url" content="http://www.livinga.life/2018/04/16/basics-in-deep-reinforcement-learning/index.html">
 <meta property="og:site_name" content="Wesley&#39;s blog">
-<meta property="og:description" content="compare R-cnn, fast R-cnn and faster R-cnn">
+<meta property="og:description" content="深度增强学习基础">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-09T07:06:43.579Z">
+<meta property="og:updated_time" content="2018-04-16T02:56:24.547Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="R-cnn">
-<meta name="twitter:description" content="compare R-cnn, fast R-cnn and faster R-cnn">
+<meta name="twitter:title" content="basics in deep reinforcement learning">
+<meta name="twitter:description" content="深度增强学习基础">
 
 
 
 
 
 
-  <link rel="canonical" href="http://www.livinga.life/2017/11/07/rcnn/"/>
+  <link rel="canonical" href="http://www.livinga.life/2018/04/16/basics-in-deep-reinforcement-learning/"/>
 
 
-  <title>R-cnn | Wesley's blog</title>
+  <title>basics in deep reinforcement learning | Wesley's blog</title>
   
 
 
@@ -315,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.livinga.life/2017/11/07/rcnn/">
+    <link itemprop="mainEntityOfPage" href="http://www.livinga.life/2018/04/16/basics-in-deep-reinforcement-learning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wesley Shi">
@@ -332,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">R-cnn</h1>
+          <h1 class="post-title" itemprop="name headline">basics in deep reinforcement learning</h1>
         
 
         <div class="post-meta">
@@ -344,7 +344,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-07T00:00:00+08:00">2017-11-07</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-16T09:43:40+08:00">2018-04-16</time>
             
 
             
@@ -390,7 +390,7 @@
           
 
           
-              <div class="post-description">compare R-cnn, fast R-cnn and faster R-cnn</div>
+              <div class="post-description">深度增强学习基础</div>
           
 
         </div>
@@ -406,38 +406,34 @@
       
 
       
-        <h1>R-cnn</h1>
-<p>...</p>
-<h1>Fast R-cnn</h1>
-<p>Fast R-cnn相比于R-cnn有两个改动。</p>
+        <h1>imitation</h1>
+<h1>policy gradient</h1>
+<p>目标函数为在当前策略函数下每一步reward的期望和</p>
 <ol>
-<li>对原始图片先提取特征，在特征图上用SS获取推荐的region。相比于RCNN先提取region，再对每个region提取特征，Fast R-cnn对每张图片只需要提取一次特征。但是带来的问题是，在特征图上推荐的bbox大小不一，需要resize到一个尺寸才能进入下一层网络。如果简单的使用resize(R-cnn中的做法)，在cnn中不能做反向传播，因此作者设计了新的层——<strong>RoI pooling</strong>，做法就是将ROI等分为$n \times m$个区域，对每个小区域进行pooling，这样对于任何大小的ROI特征，都能转化为$n \times m$个特征。</li>
-<li>使用softmax进行分类，R-cnn使用SVM。</li>
+<li>sample ${\tau^i}$ from ${\pi}_\theta(a_t | s_t)$</li>
+<li>compute $\delta_\theta(J(\theta))$</li>
+<li>change $\theta$</li>
 </ol>
-<h1>Faster R-cnn</h1>
-<p>前面两个RCNN使用Selective Search来获取ROI，但是SS算法的效果还不是很好，Faster R-cnn提出使用一种神经网络提取ROI，即<strong>Region Proposal Network</strong>(RPN)，而其他部分和Fast R-cnn相同。</p>
-<p>RPN先根据这个特征图，在图上选择一些点设置锚(anchor)框作为初始ROI，经过Conv网络分成两个分支，分别执行两个任务：框的微调(bounding box regression)和分类。分类的任务在于判断这个初始ROI是背景还是前景(即我们要识别的物体)。RPN得到最终的训练结果后，只将判定为前景的BBox输出。</p>
-<h1>SSD</h1>
-<p><strong>Single Shot MultiBox Detector</strong> 单发多框检测器</p>
-<p>SSD将region proposal和分类同意成一个步骤进行，即“单发”。这样模型更简单、更快。</p>
-<p>主要有两点思路：</p>
+<h2 id="improvements">improvements</h2>
 <ol>
-<li>对Conv提取的特征图直接使用$n+1$个分类器分别判断是n个类别的物体和背景。具体实现是，特征图经过一个$a\times(n+1)$个channel的$3\times3$卷积层(a代表每个像素点的anchor个数)，结果的一个像素点点对应特征图对应点在某一个anchor、判断某一个类别时的特征。</li>
-<li>这样的结构一层一层往上叠，越往上特征图越小，实现多尺度预测的效果。这种“金字塔”式的结构在后来的FPN上也有体现。</li>
+<li>reward to go，只计算策略函数时间点之后的reward</li>
+<li>minus average reward，用来减小variance，不是最优的，但是通常也能达到很好的结果</li>
 </ol>
-<h1>some tricks</h1>
-<h2 id="nms">NMS</h2>
-<p>non maximum suppression</p>
-<p>由于rpn或其他获得的检测框之间存在很多重叠的区域，nms主要用于消除多于的窗口。</p>
-<h3 id="traditional-nms">traditional nms</h3>
+<h1>actor-critic algorithm</h1>
+<p>minus $A^\pi$，fit the value function</p>
+<p>policy evaluation</p>
+<p>batch actor-critic algorithm</p>
 <ol>
-<li>根据score排序，设置一个IOU阈值</li>
-<li>取score最大的框a，查找剩下所有box中与a的IOU超过阈值的框，删除</li>
-<li>重复第2步，直到不存在框</li>
+<li>sample on current policy</li>
+<li>fit value function(critic), bootstrap or monte charo</li>
+<li>evaluate A</li>
+<li>gradient</li>
+<li>change $\theta$</li>
 </ol>
-<h3 id="nms-convnet">NMS convnet</h3>
-<p><a href="https://arxiv.org/abs/1511.06437?context=cs.CV" target="_blank" rel="noopener">论文地址</a></p>
-<p>传统的方法（如上）需要人为设定一个IOU阈值，</p>
+<h2 id="discount-factor">discount factor</h2>
+<p>越早的reward越重要，discount $\gamma$</p>
+<p>$y_{i,t} = r(s_{i,t},a_{i,t})+\gamma V'(s_{i, t+1})$</p>
+<h2 id="online-algorithm">online algorithm</h2>
 
       
     </div>
@@ -456,7 +452,7 @@
     <strong>Post author:</strong>Wesley Shi</li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="http://www.livinga.life/2017/11/07/rcnn/" title="R-cnn">http://www.livinga.life/2017/11/07/rcnn/</a>
+    <a href="http://www.livinga.life/2018/04/16/basics-in-deep-reinforcement-learning/" title="basics in deep reinforcement learning">http://www.livinga.life/2018/04/16/basics-in-deep-reinforcement-learning/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>All articles in this blog are licensed under CC BY 4.0 unless stating additionally.</li>
@@ -476,8 +472,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/31/some-abbreviation-in-ML/" rel="next" title="Abbreviations in Machine Learning">
-                <i class="fa fa-chevron-left"></i> Abbreviations in Machine Learning
+              <a href="/2018/04/13/video-tracking-and-segmentation/" rel="next" title="video tracking and segmentation">
+                <i class="fa fa-chevron-left"></i> video tracking and segmentation
               </a>
             
           </div>
@@ -486,8 +482,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/12/26/leetcode123-Best-Time-to-Buy-and-Sell-Stock-3/" rel="prev" title="123. Best Time to Buy and Sell Stock 3">
-                123. Best Time to Buy and Sell Stock 3 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/17/survey-of-instance-segmentation/" rel="prev" title="survey of instance segmentation">
+                survey of instance segmentation <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -683,7 +679,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">R-cnn</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Fast R-cnn</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Faster R-cnn</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">SSD</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">some tricks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nms"><span class="nav-number">5.1.</span> <span class="nav-text">NMS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#traditional-nms"><span class="nav-number">5.1.1.</span> <span class="nav-text">traditional nms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nms-convnet"><span class="nav-number">5.1.2.</span> <span class="nav-text">NMS convnet</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">imitation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">policy gradient</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#improvements"><span class="nav-number">2.1.</span> <span class="nav-text">improvements</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">actor-critic algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#discount-factor"><span class="nav-number">3.1.</span> <span class="nav-text">discount factor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#online-algorithm"><span class="nav-number">3.2.</span> <span class="nav-text">online algorithm</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -111,27 +111,27 @@
   <meta name="keywords" content="Hexo, NexT" />
 
 
-<meta name="description" content="compare R-cnn, fast R-cnn and faster R-cnn">
+<meta name="description" content="视频追踪和分割的一些工作">
 <meta property="og:type" content="article">
-<meta property="og:title" content="R-cnn">
-<meta property="og:url" content="http://www.livinga.life/2017/11/07/rcnn/index.html">
+<meta property="og:title" content="video tracking and segmentation">
+<meta property="og:url" content="http://www.livinga.life/2018/04/13/video-tracking-and-segmentation/index.html">
 <meta property="og:site_name" content="Wesley&#39;s blog">
-<meta property="og:description" content="compare R-cnn, fast R-cnn and faster R-cnn">
+<meta property="og:description" content="视频追踪和分割的一些工作">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-09T07:06:43.579Z">
+<meta property="og:updated_time" content="2018-04-13T14:59:20.628Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="R-cnn">
-<meta name="twitter:description" content="compare R-cnn, fast R-cnn and faster R-cnn">
+<meta name="twitter:title" content="video tracking and segmentation">
+<meta name="twitter:description" content="视频追踪和分割的一些工作">
 
 
 
 
 
 
-  <link rel="canonical" href="http://www.livinga.life/2017/11/07/rcnn/"/>
+  <link rel="canonical" href="http://www.livinga.life/2018/04/13/video-tracking-and-segmentation/"/>
 
 
-  <title>R-cnn | Wesley's blog</title>
+  <title>video tracking and segmentation | Wesley's blog</title>
   
 
 
@@ -315,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.livinga.life/2017/11/07/rcnn/">
+    <link itemprop="mainEntityOfPage" href="http://www.livinga.life/2018/04/13/video-tracking-and-segmentation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wesley Shi">
@@ -332,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">R-cnn</h1>
+          <h1 class="post-title" itemprop="name headline">video tracking and segmentation</h1>
         
 
         <div class="post-meta">
@@ -344,7 +344,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-07T00:00:00+08:00">2017-11-07</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-13T14:41:35+08:00">2018-04-13</time>
             
 
             
@@ -390,7 +390,7 @@
           
 
           
-              <div class="post-description">compare R-cnn, fast R-cnn and faster R-cnn</div>
+              <div class="post-description">视频追踪和分割的一些工作</div>
           
 
         </div>
@@ -406,38 +406,32 @@
       
 
       
-        <h1>R-cnn</h1>
-<p>...</p>
-<h1>Fast R-cnn</h1>
-<p>Fast R-cnn相比于R-cnn有两个改动。</p>
+        <h1>Discriminative Correlation Filter(DCF)</h1>
+<h1>MOSSE系列方法</h1>
+<h2 id="some-termination">some termination</h2>
 <ol>
-<li>对原始图片先提取特征，在特征图上用SS获取推荐的region。相比于RCNN先提取region，再对每个region提取特征，Fast R-cnn对每张图片只需要提取一次特征。但是带来的问题是，在特征图上推荐的bbox大小不一，需要resize到一个尺寸才能进入下一层网络。如果简单的使用resize(R-cnn中的做法)，在cnn中不能做反向传播，因此作者设计了新的层——<strong>RoI pooling</strong>，做法就是将ROI等分为$n \times m$个区域，对每个小区域进行pooling，这样对于任何大小的ROI特征，都能转化为$n \times m$个特征。</li>
-<li>使用softmax进行分类，R-cnn使用SVM。</li>
+<li>template：图片crop出来的感兴趣的区域，是mosse的输入</li>
+<li>correlation：计算两个图片之间的相似度，像素点积求和。使用template和图片的每个区域做correlation来计算相似度</li>
+<li>filter：图片crop出来的子图，和template一个概念</li>
 </ol>
-<h1>Faster R-cnn</h1>
-<p>前面两个RCNN使用Selective Search来获取ROI，但是SS算法的效果还不是很好，Faster R-cnn提出使用一种神经网络提取ROI，即<strong>Region Proposal Network</strong>(RPN)，而其他部分和Fast R-cnn相同。</p>
-<p>RPN先根据这个特征图，在图上选择一些点设置锚(anchor)框作为初始ROI，经过Conv网络分成两个分支，分别执行两个任务：框的微调(bounding box regression)和分类。分类的任务在于判断这个初始ROI是背景还是前景(即我们要识别的物体)。RPN得到最终的训练结果后，只将判定为前景的BBox输出。</p>
-<h1>SSD</h1>
-<p><strong>Single Shot MultiBox Detector</strong> 单发多框检测器</p>
-<p>SSD将region proposal和分类同意成一个步骤进行，即“单发”。这样模型更简单、更快。</p>
-<p>主要有两点思路：</p>
+<h2 id="procedure">procedure</h2>
 <ol>
-<li>对Conv提取的特征图直接使用$n+1$个分类器分别判断是n个类别的物体和背景。具体实现是，特征图经过一个$a\times(n+1)$个channel的$3\times3$卷积层(a代表每个像素点的anchor个数)，结果的一个像素点点对应特征图对应点在某一个anchor、判断某一个类别时的特征。</li>
-<li>这样的结构一层一层往上叠，越往上特征图越小，实现多尺度预测的效果。这种“金字塔”式的结构在后来的FPN上也有体现。</li>
+<li>使用前7帧初始化filter</li>
+<li>以前一帧目标中心点为中心创建一个高斯矩阵，synthetic target</li>
+<li>计算新的filter矩阵</li>
+<li>以前一帧目标中心点为中心，crop一个tracking window，大小与template、filter相同。再傅里叶变换</li>
+<li>计算tracking window和filter逐元素相乘，peak为当前帧中目标的预测位置</li>
 </ol>
-<h1>some tricks</h1>
-<h2 id="nms">NMS</h2>
-<p>non maximum suppression</p>
-<p>由于rpn或其他获得的检测框之间存在很多重叠的区域，nms主要用于消除多于的窗口。</p>
-<h3 id="traditional-nms">traditional nms</h3>
-<ol>
-<li>根据score排序，设置一个IOU阈值</li>
-<li>取score最大的框a，查找剩下所有box中与a的IOU超过阈值的框，删除</li>
-<li>重复第2步，直到不存在框</li>
-</ol>
-<h3 id="nms-convnet">NMS convnet</h3>
-<p><a href="https://arxiv.org/abs/1511.06437?context=cs.CV" target="_blank" rel="noopener">论文地址</a></p>
-<p>传统的方法（如上）需要人为设定一个IOU阈值，</p>
+<h1>OSVOS</h1>
+<h2 id="offline-training">offline training</h2>
+<p>用pretrain好的分类网络作为base network，再使用DAVIS数据fine tune一个二分类的分割网络，称为parent network</p>
+<h2 id="online-training">online training</h2>
+<p>对于待分割视频，我们已知第一帧的分割结果，先利用该结果对parent network进行训练。</p>
+<h1>MaskTrack</h1>
+<h2 id="offline-training-v2">offline training</h2>
+<p>mask refinement network，输入前一帧的mask和当前帧图片，预测当前帧的mask。</p>
+<h2 id="online-training-v2">online training</h2>
+<p>在测试阶段使用第一帧的数据作为额外的训练数据做fine tune</p>
 
       
     </div>
@@ -456,7 +450,7 @@
     <strong>Post author:</strong>Wesley Shi</li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="http://www.livinga.life/2017/11/07/rcnn/" title="R-cnn">http://www.livinga.life/2017/11/07/rcnn/</a>
+    <a href="http://www.livinga.life/2018/04/13/video-tracking-and-segmentation/" title="video tracking and segmentation">http://www.livinga.life/2018/04/13/video-tracking-and-segmentation/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>All articles in this blog are licensed under CC BY 4.0 unless stating additionally.</li>
@@ -476,8 +470,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/31/some-abbreviation-in-ML/" rel="next" title="Abbreviations in Machine Learning">
-                <i class="fa fa-chevron-left"></i> Abbreviations in Machine Learning
+              <a href="/2018/04/06/terrible-installation-guide-for-caffe2/" rel="next" title="terrible installation guide for caffe2">
+                <i class="fa fa-chevron-left"></i> terrible installation guide for caffe2
               </a>
             
           </div>
@@ -486,8 +480,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/12/26/leetcode123-Best-Time-to-Buy-and-Sell-Stock-3/" rel="prev" title="123. Best Time to Buy and Sell Stock 3">
-                123. Best Time to Buy and Sell Stock 3 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/16/basics-in-deep-reinforcement-learning/" rel="prev" title="basics in deep reinforcement learning">
+                basics in deep reinforcement learning <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -683,7 +677,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">R-cnn</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Fast R-cnn</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Faster R-cnn</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">SSD</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">some tricks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nms"><span class="nav-number">5.1.</span> <span class="nav-text">NMS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#traditional-nms"><span class="nav-number">5.1.1.</span> <span class="nav-text">traditional nms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nms-convnet"><span class="nav-number">5.1.2.</span> <span class="nav-text">NMS convnet</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Discriminative Correlation Filter(DCF)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">MOSSE系列方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#some-termination"><span class="nav-number">2.1.</span> <span class="nav-text">some termination</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#procedure"><span class="nav-number">2.2.</span> <span class="nav-text">procedure</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">OSVOS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#offline-training"><span class="nav-number">3.1.</span> <span class="nav-text">offline training</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#online-training"><span class="nav-number">3.2.</span> <span class="nav-text">online training</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">MaskTrack</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#offline-training-v2"><span class="nav-number">4.1.</span> <span class="nav-text">offline training</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#online-training-v2"><span class="nav-number">4.2.</span> <span class="nav-text">online training</span></a></li></ol></li></ol></div>
             
 
           </div>
